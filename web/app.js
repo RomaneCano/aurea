@@ -349,7 +349,7 @@ const VIEWS = {
 
   videos() {
     shell("Vidéos et séries", `<p class="muted lead2">Des vidéos courtes et claires, en français. Touche une image pour la lancer.</p>
-      <div class="cols3">${VIDEOS.map((v, i) => `<div class="poster vid" data-v="${i}">${v.yt ? `<button class="playbtn" aria-label="Lancer la vidéo">${A.video(i)}</button>` : A.video(i)}<span class="pt"><small>${esc(v.w)}</small><b>${esc(v.t)}</b><span>${esc(v.d)}</span>${v.yt ? "" : `<a class="textbtn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(v.q)}">Voir sur YouTube ›</a>`}</span></div>`).join("")}
+      <div class="cols3">${VIDEOS.map((v, i) => `<div class="poster vid" data-v="${i}">${v.yt ? `<button class="playbtn" aria-label="Lancer la vidéo">${A.video(i)}</button>` : A.video(i)}<span class="pt"><small>${esc(v.w)}</small><b>${esc(v.t)}</b><span>${esc(v.d)}</span><a class="textbtn" target="_blank" rel="noopener" href="${v.u || "https://www.youtube.com/results?search_query=" + encodeURIComponent(v.q)}">${v.yt ? "Ouvrir sur YouTube" : v.u ? "Ouvrir le lien" : "Chercher sur YouTube"} ›</a></span></div>`).join("")}
       <a class="poster" target="_blank" rel="noopener" href="https://www.thechosen.tv">${A.incarnation()}<span class="pt"><small>Série</small><b>The Chosen</b><span>La vie de Jésus et de ses disciples, racontée comme un film</span></span></a></div>`, "#/", "wide");
     document.querySelectorAll(".playbtn").forEach(b => b.onclick = () => { const v = VIDEOS[+b.closest("[data-v]").dataset.v]; b.outerHTML = `<div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/${v.yt}?autoplay=1" title="${esc(v.t)}" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe></div>`; });
   },

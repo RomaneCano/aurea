@@ -318,11 +318,12 @@ const ACTIVITES = [
 
 // yt = identifiant YouTube à renseigner une fois la vidéo choisie et vérifiée (la vidéo s'affiche alors dans l'app)
 const VIDEOS = [
-  { t: "Comprendre les bases de la foi", w: "Frère Paul-Adrien", d: "Des explications courtes et claires, en français", q: "frère paul-adrien introduction foi catholique", yt: null },
-  { t: "Qui est Jésus ?", w: "Frère Paul-Adrien", d: "Pour découvrir sa vie et son message", q: "frère paul-adrien qui est jésus", yt: null },
-  { t: "Comment prier quand on débute", w: "Chaînes catholiques", d: "Des conseils simples pour commencer", q: "comment prier débutant catholique", yt: null },
-  { t: "Ma première messe", w: "KTO", d: "Ce qui se passe, étape par étape", q: "KTO comprendre la messe première messe", yt: null },
-  { t: "Prier le chapelet", w: "Chaînes catholiques", d: "Apprendre à prier le chapelet", q: "prier le chapelet pas à pas débutant", yt: null }
+  { t: "Frère Paul-Adrien répond à 5 grandes questions", w: "Frère Paul-Adrien, émission 5 Go(o)d Questions", d: "Sur la vie, la mort et Dieu. Un entretien pour les curieux et les sceptiques.", yt: "YZY5xiQJESo", u: "https://www.youtube.com/watch?v=YZY5xiQJESo" },
+  { t: "Épiphanie, qui sont les Rois Mages ?", w: "Frère Paul-Adrien, Radio Courtoisie", d: "Ont-ils existé ? Une explication claire d'une fête de Noël.", yt: "Ia5DiWWDC8Q", u: "https://www.youtube.com/watch?v=Ia5DiWWDC8Q" },
+  { t: "Sa chaîne YouTube", w: "Frère Paul-Adrien", d: "Toutes ses vidéos en français, pour continuer à découvrir.", yt: null, u: "https://www.youtube.com/theopedie" },
+  { t: "Le parcours « Je crois en Dieu »", w: "Diocèse de Paris", d: "Un parcours en vidéo, avec le frère Paul-Adrien, pour découvrir la foi pas à pas.", yt: null, u: "https://dioceseparis.fr/-le-parcours-je-crois-en-dieu-.html" },
+  { t: "Comment prier quand on débute", w: "Chaînes catholiques", d: "Des conseils simples pour commencer.", q: "comment prier débutant catholique", yt: null },
+  { t: "Prier le chapelet", w: "Chaînes catholiques", d: "Apprendre à le prier pas à pas.", q: "prier le chapelet pas à pas débutant", yt: null }
 ];
 
 // ---------- Repères : frise et carte (trajet pas à pas) ----------
