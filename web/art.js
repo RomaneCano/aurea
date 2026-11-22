@@ -80,7 +80,7 @@ const A = {
     return `<svg class="ill chap" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="400" height="400" fill="#eef4f8"/>${ring}${tail}${cr}${out.join("")}</svg>`;
   },
 
-  // roue de l'année liturgique (année civile) — date du jour en repère
+  // roue de l'année liturgique (année civile) : date du jour en repère
   annee: () => {
     const S = [["Avent", "11-29", "12-24", "#c9b8e4"], ["Noël", "12-25", "01-10", "#f6e0a0"], ["Temps ordinaire", "01-11", "02-09", "#b7d9bd"], ["Carême", "02-10", "03-27", "#c9b8e4"], ["Pâques", "03-28", "05-16", "#f6e0a0"], ["Temps ordinaire", "05-17", "11-28", "#b7d9bd"]];
     const doy = s => { const [m, d] = s.split("-").map(Number); return Math.floor((Date.UTC(2027, m - 1, d) - Date.UTC(2027, 0, 1)) / 864e5); };

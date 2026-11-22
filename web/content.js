@@ -86,10 +86,10 @@ const BACKGROUNDS = [
 ];
 
 const LEVELS = [
-  { id: 1, label: "Niveau 1 — Presque rien (catéchisme lointain)" },
-  { id: 2, label: "Niveau 2 — Quelques souvenirs (prières, fêtes)" },
-  { id: 3, label: "Niveau 3 — Je connais les bases" },
-  { id: 4, label: "Niveau 4 — Je pratiquais, je veux approfondir" }
+  { id: 1, label: "Niveau 1, Presque rien (catéchisme lointain)" },
+  { id: 2, label: "Niveau 2, Quelques souvenirs (prières, fêtes)" },
+  { id: 3, label: "Niveau 3, Je connais les bases" },
+  { id: 4, label: "Niveau 4, Je pratiquais, je veux approfondir" }
 ];
 
 // ---------- Les bases ----------
@@ -143,21 +143,21 @@ const PROPHETIES_NOTE = "On entend souvent « plus de 300 prophéties accomplies
 
 // ---------- Quiz Jésus ----------
 const QUIZ = [
-  { lvl: "Niveau 1 — Qui est Jésus ?", qs: [
+  { lvl: "Niveau 1, Qui est Jésus ?", qs: [
     { q: "Dans quelle ville est né Jésus ?", o: ["Nazareth", "Bethléem", "Jérusalem"], a: 1, e: "Jésus est né à Bethléem (Luc 2) et a grandi à Nazareth." },
     { q: "Comment s'appelle sa mère ?", o: ["Marie", "Marthe", "Élisabeth"], a: 0, e: "Marie, qui dit « oui » à l'ange Gabriel (Luc 1)." },
     { q: "Que veut dire « Évangile » ?", o: ["Histoire ancienne", "Bonne nouvelle", "Loi de Dieu"], a: 1, e: "« Évangile » vient du grec euangelion, qui veut dire bonne nouvelle." },
     { q: "Combien de disciples proches (apôtres) Jésus a-t-il choisis ?", o: ["7", "12", "40"], a: 1, e: "Les Douze, symbole des 12 tribus d'Israël." },
     { q: "Que fête-t-on à Pâques ?", o: ["La naissance de Jésus", "La résurrection de Jésus", "La Pentecôte"], a: 1, e: "Pâques célèbre la victoire de Jésus sur la mort." }
   ]},
-  { lvl: "Niveau 2 — Ceux qu'il rencontre", qs: [
+  { lvl: "Niveau 2, Ceux qu'il rencontre", qs: [
     { q: "Quel pêcheur devient le chef des apôtres ?", o: ["Pierre", "Jean-Baptiste", "Judas"], a: 0, e: "Simon, que Jésus appelle Pierre (« roc »). Mt 16, 18." },
     { q: "Qui est monté sur un sycomore pour voir Jésus ?", o: ["Zachée", "Nicodème", "Lazare"], a: 0, e: "Zachée, collecteur d'impôts, change de vie après avoir invité Jésus chez lui (Lc 19)." },
     { q: "Qui Jésus rencontre-t-il près du puits de Jacob ?", o: ["Une femme samaritaine", "Une veuve", "Marthe"], a: 0, e: "C'est la Samaritaine. Jésus lui parle malgré les barrières de son époque (Jn 4)." },
     { q: "Qui est le premier témoin de la résurrection selon Jean ?", o: ["Pierre", "Marie-Madeleine", "Thomas"], a: 1, e: "Marie-Madeleine voit Jésus ressuscité au tombeau (Jn 20)." },
     { q: "Qui baptise Jésus dans le Jourdain ?", o: ["Jean le Baptiste", "Jean l'évangéliste", "Jacques"], a: 0, e: "Jean le Baptiste, cousin de Jésus selon Luc." }
   ]},
-  { lvl: "Niveau 3 — Ses grandes valeurs", qs: [
+  { lvl: "Niveau 3, Ses grandes valeurs", qs: [
     { q: "Quel est le plus grand commandement selon Jésus ?", o: ["Aimer Dieu et son prochain", "Observer le sabbat", "Faire des sacrifices"], a: 0, e: "Mt 22, 37-40 : aimer Dieu de tout son cœur et son prochain comme soi-même." },
     { q: "Dans la parabole du bon Samaritain, qui est le « prochain » ?", o: ["Le prêtre", "Celui qui a eu pitié", "Le voyageur blessé"], a: 1, e: "Le Samaritain, qui s'approche et soigne. (Lc 10)" },
     { q: "Que dit Jésus sur les ennemis ?", o: ["Les éviter", "Les aimer et prier pour eux", "Leur rendre la pareille"], a: 1, e: "Mt 5, 44 : « Aimez vos ennemis, priez pour ceux qui vous persécutent »." },

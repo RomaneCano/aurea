@@ -1,4 +1,4 @@
-/* Auréa — prototype web (vanilla JS, localStorage). */
+/* Auréa : prototype web (vanilla JS, localStorage). */
 const $ = (s, el = document) => el.querySelector(s);
 const app = $("#app");
 const KEY = "aurea.v1";
@@ -59,7 +59,8 @@ function lights() { return Object.keys(S.done).length; }
 function sunLevel() { return Math.min(1, lights() / 12); }
 function ill(k) { return k === "chapelet" ? A.chapelet({}) : k === "video" ? A.video(0) : (A[k] || A.dieu)(); }
 function thumb(k) { return `<span class="thumb">${ill(k)}</span>`; }
-const sunmark = `<svg viewBox="0 0 40 40" class="sm" aria-hidden="true"><g stroke="#e8b04a" stroke-width="3" stroke-linecap="round">${Array.from({ length: 8 }, (_, i) => { const a = i / 8 * 6.283; return `<line x1="${20 + Math.cos(a) * 13}" y1="${20 + Math.sin(a) * 13}" x2="${20 + Math.cos(a) * 18}" y2="${20 + Math.sin(a) * 18}"/>`; }).join("")}</g><circle cx="20" cy="20" r="9" fill="#f5c25a"/></svg>`;
+let _lg = 0;
+function logoMark() { const n = ++_lg; return `<svg viewBox="0 0 64 64" class="sm" aria-hidden="true"><defs><linearGradient id="lsky${n}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bcd6ea"/><stop offset=".55" stop-color="#fdeccd"/><stop offset="1" stop-color="#fbd0aa"/></linearGradient><clipPath id="larch${n}"><path d="M9 59V29a23 23 0 0 1 46 0v30z"/></clipPath></defs><g clip-path="url(#larch${n})"><rect width="64" height="64" fill="url(#lsky${n})"/><g stroke="#e8b04a" stroke-width="2.4" stroke-linecap="round"><line x1="32" y1="21" x2="32" y2="15"/><line x1="23.5" y1="24.5" x2="19.2" y2="20.2"/><line x1="40.5" y1="24.5" x2="44.8" y2="20.2"/><line x1="20" y1="33" x2="14" y2="33"/><line x1="44" y1="33" x2="50" y2="33"/></g><circle cx="32" cy="40" r="10.5" fill="#f5c25a"/><path d="M9 59V47q14-9 23-3t23-1v16z" fill="#a9cdbd"/><path d="M9 59V53q16-7 31-2t15-2v10z" fill="#6a9d86"/><path d="M27 59q9-4 4-10" fill="none" stroke="#fff8e8" stroke-width="3.2" stroke-linecap="round"/></g><path d="M9 59V29a23 23 0 0 1 46 0v30z" fill="none" stroke="#2c5b88" stroke-width="2.6" stroke-linejoin="round"/></svg>`; }
 
 // ---------- routeur ----------
 function go(h) { location.hash = h; }
@@ -81,7 +82,7 @@ function sidebar() {
     return `<li class="${d ? "done" : ""}">${u && !m.soon ? `<a class="${c}" href="#/${m.id}">${inner}</a>` : `<span class="row lock">${inner}</span>`}</li>`;
   };
   const on = Math.round(sunLevel() * 12);
-  return `<aside class="side"><a class="brand" href="#/">${sunmark}Auréa</a>
+  return `<aside class="side"><a class="brand" href="#/">${logoMark()}Auréa</a>
     <p class="side-me">${S.name ? "Bonjour " + esc(S.name) : "Bonjour"}</p>
     <div class="rays">${Array.from({ length: 12 }, (_, i) => `<i class="${i < on ? "on" : ""}"></i>`).join("")}</div>
     <h4>Mon chemin</h4><ol class="path">${MODULES.map(row).join("")}</ol>
@@ -133,7 +134,7 @@ const VIEWS = {
     const dots = n => `<div class="steps-dots">${[0, 1, 2].map(i => `<i class="${i <= n ? "on" : ""}"></i>`).join("")}</div>`;
     const draw = () => {
       let form = "";
-      if (step === 0) form = `${dots(0)}<h1>Auréa</h1><p class="lead">Un petit pas chaque jour, à ton rythme. Tu n'as besoin de rien savoir pour commencer.</p>
+      if (step === 0) form = `${dots(0)}${logoMark().replace('class="sm"', 'class="sm logo-big"')}<h1>Auréa</h1><p class="lead">Un petit pas chaque jour, à ton rythme. Tu n'as besoin de rien savoir pour commencer.</p>
         <label class="field">Comment veux-tu qu'on t'appelle ?<input id="name" value="${esc(name)}" placeholder="Ton prénom" autocomplete="given-name"></label><button class="primary" id="n1">Continuer</button>`;
       else if (step === 1) form = `${dots(1)}<h2>Qu'est-ce qui te ressemble le plus ?</h2><p class="muted">Cela nous aide à t'expliquer les choses avec respect. Tu pourras changer à tout moment dans les réglages. Ce choix reste sur ton appareil.</p>
         <div class="choices">${BACKGROUNDS.map((b, i) => `<button class="choice ${bg === b.id ? "sel" : ""}" data-b="${b.id}"><i>${String.fromCharCode(65 + i)}</i>${esc(b.label)}</button>`).join("")}</div><button class="primary" id="n2" ${bg ? "" : "disabled"}>Continuer</button>`;
@@ -157,7 +158,7 @@ const VIEWS = {
       return `<li class="${cls}"><span class="node">${d ? "✓" : ""}</span>${u ? `<a href="#/${m.id}">${body}</a>` : `<div class="t">${body}</div>`}</li>`;
     };
     app.innerHTML = `
-      <div class="home-hero">${A.hero(sunLevel())}<div class="over"><a class="brand" href="#/">${sunmark}Auréa</a><h1>${S.name ? "Bonjour " + esc(S.name) : "Bonjour"}</h1><p class="sub">Un petit pas à la fois.</p><div class="rays big">${Array.from({ length: 12 }, (_, i) => `<i class="${i < Math.round(sunLevel() * 12) ? "on" : ""}"></i>`).join("")}</div></div></div>
+      <div class="home-hero">${A.hero(sunLevel())}<div class="over"><a class="brand" href="#/">${logoMark()}Auréa</a><h1>${S.name ? "Bonjour " + esc(S.name) : "Bonjour"}</h1><p class="sub">Un petit pas à la fois.</p><div class="rays big">${Array.from({ length: 12 }, (_, i) => `<i class="${i < Math.round(sunLevel() * 12) ? "on" : ""}"></i>`).join("")}</div></div></div>
       <div class="home-grid"><section>
         ${next ? `<a class="next" href="#/${next.id}"><span class="nextill">${ill(next.ill)}</span><span class="nt"><small>Ta prochaine étape</small><h2>${esc(next.t)}</h2><p>${esc(next.d)}</p><b>Continuer →</b></span></a>` : `<div class="next"><span class="nt"><h2>Tu as parcouru le chemin de départ</h2><p>Continue avec les plans de lecture, le chapelet et l'activité de la semaine.</p></span></div>`}
         <h3>Le chemin</h3><ol class="timeline">${MODULES.map(li).join("")}</ol></section>

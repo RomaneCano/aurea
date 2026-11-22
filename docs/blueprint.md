@@ -1,4 +1,4 @@
-# Application iOS d'initiation catholique — Blueprint produit v0.1
+# Application iOS d'initiation catholique : Blueprint produit v0.1
 
 > Nom : **Auréa** (« dorée » en latin ; évoque la lumière dorée du lever de soleil, palette et métaphore centrale). Disponibilité (marque, App Store, domaine) à vérifier.
 

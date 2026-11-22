@@ -1,4 +1,4 @@
-/* Auréa — identité visuelle : papier chaud, encre bleue, or doux, aube sur les collines. Thème clair uniquement. */
+/* Auréa : identité visuelle : papier chaud, encre bleue, or doux, aube sur les collines. Thème clair uniquement. */
 :root{
   color-scheme:light;
   --paper:#fbf7ef; --paper2:#f3ead8; --sky:#e4eef6; --sky2:#fdeccd;
@@ -364,3 +364,6 @@ button{font:inherit;cursor:pointer}
 body{overflow-x:clip}
 html{overflow-x:hidden}
 .pager .progress.thin{flex:1;margin:0;min-width:40px}.pager .dots{flex-wrap:wrap;min-width:0}
+.brand .sm{width:42px;height:42px}
+.side .brand{font-size:1.7rem}
+.welcome .form .logo-big{width:96px;height:96px;margin-bottom:10px}

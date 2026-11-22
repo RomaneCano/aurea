@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Auréa">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bcd6ea"/><stop offset=".55" stop-color="#fdeccd"/><stop offset="1" stop-color="#fbd0aa"/></linearGradient>
+    <clipPath id="arch"><path d="M9 59V29a23 23 0 0 1 46 0v30z"/></clipPath>
+  </defs>
+  <g clip-path="url(#arch)">
+    <rect width="64" height="64" fill="url(#sky)"/>
+    <g stroke="#e8b04a" stroke-width="2.4" stroke-linecap="round">
+      <line x1="32" y1="21" x2="32" y2="15"/><line x1="23.5" y1="24.5" x2="19.2" y2="20.2"/><line x1="40.5" y1="24.5" x2="44.8" y2="20.2"/>
+      <line x1="20" y1="33" x2="14" y2="33"/><line x1="44" y1="33" x2="50" y2="33"/>
+    </g>
+    <circle cx="32" cy="40" r="10.5" fill="#f5c25a"/>
+    <path d="M9 59V47q14-9 23-3t23-1v16z" fill="#a9cdbd"/>
+    <path d="M9 59V53q16-7 31-2t15-2v10z" fill="#6a9d86"/>
+    <path d="M27 59q9-4 4-10" fill="none" stroke="#fff8e8" stroke-width="3.2" stroke-linecap="round"/>
+  </g>
+  <path d="M9 59V29a23 23 0 0 1 46 0v30z" fill="none" stroke="#2c5b88" stroke-width="2.6" stroke-linejoin="round"/>
+</svg>
