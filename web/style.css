@@ -104,4 +104,18 @@ button{font:inherit;cursor:pointer}
   .card.prayer{background:#2e2748}.tile.done,.card.hl,.plan li.ok{background:#3a2f4a}
   .tile.locked{background:#241f38}.sheet{background:#2a2440}
   .top{background:linear-gradient(180deg,#3a3260,var(--cream))}
+  .choice.sel{background:#4a3558;border-color:var(--gold);color:#fff}
+  .choice.good{background:#1f4a35;border-color:#6cc28b;color:#fff}
+  .choice.bad{background:#5a2a2e;border-color:#e07a78;color:#fff}
+  .chips span{background:#3a2f4a;border-color:#6b5a7a;color:var(--ink)}
+  .tag.fait{background:#1f4a35;color:#bfe8cd}.tag.foi{background:#47325e;color:#e4cdf7}.tag.debat{background:#5a4220;color:#ffd9a0}
+  .hero-top{background:linear-gradient(180deg,#5a4a8a,#3a3260 60%,#2a2440);color:#fff}
+  .tile.done{border-color:#7a6030}.card.hl{border-color:#7a6030}
+  .gl{color:#ffb27a;border-color:#ffb27a}
+  .ghost{color:var(--ink)}
+  .back{color:#e4dcff}h3{color:#d8cfff}
+  .bar{background:#3c3558}
+  #sheet{background:#000a}
+  .tile.locked{opacity:.75}
+  .toast{background:#ffd58a;color:#2a1d22}
 }
