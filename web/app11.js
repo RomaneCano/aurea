@@ -14,7 +14,7 @@ VIEWS.croyances = function (a) {
     content = `<p class="lead2 short">${g(F.intro || "")}</p><div class="cpts">${(F.points || []).map(p => `<article class="cfiche"><h3>${esc(p.t)}</h3><p>${g(p.x)}</p>${p.repond ? `<p class="crep"><b>Ce que répondent les croyants</b> ${g(p.repond)}</p>` : ""}${refs(p.refs)}${srcs(p.sources)}</article>`).join("")}</div>`;
   } else {
     const view = a[1] === "fondations" ? "fond" : "fiches", i = Math.max(0, Math.min((P.fiches || []).length - 1, +(a[2] || 0)));
-    const sub = `<div class="tabsm" id="cs"><a class="${view === "fiches" ? "on" : ""}" href="#/croyances/${prof}">Mes questions</a>${P.fondations ? `<a class="${view === "fond" ? "on" : ""}" href="#/croyances/${prof}/fondations">Les origines de ${esc(P.titre.replace(/^Je viens (de l'|du |de la |d')/i, "").replace(/^Je suis /i, ""))}</a>` : ""}</div>`;
+    const sub = `<div class="tabsm" id="cs"><a class="${view === "fiches" ? "on" : ""}" href="#/croyances/${prof}">Mes questions</a>${P.fondations ? `<a class="${view === "fond" ? "on" : ""}" href="#/croyances/${prof}/fondations">Les origines ${({ musulman: "de l'islam", juif: "du judaïsme", athee: "de l'athéisme", bouddhiste: "du bouddhisme", esoterisme: "de l'ésotérisme", science: "de la démarche scientifique" })[prof] || ""}</a>` : ""}</div>`;
     if (view === "fond") {
       const F = P.fondations;
       content = `${sub}<p class="lead2 short">${g(F.intro || "")}</p><div class="cpts">${(F.points || []).map(p => `<article class="cfiche"><h3>${esc(p.t)}</h3><p>${g(p.x)}</p>${p.repond ? `<p class="crep"><b>Ce que répondent les croyants</b> ${g(p.repond)}</p>` : ""}${refs(p.refs)}${srcs(p.sources)}</article>`).join("")}</div>`;
