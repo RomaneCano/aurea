@@ -128,11 +128,12 @@ function sceneSvg(sc, fig, idx = 0) {
 }
 function actorSvg(v, ax = 320, dir = 1, scale = 1.75, from = -440) {
   const hair = { short: `<path d="M-15 -80 Q-15 -98 0 -98 Q15 -98 15 -80 Q8 -88 0 -88 Q-8 -88 -15 -80Z" fill="${v.hair}"/>`, long: `<path d="M-17 -78 Q-19 -100 0 -100 Q19 -100 17 -78 L20 -46 L10 -66 L-10 -66 L-20 -46Z" fill="${v.hair}"/>`, curly: `<g fill="${v.hair}"><circle cx="-10" cy="-92" r="8"/><circle cx="0" cy="-97" r="8"/><circle cx="10" cy="-92" r="8"/></g>`, tonsure: `<path d="M-16 -76 Q-17 -88 -9 -90 L-8 -78Z M16 -76 Q17 -88 9 -90 L8 -78Z" fill="${v.hair}"/>`, bald: "", veil: `<path d="M-20 -72 Q-22 -104 0 -104 Q22 -104 20 -72 L26 -38 Q0 -52 -26 -38Z" fill="${v.veil || v.mantle}"/>`, hood: `<path d="M-22 -72 Q-24 -106 0 -106 Q24 -106 22 -72 L28 -38 Q0 -52 -28 -38Z" fill="${v.robe}"/>` }[v.style] || "";
-  const behind = v.style === "veil" || v.style === "hood" ? hair : "";
-  const front = v.style === "veil" || v.style === "hood" ? `<path d="M-13 -80 Q-12 -92 0 -92 Q12 -92 13 -80 Q6 -86 0 -86 Q-6 -86 -13 -80Z" fill="${v.hair}"/>` : hair;
+  const layered = ["veil", "hood", "long"].includes(v.style);
+  const behind = layered ? hair : "";
+  const front = layered ? `<path d="M-14 -80 Q-12 -93 0 -93 Q12 -93 14 -80 Q7 -87 0 -87 Q-7 -87 -14 -80Z" fill="${v.style === "long" ? v.hair : (v.style === "veil" ? (v.veil || v.mantle) : v.robe)}"/>` : hair;
   return `<g transform="translate(${ax.toFixed(0)} 338) scale(${(scale * dir).toFixed(2)} ${scale.toFixed(2)})"><ellipse cx="0" cy="2" rx="34" ry="6" fill="#00000022"/><g class="walk" style="--from:${from * dir}px"><g class="idle">
     <circle cx="0" cy="-80" r="25" fill="#fff3c6" stroke="#e8b04a" stroke-width="3"/>${behind}
     <path d="M-30 0 Q-28 -52 0 -58 Q28 -52 30 0Z" fill="${v.robe}"/><path d="M-30 0 Q-30 -50 -8 -57 L0 -26 L8 -57 Q30 -50 30 0Z" fill="${v.mantle}"/>
     <rect x="-5" y="-66" width="10" height="12" rx="4" fill="${v.skin}"/><ellipse cx="0" cy="-78" rx="14" ry="16" fill="${v.skin}"/>${front}${v.beard ? `<path d="M-12 -74 Q-11 -58 0 -56 Q11 -58 12 -74 Q6 -66 0 -66 Q-6 -66 -12 -74Z" fill="${v.beard}"/>` : ""}
-    <ellipse cx="-24" cy="-26" rx="6" ry="9" fill="${v.skin}"/><ellipse cx="24" cy="-26" rx="6" ry="9" fill="${v.skin}"/></g></g></g>`;
+    <path d="M-24 -52 Q-36 -36 -30 -20 L-19 -20 Q-22 -36 -17 -50Z" fill="${v.mantle}"/><path d="M24 -52 Q36 -36 30 -20 L19 -20 Q22 -36 17 -50Z" fill="${v.mantle}"/><ellipse cx="-25" cy="-17" rx="6" ry="6" fill="${v.skin}"/><ellipse cx="25" cy="-17" rx="6" ry="6" fill="${v.skin}"/></g></g></g>`;
 }
