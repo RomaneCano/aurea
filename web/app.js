@@ -194,7 +194,7 @@ const VIEWS = {
     if (a[0]) {
       const p = PLANS.find(x => x.id === a[0]), done = S.chap[p.id] || [];
       shell(p.t, `<div class="split"><div class="visual">${A.marche()}</div><div><h2>${esc(p.t)}</h2><p class="muted">${esc(p.d)}</p>
-        <ol class="plan">${p.ref.map((r, i) => `<li class="${done.includes(i) ? "ok" : ""}"><label><input type="checkbox" data-i="${i}" ${done.includes(i) ? "checked" : ""}> <span>Jour ${i + 1}, ${esc(r[0])} ${r[1]}${r[2] ? " · " + esc(r[2]) : ""}</span></label> <a href="https://www.aelf.org/bible/${r[0]}/${r[1]}" target="_blank" rel="noopener">Lire</a></li>`).join("")}</ol></div></div>`, "#/plans", "wide");
+        <ol class="plan">${p.ref.map((r, i) => `<li class="${done.includes(i) ? "ok" : ""}"><label><input type="checkbox" data-i="${i}" ${done.includes(i) ? "checked" : ""}> <span>Jour ${i + 1}, ${esc(r[0])} ${r[1]}${r[2] ? " · " + esc(r[2]) : ""}</span></label> <a href="${PLAN_CODES[r[0]] ? `#/lire/${PLAN_CODES[r[0]]}/${r[1]}` : `https://www.aelf.org/bible/${r[0]}/${r[1]}`}">Lire</a></li>`).join("")}</ol></div></div>`, "#/plans", "wide");
       document.querySelectorAll("[data-i]").forEach(c => c.onchange = () => {
         const set = new Set(S.chap[p.id] || []); c.checked ? set.add(+c.dataset.i) : set.delete(+c.dataset.i);
         S.chap[p.id] = [...set]; save(); if (set.size === p.ref.length) markDone("plan_" + p.id); VIEWS.plans(a);

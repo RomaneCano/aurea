@@ -4,7 +4,7 @@
 function ensure() {
   S.journal = S.journal || []; S.avatar = S.avatar || { ...AVATAR_DEFAUT }; S.xp = S.xp || 0; S.days = S.days || {};
   S.badges = S.badges || {}; S.met = S.met || {}; S.stats = S.stats || {}; S.recent = S.recent || []; S.favs = S.favs || [];
-  S.prog = S.prog || {}; S.model = S.model || "claude-sonnet-5-5"; S.ask = S.ask || [];
+  S.prog = S.prog || {}; S.read = S.read || {}; S.model = S.model || "claude-sonnet-5-5"; S.ask = S.ask || [];
   if (S.notes && S.notes.length) { S.notes.forEach(n => S.journal.push({ id: "n" + n.t, d: dkey(new Date(n.t)), t: n.t, mood: null, tags: [n.k && n.k !== "Note" ? "Évangile" : "Pensée"], title: "", text: n.x })); S.notes = []; }
   if (S.reperes && S.prog.reperes == null) S.prog.reperes = S.reperes;
   save();
