@@ -57,7 +57,7 @@ const MIRACLES = {
   "carlo": {
     reconnus: [
       { t: "Premier miracle, Campo Grande (Brésil), retenu pour la béatification",
-        x: "Un petit garçon brésilien, Mateus Vianna, né avec une malformation du pancréas, a été guéri sans explication médicale. D'après la plupart des récits, sa famille avait prié Carlo et il avait touché un objet lié à lui, vers 2013 à Campo Grande. Ce cas a été reconnu pour la béatification de Carlo (la première étape avant la sainteté) en 2020. Les articles ne donnent pas tous le même âge pour l'enfant.",
+        x: "Un petit garçon brésilien, Mateus Vianna, né avec une malformation du pancréas, a été guéri sans explication médicale. D'après la plupart des récits, sa famille avait prié Carlo et il avait touché un objet lié à lui, en 2013 selon la plupart des sources, à Campo Grande. Ce cas a été reconnu pour la béatification de Carlo (la première étape avant la sainteté) en 2020. Les articles ne donnent pas tous le même âge pour l'enfant.",
         s: "Presse brésilienne, Gazeta do Povo, História do milagre do menino brasileiro curado por Carlo Acutis ; EWTN News" },
       { t: "Deuxième miracle, Florence et Costa Rica, retenu pour la canonisation",
         x: "Valeria Valverde, une étudiante costaricienne de 21 ans, a eu un grave traumatisme à la tête dans un accident de vélo à Florence en juillet 2022. Selon les récits, le jour où sa mère a prié sur la tombe de Carlo à Assise, Valeria s'est mise à respirer seule, et elle a parlé le lendemain. Le pape François a reconnu ce cas le 23 mai 2024. Carlo a été canonisé (déclaré saint) le 7 septembre 2025 par le pape Léon XIV.",
@@ -239,7 +239,7 @@ const MIRACLES = {
         x: "La Vie de sainte Geneviève raconte que la mère de la jeune fille, devenue aveugle, aurait retrouvé la vue grâce à de l'eau bénie par Geneviève. C'est un récit de tradition, écrit longtemps après les faits." }
     ],
     temoignage: { t: "La Vie de sainte Geneviève",
-      x: "Notre source principale est un texte ancien, la Vie de sainte Geneviève, écrit après sa mort vers la fin du VIe siècle, ou vers 520 selon d'autres. Les historiens s'accordent à penser qu'il y a de vraies traces de sa vie, mais le texte a plusieurs versions qu'on a du mal à relier entre elles.",
+      x: "Notre source principale est un texte ancien, la Vie de sainte Geneviève, écrit environ dix-huit ans après sa mort, donc vers 520 ou 530 selon le texte lui-même. Les historiens s'accordent à penser qu'il y a de vraies traces de sa vie, mais le texte a plusieurs versions qu'on a du mal à relier entre elles.",
       s: "Universalis, Geneviève ; Britannica, Saint Genevieve" },
     prudence: "Geneviève a bien existé à Paris vers le Ve siècle. Les récits de miracles viennent d'un texte de dévotion plus tardif, dont les historiens discutent la valeur."
   },
