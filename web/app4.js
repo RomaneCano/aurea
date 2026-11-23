@@ -22,7 +22,7 @@ VIEWS.figures = function (a) {
   if (id && sub === "histoire" && STORIES[id]) return storyView(FIGURES.find(f => f.id === id));
   let mode = "grille", grp = FIG_GROUPS[0].id, cur = id && FIGURES.find(f => f.id === id) ? id : null;
   if (cur) grp = FIGURES.find(f => f.id === cur).g;
-  const tabs = () => `<div class="tabs">${FIG_GROUPS.map(g => `<button class="tab ${mode === "grille" && g.id === grp ? "sel" : ""}" data-g="${g.id}">${g.t}</button>`).join("")}<button class="tab ${mode === "frise" ? "sel" : ""}" data-m="frise">Frise du temps</button><button class="tab ${mode === "cal" ? "sel" : ""}" data-m="cal">Calendrier des fêtes</button><button class="tab ${mode === "fav" ? "sel" : ""}" data-m="fav">Mes favoris</button><button class="tab ${mode === "autre" ? "sel" : ""}" data-m="autre">Un autre saint</button></div>`;
+  const tabs = () => `<div class="tabs">${FIG_GROUPS.map(g => `<button class="tab ${mode === "grille" && g.id === grp ? "sel" : ""}" data-g="${g.id}">${g.t}</button>`).join("")}<span class="tsep"></span><button class="tab ${mode === "frise" ? "sel" : ""}" data-m="frise">Frise du temps</button><button class="tab ${mode === "cal" ? "sel" : ""}" data-m="cal">Calendrier des fêtes</button><button class="tab ${mode === "fav" ? "sel" : ""}" data-m="fav">Mes favoris</button><button class="tab ${mode === "autre" ? "sel" : ""}" data-m="autre">Un autre saint</button></div>`;
   const bindTabs = draw => {
     document.querySelectorAll("[data-g]").forEach(b => b.onclick = () => { grp = b.dataset.g; mode = "grille"; cur = null; draw(); });
     document.querySelectorAll("[data-m]").forEach(b => b.onclick = () => { mode = b.dataset.m; draw(); });
@@ -36,20 +36,21 @@ VIEWS.figures = function (a) {
     const f = FIGURES.find(x => x.id === cur), idx = list.findIndex(x => x.id === cur), fav = !!favS()[f.id], isPatron = S.patron === f.id, ft = feteTexte(f);
     if (!S.met[f.id]) { S.met[f.id] = Date.now(); save(); gain(2, "figure"); }
     shell("Les figures de la foi", `${tabs()}
-      <div class="gal"><div class="gthumbs ${mode}">${list.map(x => `<button class="gt ${x.id === cur ? "sel" : ""} ${S.met[x.id] ? "" : "new"}" data-f="${x.id}"><span class="gp">${portrait(x)}</span><b>${esc(x.nom)}</b>${mode === "frise" ? `<small>${x.an < 0 ? "−" + -x.an : x.an}</small>` : ""}${favS()[x.id] ? `<i class="heart" aria-label="Favori">♥</i>` : ""}${STORIES[x.id] ? `<i class="play" aria-label="Aventure animée">▶</i>` : ""}</button>`).join("")}</div>
-      <article class="gdetail"><div class="gbig">${portrait(f)}</div><div class="gtext"><small class="eyebrow">${esc(f.role)}</small><h2>${esc(f.nom)}</h2>
-        <ul class="facts"><li><b>Repère</b>${esc(f.dates)}</li>${f.fete ? `<li><b>Fête</b>${esc(f.fete)}${ft ? `, ${ft.toLowerCase()}` : ""}</li>` : ""}${f.patron ? `<li><b>Patronage</b>${esc(f.patron)}</li>` : ""}</ul>
-        <p class="text">${g(f.bio)}</p><p class="why"><b>Pourquoi c'est important</b>${g(f.pourquoi)}</p><p class="muted">À lire ${esc(f.ref)}</p>
-        <div class="toolrow">${STORIES[f.id] ? `<a class="primary" href="#/figures/${f.id}/histoire">Voir son aventure animée</a>` : ""}<button class="ghost" id="fv">${fav ? "♥ Dans mes favoris" : "♡ Ajouter aux favoris"}</button>${f.fd ? `<button class="ghost" id="pt">${isPatron ? "Mon saint patron ✓" : "Choisir comme saint patron"}</button>` : ""}<button class="ghost" id="gj">Écrire dans mon journal</button></div>
+      <div class="gal2"><aside class="gindex ${mode}"><ul>${list.map(x => `<li><button class="gi ${x.id === cur ? "sel" : ""}" data-f="${x.id}"><span class="gp">${figImg(x, true)}</span><span class="gn"><b>${esc(x.nom)}</b><small>${mode === "frise" ? (x.an < 0 ? "−" + -x.an : x.an) : esc(x.role)}</small></span>${favS()[x.id] ? `<i class="heart" aria-label="Favori">♥</i>` : ""}${STORIES[x.id] ? `<i class="play" aria-label="Aventure animée">▶</i>` : ""}</button></li>`).join("")}</ul></aside>
+      <article class="gmain"><div class="ghero"><div class="gbig">${figImg(f)}</div><div class="gtitle"><small class="eyebrow">${esc(f.role)}</small><h2>${esc(f.nom)}</h2>
+        <div class="gfacts"><div><small>Repère</small><b>${esc(f.dates)}</b></div>${f.fete ? `<div><small>Fête</small><b>${esc(f.fete)}${ft ? `<em>${ft}</em>` : ""}</b></div>` : ""}${f.patron ? `<div><small>Patronage</small><b>${esc(f.patron)}</b></div>` : ""}</div>
+        <div class="gtools">${STORIES[f.id] ? `<a class="primary" href="#/figures/${f.id}/histoire">Voir son aventure animée</a>` : ""}<button class="ghost" id="fv">${fav ? "♥ Dans mes favoris" : "♡ Ajouter aux favoris"}</button>${f.fd ? `<button class="ghost" id="pt">${isPatron ? "Mon saint patron ✓" : "Choisir comme saint patron"}</button>` : ""}<button class="ghost" id="gj">Écrire dans mon journal</button></div></div></div>
+        <div class="gbody"><section><h3>Son histoire</h3><p class="text">${g(f.bio)}</p></section><section class="why"><h3>Pourquoi c'est important</h3><p>${g(f.pourquoi)}</p></section>
+        ${typeof detailHtml === "function" ? detailHtml(f) : ""}<section><h3>À lire</h3><p class="muted">${esc(f.ref)}</p></section></div>
         <div class="pager"><button class="textbtn" id="gp" ${idx === 0 ? "disabled" : ""}>‹ Précédent</button><span class="count">${idx + 1} sur ${list.length}</span><button class="textbtn" id="gn" ${idx === list.length - 1 ? "disabled" : ""}>Suivant ›</button></div>
-        <p class="tip">Portraits dessinés pour Auréa. Les visages sont volontairement sans traits, pour laisser place à ce que chacun imagine.</p></div></article></div>`, "#/", "wide");
+        <p class="tip">${typeof figCredit === "function" ? figCredit(f) : "Portraits dessinés pour Auréa."}</p></article></div>`, "#/", "wide");
     bindTabs(draw);
-    document.querySelectorAll("[data-f]").forEach(b => b.onclick = () => { cur = b.dataset.f; draw(); });
+    document.querySelectorAll("[data-f]").forEach(b => b.onclick = () => { cur = b.dataset.f; draw(); window.scrollTo(0, 0); });
     $("#gp").onclick = () => { cur = list[idx - 1].id; draw(); }; $("#gn").onclick = () => { cur = list[idx + 1].id; draw(); };
     $("#fv").onclick = () => { toggleFav(f.id); toast(favS()[f.id] ? "Ajouté à tes favoris" : "Retiré de tes favoris"); draw(); };
     const pt = $("#pt"); if (pt) pt.onclick = () => { S.patron = isPatron ? null : f.id; save(); toast(S.patron ? `${f.nom} est maintenant ton saint patron` : "Saint patron retiré"); draw(); };
     $("#gj").onclick = () => { S.draft = { text: "", tags: ["Pensée"], title: f.nom }; save(); go("#/journal"); };
-    const t = document.querySelector(".gt.sel"); t && t.scrollIntoView({ block: "nearest", inline: "center" });
+    const t = document.querySelector(".gi.sel"); t && t.scrollIntoView({ block: "nearest" });
   };
   const calView = () => {
     const now = new Date(), m0 = now.getMonth();

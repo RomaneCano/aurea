@@ -2,7 +2,8 @@
 
 // ---------- structure du site (en-tête, fil d'Ariane, pied de page) ----------
 const MENU = [
-  ["chemin", "Parcours", ["chemin", "reperes", "bases", "priere", "bible", "plans", "jesus", "jeu", "evangile", "messe", "messe1", "contact", "sacrements", "chapelet", "courants", "activite", "pelerinages", "communaute"]],
+  ["prier", "Prier", ["prier", "chapelet"]],
+  ["chemin", "Parcours", ["chemin", "reperes", "bases", "priere", "bible", "plans", "jesus", "jeu", "evangile", "messe", "messe1", "contact", "sacrements", "courants", "activite", "pelerinages", "communaute"]],
   ["lire", "La Bible", ["lire"]], ["figures", "Figures", ["figures"]], ["jesuscarte", "Cartes", ["jesuscarte"]],
   ["journal", "Journal", ["journal", "carnet"]], ["faq", "Questions", ["faq"]], ["ressources", "Ressources", ["ressources", "videos", "ponts"]]
 ];
@@ -40,6 +41,7 @@ VIEWS.home = function () {
     <section class="hero-ed">${A.hero(sunLevel())}<div class="hero-in"><p class="eyebrow">${esc(dateStr)}</p>
       <h1>${S.name ? "Bonjour " + esc(S.name) + "," : "Bonjour,"}<br><em>un pas à la fois.</em></h1>
       <p class="status">Niveau ${info.n}, ${info.name}<i>·</i>${info.xp} lumières<i>·</i>${st} jour${st > 1 ? "s" : ""} de suite${S.patron ? `<i>·</i>Saint patron, ${esc(FIGURES.find(f => f.id === S.patron).nom)}` : ""}<a href="#/profil">Mon compagnon</a></p></div></section>
+    <section class="prayband"><div><small class="eyebrow">Prier maintenant</small><b>${esc(prayerOfMoment().t)}</b></div><div class="pbtns"><a class="primary small" href="#/prier/${prayerOfMoment().id}">Dire cette prière</a><a class="ghost" href="#/chapelet">${S.rosary ? "Reprendre le chapelet" : "Prier le chapelet"}</a><a class="textbtn" href="#/prier">Toutes les prières</a></div></section>
     <div class="cols3e">
       <section class="ecol"><h2 class="sech"><span>I</span>Aujourd'hui</h2>
         ${next ? `<a class="feature" href="#/${next.id}"><span class="fimg">${ill(next.ill)}</span><small class="eyebrow">Ta prochaine étape</small><h3>${esc(next.t)}</h3><p>${esc(next.d)}</p><b class="more">Continuer</b></a>` : `<div class="feature"><h3>Le chemin de départ est terminé</h3><p>Continue avec la Bible, les figures et le journal.</p></div>`}
@@ -95,10 +97,11 @@ function lireIndex() {
   const section = name => `<section class="sec"><h2 class="sech">${name}</h2>${BIBLE_GROUPS.filter(g => g[1] === name).map(g => `<div class="bgroup"><h3>${g[2]}</h3><p class="muted">${g[3]}</p><ul class="booklist">${BOOKS.filter(b => b[3] === g[0]).map(b => { const n = readCount(b[0]); return `<li><a href="#/lire/${b[0]}"><span class="bn">${esc(b[1])}</span>${niveauDots(b[5])}<small>${b[4]} ch.${n ? ` · ${n} lu${n > 1 ? "s" : ""}` : ""}</small></a></li>`; }).join("")}</ul></div>`).join("")}</section>`;
   shell("La Bible", `<p class="lead2">Une bibliothèque de 73 livres, avec une seule grande histoire. Chaque livre a une introduction, et beaucoup de chapitres sont expliqués. Tu peux aussi poser tes questions à l'expert.</p>
     <form class="goto" id="goto"><label for="gq">Aller directement à un passage</label><div><input id="gq" placeholder="Par exemple, Jn 3, 16 ou Psaume 23" autocomplete="off"><button class="primary" type="submit">Aller</button></div><small class="muted" id="gerr"></small></form>
-    <section class="sec"><h2 class="sech">Par où commencer</h2><div class="startrow">${PARCOURS_LECTURE.map((c, i) => `<a href="#/lire/${c}/1" class="startitem"><span class="n">${i + 1}</span><b>${BOOK[c].n}</b><span>${esc(BOOK[c].k)}</span></a>`).join("")}</div></section>
+    ${typeof cheminsHtml === "function" ? cheminsHtml() : ""}<section class="sec"><h2 class="sech">Par où commencer</h2><div class="startrow">${PARCOURS_LECTURE.map((c, i) => `<a href="#/lire/${c}/1" class="startitem"><span class="n">${i + 1}</span><b>${BOOK[c].n}</b><span>${esc(BOOK[c].k)}</span></a>`).join("")}</div></section>
     ${section("Nouveau Testament")}${section("Ancien Testament")}
     <p class="muted fine">${t} chapitre${t > 1 ? "s" : ""} lu${t > 1 ? "s" : ""} jusqu'ici. Les points indiquent la difficulté, de trois points pleins pour un livre exigeant à un seul pour un livre accessible.</p>
     <p class="muted fine">Texte, Sainte Bible néo-Crampon Libre, une modernisation de la traduction catholique de Crampon. © 2022 Fraternité de Tibériade, licence CC BY-SA 4.0. Pour la traduction entendue à la messe, voir <a href="https://www.aelf.org/bible" target="_blank" rel="noopener">AELF</a>.</p>`, "#/", "wide");
+  if (typeof bindChemins === "function") bindChemins();
   $("#goto").onsubmit = e => { e.preventDefault(); const r = parseRef($("#gq").value); if (!r) { $("#gerr").textContent = "Je n'ai pas reconnu ce passage. Essaie avec « Jn 3, 16 » ou « Genèse 1 »."; return; } go(`#/lire/${r.code}/${r.ch || 1}${r.v ? "/" + r.v : ""}`); };
 }
 
@@ -124,9 +127,9 @@ function lireChapter(code, ch, vsel) {
     const prevC = ch > 1 ? `#/lire/${code}/${ch - 1}` : null, nextC = ch < b.nch ? `#/lire/${code}/${ch + 1}` : null;
     let sel = vsel;
     const draw = () => {
-      $("#scr").innerHTML = `<div class="rtools"><span class="eyebrow">${esc(b.n)}, chapitre ${ch} sur ${b.nch}</span><span class="fs"><button class="textbtn" id="fm" aria-label="Réduire le texte">A−</button><button class="textbtn" id="fp" aria-label="Agrandir le texte">A+</button></span></div>
+      $("#scr").innerHTML = `${typeof pathBar === "function" ? pathBar(code, ch) : ""}<div class="rtools"><span class="eyebrow">${esc(b.n)}, chapitre ${ch} sur ${b.nch}</span><span class="fs"><button class="textbtn" id="fm" aria-label="Réduire le texte">A−</button><button class="textbtn" id="fp" aria-label="Agrandir le texte">A+</button></span></div>
         <div class="verses" style="font-size:${size}rem">${verses.map((t, i) => `<span class="v ${sel === i + 1 ? "sel" : ""}" data-v="${i + 1}"><sup>${i + 1}</sup>${esc(t)} </span>`).join("")}</div>
-        <div class="rfoot"><button class="${S.read[key] ? "ghost done" : "primary"}" id="mk">${S.read[key] ? "Chapitre lu ✓" : "J'ai lu ce chapitre"}</button></div>
+        <div class="rfoot"><button class="${S.read[key] ? "ghost done" : "primary"}" id="mk">${S.read[key] ? "Chapitre lu ✓" : "J'ai lu ce chapitre"}</button>${typeof pathNextBtn === "function" ? pathNextBtn(code, ch) : ""}</div>
         <div class="pager2">${prevC ? `<a href="${prevC}">‹ Chapitre ${ch - 1}</a>` : "<span></span>"}<a href="#/lire/${code}">Tous les chapitres</a>${nextC ? `<a href="${nextC}">Chapitre ${ch + 1} ›</a>` : "<span></span>"}</div>`;
       $("#fm").onclick = () => { S.fsize = Math.max(.85, (S.fsize || 1) - .1); save(); draw(); };
       $("#fp").onclick = () => { S.fsize = Math.min(1.5, (S.fsize || 1) + .1); save(); draw(); };

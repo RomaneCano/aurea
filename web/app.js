@@ -41,7 +41,7 @@ const MODULES = [
   { id: "evangile", t: "Évangile du jour", d: "Lire, comprendre, noter", needs: ["bible"], ill: "livre" },
   { id: "messe", t: "Messe et célébrations", d: "Ma première messe et le calendrier", needs: ["jeu"], ill: "bati" },
   { id: "sacrements", t: "Les sacrements", d: "Dont le baptême", needs: ["messe"], ill: "eau" },
-  { id: "chapelet", t: "Le chapelet", d: "Dizaine par dizaine", needs: ["sacrements"], ill: "chapelet" },
+  { id: "chapelet", t: "Le chapelet", d: "Dizaine par dizaine, quand tu veux", needs: [], ill: "chapelet" },
   { id: "plans", t: "Plans de lecture", d: "Évangiles, valeurs, grand récit", needs: ["bible"], ill: "marche" },
   { id: "activite", t: "Activité de la semaine", d: "Une petite chose douce", needs: ["priere"], ill: "crayon" },
   { id: "courants", t: "Une Église, plusieurs sensibilités", d: "Courants, scouts, groupes", needs: ["messe"], ill: "eglise" },
@@ -311,7 +311,7 @@ const VIEWS = {
   },
 
   activite() {
-    if (S.activityIdx === null) { S.activityIdx = Math.floor(Math.random() * ACTIVITES.length); save(); }
+    if (S.activityIdx == null) { S.activityIdx = Math.floor(Math.random() * ACTIVITES.length); save(); }
     const a = ACTIVITES[S.activityIdx];
     shell("Activité de la semaine", `<div class="split"><div class="visual">${A.crayon()}</div><div><small class="eyebrow">Cette semaine</small><h2>${esc(a.t)}</h2><p class="text">${esc(a.x)}</p>
       <button class="primary" id="done">Je l'ai faite</button><button class="ghost" id="other">Une autre idée</button></div></div>`, "#/", "wide");

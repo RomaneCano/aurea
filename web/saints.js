@@ -261,3 +261,5 @@ const STORIES = {
     sc("desert", "jour", "Égypte puis Tunis", "Il part deux fois en croisade. La seconde fois, à Tunis, il tombe malade et meurt en 1270.", "soldats"),
     sc("eglise", "soir", "1297", "Il est canonisé en 1297. Il reste un modèle de roi juste et soucieux des pauvres.", "croix")]
 };
+
+const DETAILS = {};

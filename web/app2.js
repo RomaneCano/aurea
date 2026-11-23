@@ -203,15 +203,27 @@ function journeyView(cfg) {
     const svg = $("#map"); if (!svg || !vb) return;
     const u = vb[2] / (svg.clientWidth || 600);
     svg.setAttribute("viewBox", vb.join(" "));
-    svg.querySelectorAll(".mk").forEach(m => { m.setAttribute("transform", `translate(${m.dataset.x} ${m.dataset.y}) scale(${u})`); if (m.classList.contains("detail")) m.style.display = vb[2] > 360 ? "none" : ""; });
+    svg.querySelectorAll(".mk").forEach(m => { m.setAttribute("transform", `translate(${m.dataset.x} ${m.dataset.y}) scale(${u})`); if (m.classList.contains("detail")) m.style.display = vb[2] > 120 ? "none" : ""; });
     svg.querySelectorAll(".trail").forEach(t => t.style.strokeWidth = 4.5 * u);
     svg.querySelectorAll(".nil").forEach(t => t.style.strokeWidth = 2.6 * u);
   }
+  function declutter() {
+    const svg = $("#map"); if (!svg) return;
+    const box = svg.getBoundingClientRect(), prio = m => m.classList.contains("now") ? 0 : m.classList.contains("pin") ? 1 : m.classList.contains("detail") ? 3 : m.classList.contains("sealab") ? 4 : 5;
+    const els = [...svg.querySelectorAll(".mk")].map(m => { m.style.visibility = ""; return m; }).filter(m => m.style.display !== "none").sort((a, b) => prio(a) - prio(b));
+    const kept = [];
+    els.forEach(m => {
+      const r = m.getBoundingClientRect(), pad = 4;
+      const out = r.left < box.left - 1 || r.right > box.right + 1 || r.top < box.top - 1 || r.bottom > box.bottom + 1;
+      const hit = kept.some(k => r.left < k.right + pad && r.right > k.left - pad && r.top < k.bottom + pad && r.bottom > k.top - pad);
+      if ((out || hit) && prio(m) > 1) m.style.visibility = "hidden"; else kept.push(r);
+    });
+  }
   function animate(to, instant) {
     cancelAnimationFrame(raf);
-    if (!vb || instant) { vb = to; return applyScale(); }
+    if (!vb || instant) { vb = to; applyScale(); return declutter(); }
     const from = vb.slice(), t0 = performance.now();
-    const step = t => { const k = Math.min(1, (t - t0) / 900), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2; vb = from.map((v, j) => v + (to[j] - v) * e); applyScale(); if (k < 1) raf = requestAnimationFrame(step); };
+    const step = t => { const k = Math.min(1, (t - t0) / 900), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2; vb = from.map((v, j) => v + (to[j] - v) * e); applyScale(); if (k < 1) raf = requestAnimationFrame(step); else declutter(); };
     raf = requestAnimationFrame(step);
   }
   function update(first) {
@@ -320,7 +332,15 @@ function expertView(redraw, setTab) {
       <p class="text">Pose toutes les questions que tu veux sur la foi catholique. Claude répond comme un catéchiste patient, avec des mots simples, la Bible et le Catéchisme pour s'appuyer, et sans cacher les débats.</p>
       <label class="field">Ta clé API Anthropic<input id="key" type="password" placeholder="sk-ant-..." autocomplete="off" spellcheck="false"></label>
       <p class="tip">La clé reste uniquement sur cet appareil, dans ton navigateur. Elle n'est envoyée qu'à Anthropic, à chaque question. Les questions sont facturées sur ton compte. N'utilise pas cette fonction sur un appareil partagé. Tu peux créer une clé sur console.anthropic.com et fixer une limite de dépense.</p>
-      <button class="primary" id="savekey">Enregistrer la clé</button></div></div>`
+      <button class="primary" id="savekey">Enregistrer la clé</button>
+      <h3>Comment obtenir ta clé</h3>
+      <ol class="steps keysteps"><li>Va sur <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a> et crée un compte, ou connecte-toi. Ce compte est différent d'un abonnement Claude.ai.</li>
+        <li>Dans la section de facturation, ajoute un peu de crédit, par exemple 5 dollars. Les questions sont facturées à l'usage, et chaque réponse coûte seulement quelques centimes.</li>
+        <li>Ouvre le menu « API Keys » (clés API), puis « Create Key ». Donne-lui un nom, par exemple Auréa.</li>
+        <li>Copie la clé tout de suite. Elle commence par « sk-ant- » et ne sera plus affichée ensuite.</li>
+        <li>Colle-la dans le champ ci-dessus et touche « Enregistrer la clé ».</li>
+        <li>Conseil, fixe une limite de dépense mensuelle dans les réglages de ton compte, et choisis le modèle Haiku si tu veux des réponses encore moins chères.</li></ol>
+      <p class="muted fine">Les noms des menus peuvent changer un peu. Ne partage jamais ta clé, et supprime-la dans la console si tu penses qu'elle a été vue par quelqu'un d'autre.</p></div></div>`
       : `<div class="chat"><div class="msgs" id="msgs">${S.ask.length ? msgs() : `<div class="hello-e"><h2>Pose ta question</h2><p class="muted">L'expert répond en français, avec des mots simples. Il ne remplace pas un prêtre ni un accompagnateur.</p><div class="chips starters">${EXPERT_STARTERS.map(s => `<button class="chipb" data-s="${esc(s)}">${esc(s)}</button>`).join("")}</div></div>`}</div>
       <form class="askform" id="askform"><textarea id="askx" rows="2" placeholder="Écris ta question…" aria-label="Ta question"></textarea><button class="primary small" id="asksend" type="submit">Envoyer</button></form>
       <div class="askmeta"><label>Modèle <select id="model">${[["claude-sonnet-5-5", "Sonnet 5.5, équilibré"], ["claude-opus-5-5", "Opus 5.5, le plus approfondi"], ["claude-haiku-5-5", "Haiku 5.5, le plus rapide"]].map(([v, n]) => `<option value="${v}" ${S.model === v ? "selected" : ""}>${n}</option>`).join("")}</select></label><button class="textbtn" id="newchat">Nouvelle conversation</button><button class="textbtn" id="rmkey">Retirer ma clé</button></div></div>`}`, "#/", "wide");
