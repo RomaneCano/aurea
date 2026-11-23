@@ -509,3 +509,20 @@ g.bd rect{fill:#b9cde0}g.bd.past rect{fill:#e0a83a}g.bd.cur rect{fill:#b45a7a}
 .yrrow.up{margin-bottom:2px}
 .yrwrap{padding:0 56px}
 @media(max-width:700px){.yrwrap{padding:0 20px}}
+
+/* mes intentions */
+.intform label{display:block;font:600 .75rem var(--sans,inherit);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.intform div{display:flex;gap:12px;align-items:stretch;max-width:900px}.intform textarea{flex:1;padding:12px;border:1px solid #d9ccae;background:#fffdf8;font:inherit;border-radius:4px}
+#it{display:flex;gap:24px;margin:26px 0 8px;border-bottom:1px solid #e7dcc3}
+#it a{padding:10px 0;text-decoration:none;color:var(--muted);border-bottom:3px solid transparent;font:500 1.05rem var(--serif)}#it a.on{color:var(--ink);border-bottom-color:var(--accent,#2f6b5e)}
+.intlist{list-style:none;padding:0;margin:0;max-width:900px}
+.int{display:flex;justify-content:space-between;gap:24px;padding:18px 0;border-bottom:1px solid #efe6d1}
+.int .itext{margin:0 0 4px;font:500 1.15rem var(--serif)}
+.int.ok{border-left:4px solid #5f9a70;padding-left:16px}.ians{background:#f2f7ee;padding:10px 14px;margin:10px 0 0;border-radius:4px}
+.iact{display:flex;flex-direction:column;gap:6px;align-items:flex-end;white-space:nowrap}
+.iask textarea{width:100%;padding:10px;border:1px solid #d9ccae;font:inherit;border-radius:4px}
+.intlink{margin:0 0 18px}
+.gbig{max-width:380px}
+.gbig img{width:100%;max-height:none;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 18%;background:none}
+.gbig svg{max-height:none;width:100%;height:auto}
+.gi .artimg.sm{object-position:50% 25%}
