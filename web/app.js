@@ -233,7 +233,7 @@ const VIEWS = {
       if (!$("#ev")) return;
       $("#ev").innerHTML = `<small>${esc(l.ref || "")}</small><h2>${esc(l.titre || "Évangile")}</h2><div class="gospel">${l.contenu}</div>`;
     }).catch(() => { if (!$("#ev")) return; $("#ev").innerHTML = `<p>Le texte du jour s'affiche ici dès que la connexion à AELF est disponible. Tu peux aussi l'ouvrir avec le bouton ci-dessous.</p>`; });
-    $("#sv").onclick = () => { const v = $("#nt").value.trim(); if (!v) return; S.notes.unshift({ t: Date.now(), k: "Évangile du jour", x: v }); save(); markDone("evangile"); go("#/"); };
+    $("#sv").onclick = () => { const v = $("#nt").value.trim(); if (!v) return; addJournal({ text: v, tags: ["Évangile"], title: "Évangile du jour" }); markDone("evangile"); go("#/"); };
   },
 
   messe() {
@@ -374,7 +374,7 @@ function quiz(lv) {
   const pics = [A.quiz, A.eglise, A.pont];
   const draw = () => {
     if (i >= L.qs.length) {
-      S.quiz[lv] = Math.max(S.quiz[lv] || 0, score);
+      S.quiz[lv] = Math.max(S.quiz[lv] || 0, score); if (typeof gain === "function") gain(score * 2, "quiz");
       if (Object.keys(S.quiz).length >= QUIZ.length || S.quiz[lv] >= 4) markDone("jeu");
       save();
       return shell(L.lvl, `<div class="split"><div class="visual">${A.croix()}</div><div><h2>${score} sur ${L.qs.length}</h2><p class="lead2">${score >= 4 ? "Magnifique !" : "Bien joué, tu progresses. Tu peux rejouer quand tu veux."}</p><a class="primary" href="#/jeu">Retour aux niveaux</a></div></div>`, "#/jeu", "wide");
@@ -499,5 +499,3 @@ function showGl() {
 function bindGl() {
   document.querySelectorAll(".page .gl, .reperes .gl").forEach(b => b.onclick = e => { e.preventDefault(); sheetStack = []; openGl(b.dataset.gl); });
 }
-
-render();

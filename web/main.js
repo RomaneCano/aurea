@@ -1,0 +1,3 @@
+ensure();
+checkBadges();
+render();

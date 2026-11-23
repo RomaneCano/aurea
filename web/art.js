@@ -5,7 +5,7 @@ let _id = 0;
 function frame(inner, a = "#d6e8f4", b = "#fdf0d2", vb = "0 0 400 300") {
   const id = "bg" + (++_id);
   const [, , w, h] = vb.split(" ");
-  return `<svg class="ill" viewBox="${vb}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="${w}" height="${h}" fill="url(#${id})"/>${inner}</svg>`;
+  return `<svg class="ill" viewBox="${vb}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="${w}" height="${h}" fill="url(#${id})"/>${inner}</svg>`;
 }
 const hills = (c1 = "#bcd9c9", c2 = "#9cc7b1") => `<path d="M0 230 Q90 180 190 215 T400 200 V300 H0Z" fill="${c1}"/><path d="M0 262 Q120 225 230 255 T400 240 V300 H0Z" fill="${c2}"/>`;
 const sunDisc = (x, y, r, c = "#f5c25a") => `<circle cx="${x}" cy="${y}" r="${r + 16}" fill="${c}" opacity=".25"/><circle cx="${x}" cy="${y}" r="${r}" fill="${c}"/>`;
