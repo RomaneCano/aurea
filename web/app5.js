@@ -66,16 +66,23 @@ VIEWS.chapelet = function (a) {
     const m = MYSTERES[key], info = MYST_INFO[key];
     shell("Le chapelet", `
       <div class="split rosstart"><div class="visual">${A.chapelet({})}</div><div>
-        <p class="lead2">${g("Le chapelet est une prière que l'on dit avec un collier de perles. On répète des « Je vous salue Marie » en pensant à la vie de Jésus. Auréa te guide perle par perle, tu peux le prier quand tu veux.")}</p>
+        <h2 class="whyh">À quoi sert le chapelet ?</h2>
+        <p class="lead2">${g("Le chapelet est une prière pour méditer la vie de Jésus avec Marie. Marie a vécu chacun de ces moments de très près, depuis l'annonce de l'ange jusqu'à la croix et à la résurrection. En priant le chapelet, on regarde ces scènes à travers ses yeux, un peu comme on feuillette des photos de famille avec une mère qui les raconte.")}</p>
+        <ul class="whylist"><li><b>Les mains et les lèvres s'occupent</b><span>Les perles occupent les mains. Les « Je vous salue Marie » se répètent doucement, comme un fond sonore ou un battement de cœur. Cela calme et laisse l'esprit libre.</span></li>
+          <li><b>L'esprit médite une scène</b><span>À chaque dizaine, on pense à un mystère, c'est-à-dire une scène de la vie de Jésus. Il ne s'agit pas de réciter vite, mais de prendre le temps de regarder.</span></li>
+          <li><b>Marie conduit vers Jésus</b><span>On ne prie pas Marie à la place de Dieu. On lui demande de prier avec nous et de nous mener vers son fils.</span></li>
+          <li><b>Quatre séries, quatre moments de la vie de Jésus</b><span>Les mystères joyeux racontent son enfance, les lumineux sa vie publique, les douloureux sa passion, les glorieux sa résurrection.</span></li>
+          <li><b>Combien de temps ?</b><span>Un chapelet complet dure environ vingt minutes. Tu peux aussi prier une seule dizaine, en cinq minutes.</span></li></ul>
+        <p class="muted">Auréa te guide perle par perle et tu peux le prier quand tu veux.</p>
         ${S.rosary ? `<div class="resumebox"><b>Un chapelet est en cours</b><span>${esc(MYSTERES[S.rosary.key].t)}, étape ${S.rosary.i + 1} sur ${buildRosary(S.rosary.key, S.rosary.group).length}</span><a class="primary" href="#/chapelet/prier/${S.rosary.key}/reprendre">Reprendre</a></div>` : ""}
         <h4>Choisis les mystères</h4><div class="tabs">${Object.entries(MYSTERES).map(([k, mm]) => `<button class="tab ${key === k ? "sel" : ""}" data-k="${k}">${mm.t.replace("Mystères ", "")}${k === today ? " · aujourd'hui" : ""}</button>`).join("")}</div>
-        <p class="muted">${esc(m.t)}, qu'on prie le ${m.jours}. Cinq scènes de la vie de Jésus et de Marie.</p>
+        <p class="muted">${esc(m.t)}, qu'on prie le ${m.jours}. ${({ joyeux: "L'enfance de Jésus et les joies de Marie.", lumineux: "La vie publique de Jésus et la lumière qu'il apporte.", douloureux: "La passion de Jésus, de Gethsémani à la croix.", glorieux: "La résurrection de Jésus et ce qui suit." })[key]} Cinq scènes à regarder avec Marie.</p>
         <ol class="mlistrow">${m.l.map((x, i) => `<li><b>${esc(x)}</b><span>${esc(info[i][2])}</span></li>`).join("")}</ol>
         <h4>Pour qui, pour quoi ?</h4><div class="chips" id="intents">${ROSARY_INTENTIONS.map(i => `<button class="chipb ${intent === i ? "sel" : ""}" data-i="${esc(i)}">${esc(i)}</button>`).join("")}</div>
         <label class="field slim"><input id="ci" placeholder="Ou écris ton intention" value="${esc(intent)}"></label>
         <div class="optrow"><label class="check"><input type="checkbox" id="ov" ${S.vib !== false ? "checked" : ""}> Vibration à chaque perle</label><label class="check"><input type="checkbox" id="ow" ${S.wake !== false ? "checked" : ""}> Garder l'écran allumé</label><label class="check"><input type="checkbox" id="og" ${S.rosGroup ? "checked" : ""}> Dire les dix « Je vous salue Marie » d'un coup (une seule étape par dizaine)</label></div>
         <a class="primary" id="go" href="#/chapelet/prier/${key}">Commencer le chapelet</a>
-        <p class="muted fine">${S.rosaries ? `Tu as prié ${S.rosaries} chapelet${S.rosaries > 1 ? "s" : ""} avec Auréa. ` : ""}Pas de chapelet sous la main ? Tu peux utiliser tes dix doigts, ou voir les <a href="#/ressources/chapelet">idées pour en choisir un</a>.</p></div></div>`, "#/prier", "wide");
+        <p class="muted fine">${S.rosaries ? `Tu as prié ${S.rosaries} chapelet${S.rosaries > 1 ? "s" : ""} avec Auréa. ` : ""}Pas de chapelet sous la main ? Tu peux utiliser tes dix doigts, ou voir les <a href="#/ressources/chapelet">idées pour en choisir un</a>.</p></div></div>${rosInfoHtml()}`, "#/prier", "wide");
     document.querySelectorAll("[data-k]").forEach(b => b.onclick = () => { key = b.dataset.k; draw(); });
     document.querySelectorAll("[data-i]").forEach(b => b.onclick = () => { intent = b.dataset.i; draw(); });
     $("#ci").oninput = e => { intent = e.target.value; };
@@ -196,4 +203,18 @@ function cheminPage(id) {
     <div class="toolrow"><button class="primary small" id="pgo">${pathReadCount(p) ? "Reprendre ce chemin" : "Commencer ce chemin"}</button></div><ol class="toc plan2">${groupedRows}</ol>`, "#/lire", "wide");
   $("#pgo").onclick = () => { S.pathActive = p.id; save(); const [c, n] = pathFirstUnread(p); go(`#/lire/${c}/${n}`); };
   document.querySelectorAll("[data-set]").forEach(a => a.addEventListener("click", () => { S.pathActive = a.dataset.set; save(); }));
+}
+
+function rosInfoHtml() {
+  const refs = [["luk", 1, 28, "L'ange Gabriel salue Marie. Ce sont les premiers mots du « Je vous salue Marie »."], ["luk", 1, 42, "Élisabeth lui répond « Tu es bénie entre toutes les femmes ». C'est la suite de la prière."], ["luk", 2, 19, "« Marie retenait tous ces événements et les méditait dans son cœur ». C'est la base du chapelet, regarder avec Marie."], ["luk", 2, 51, "Marie garde de nouveau toutes ces choses dans son cœur."], ["joh", 2, 5, "À Cana, Marie dit « Faites tout ce qu'il vous dira ». Elle conduit vers Jésus."], ["mat", 6, 9, "Jésus donne le Notre Père, qui ouvre chaque dizaine."], ["mat", 26, 44, "À Gethsémani, Jésus prie en répétant les mêmes paroles. Répéter une prière n'est donc pas inutile."], ["luk", 18, 1, "Jésus raconte une parabole pour montrer qu'il faut prier sans se décourager."]];
+  return `<section class="rosinfo"><div><h3>D'où vient le chapelet ?</h3><ol class="rtime">
+      <li><b>Les premiers siècles</b><span>Des moines comptent leurs prières avec des cailloux ou des cordelettes à nœuds.</span></li>
+      <li><b>Le Moyen Âge</b><span>Beaucoup de gens ne savent pas lire les 150 psaumes. Ils disent à la place 150 « Je vous salue Marie ». On appelle cela le « psautier de Marie ».</span></li>
+      <li><b>Une tradition</b><span>Selon la tradition, Marie aurait donné le chapelet à saint Dominique vers 1214. Les historiens pensent plutôt qu'il s'est formé peu à peu, du XIIe au XVe siècle.</span></li>
+      <li><b>1569</b><span>Le pape Pie V fixe la forme du chapelet, avec quinze mystères. Le 7 octobre devient ensuite la fête de Notre-Dame du Rosaire.</span></li>
+      <li><b>2002</b><span>Jean-Paul II ajoute cinq mystères, les mystères lumineux, sur la vie publique de Jésus.</span></li></ol></div>
+    <div><h3>Qui nous demande de le prier ?</h3><p>Personne n'y est obligé. C'est une dévotion, c'est-à-dire un chemin de prière que l'Église recommande, sans l'imposer.</p>
+      <p>Les papes le recommandent depuis des siècles. Selon Bernadette à Lourdes en 1858, puis les enfants de Fatima en 1917, Marie aurait invité à le prier. L'Église reconnaît que ces apparitions sont dignes de foi, mais elles ne font pas partie de ce que les catholiques doivent croire.</p>
+      <p>Jésus n'a pas inventé le chapelet. Il a demandé de prier sans se décourager, et il a lui-même répété les mêmes paroles dans sa prière.</p></div>
+    <div><h3>Dans la Bible</h3><ul class="refl">${refs.map(r => `<li><a href="#/lire/${r[0]}/${r[1]}/${r[2]}"><b>${esc(BOOK[r[0]].n)} ${r[1]}, ${r[2]}</b><span>${esc(r[3])}</span></a></li>`).join("")}</ul><p class="muted fine">La deuxième partie du « Je vous salue Marie » (« Sainte Marie, Mère de Dieu ») a été ajoutée par l'Église au fil des siècles.</p></div></section>`;
 }

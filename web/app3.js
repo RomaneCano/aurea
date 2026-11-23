@@ -94,14 +94,14 @@ VIEWS.lire = function (a) {
 
 function lireIndex() {
   const t = (S.read && Object.keys(S.read).length) || 0;
-  const section = name => `<section class="sec"><h2 class="sech">${name}</h2>${BIBLE_GROUPS.filter(g => g[1] === name).map(g => `<div class="bgroup"><h3>${g[2]}</h3><p class="muted">${g[3]}</p><ul class="booklist">${BOOKS.filter(b => b[3] === g[0]).map(b => { const n = readCount(b[0]); return `<li><a href="#/lire/${b[0]}"><span class="bn">${esc(b[1])}</span>${niveauDots(b[5])}<small>${b[4]} ch.${n ? ` · ${n} lu${n > 1 ? "s" : ""}` : ""}</small></a></li>`; }).join("")}</ul></div>`).join("")}</section>`;
+  const section = name => `<div class="sec2">${BIBLE_GROUPS.filter(g => g[1] === name).map(g => `<div class="bgroup"><h3>${g[2]}</h3><p class="muted">${g[3]}</p><ul class="booklist">${BOOKS.filter(b => b[3] === g[0]).map(b => { const n = readCount(b[0]); return `<li><a href="#/lire/${b[0]}"><span class="bn">${esc(b[1])}</span>${niveauDots(b[5])}<small>${b[4]} ch.${n ? ` · ${n} lu${n > 1 ? "s" : ""}` : ""}</small></a></li>`; }).join("")}</ul></div>`).join("")}</div>`;
   shell("La Bible", `<p class="lead2">Une bibliothèque de 73 livres, avec une seule grande histoire. Chaque livre a une introduction, et beaucoup de chapitres sont expliqués. Tu peux aussi poser tes questions à l'expert.</p>
     <form class="goto" id="goto"><label for="gq">Aller directement à un passage</label><div><input id="gq" placeholder="Par exemple, Jn 3, 16 ou Psaume 23" autocomplete="off"><button class="primary" type="submit">Aller</button></div><small class="muted" id="gerr"></small></form>
-    ${typeof cheminsHtml === "function" ? cheminsHtml() : ""}<section class="sec"><h2 class="sech">Par où commencer</h2><div class="startrow">${PARCOURS_LECTURE.map((c, i) => `<a href="#/lire/${c}/1" class="startitem"><span class="n">${i + 1}</span><b>${BOOK[c].n}</b><span>${esc(BOOK[c].k)}</span></a>`).join("")}</div></section>
-    ${section("Nouveau Testament")}${section("Ancien Testament")}
+    ${typeof cheminsHtml === "function" ? cheminsHtml() : ""}<section class="sec"><h2 class="sech"><span>III</span>Tous les livres</h2><div class="tabsm" id="tt"><button class="on" data-t="nt">Nouveau Testament</button><button data-t="at">Ancien Testament</button></div><div id="tnt">${section("Nouveau Testament")}</div><div id="tat" hidden>${section("Ancien Testament")}</div></section>
     <p class="muted fine">${t} chapitre${t > 1 ? "s" : ""} lu${t > 1 ? "s" : ""} jusqu'ici. Les points indiquent la difficulté, de trois points pleins pour un livre exigeant à un seul pour un livre accessible.</p>
     <p class="muted fine">Texte, Sainte Bible néo-Crampon Libre, une modernisation de la traduction catholique de Crampon. © 2022 Fraternité de Tibériade, licence CC BY-SA 4.0. Pour la traduction entendue à la messe, voir <a href="https://www.aelf.org/bible" target="_blank" rel="noopener">AELF</a>.</p>`, "#/", "wide");
   if (typeof bindChemins === "function") bindChemins();
+  document.querySelectorAll("#tt button").forEach(b => b.onclick = () => { document.querySelectorAll("#tt button").forEach(x => x.classList.toggle("on", x === b)); $("#tnt").hidden = b.dataset.t !== "nt"; $("#tat").hidden = b.dataset.t !== "at"; });
   $("#goto").onsubmit = e => { e.preventDefault(); const r = parseRef($("#gq").value); if (!r) { $("#gerr").textContent = "Je n'ai pas reconnu ce passage. Essaie avec « Jn 3, 16 » ou « Genèse 1 »."; return; } go(`#/lire/${r.code}/${r.ch || 1}${r.v ? "/" + r.v : ""}`); };
 }
 

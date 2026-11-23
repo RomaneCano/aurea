@@ -414,3 +414,25 @@ g.bd rect{fill:#b9cde0}g.bd.past rect{fill:#e0a83a}g.bd.cur rect{fill:#b45a7a}
 
 .mline{margin:6px 0 0;display:grid;gap:2px}.mline i{font:700 .7rem Figtree;font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:#8a6212}
 .mystery a{margin-top:8px}.mhelp{background:#f5eef2;padding:12px 18px;margin:0 0 12px;font-size:.95rem;color:#5a3a48;border-left:3px solid #b45a7a}
+
+.rosinfo{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:56px 72px;margin-top:72px;padding-top:52px;border-top:1px solid var(--line)}
+.rosinfo h3{margin:0 0 18px;font:500 1.5rem var(--serif);padding-bottom:10px;border-bottom:2px solid #b45a7a}
+.rtime{list-style:none;padding:0;margin:0}.rtime li{display:grid;gap:2px;padding:12px 0 12px 20px;border-left:3px solid #e8c4d2;position:relative}.rtime li:before{content:"";position:absolute;left:-7px;top:18px;width:11px;height:11px;border-radius:50%;background:#b45a7a}.rtime b{font:500 1.1rem var(--serif)}.rtime span{color:#4a4338}
+.refl{list-style:none;padding:0;margin:0}.refl li a{display:grid;gap:2px;padding:12px 0;border-bottom:1px solid #efe6d1;text-decoration:none;color:var(--ink)}.refl b{font:500 1.05rem var(--serif);color:#8a3a58}.refl span{color:#4a4338;font-size:.95rem}.refl li a:hover b{text-decoration:underline}
+
+/* page Bible compacte, moins de défilement */
+.pathlist{display:grid;grid-template-columns:repeat(3,1fr);gap:0 36px}
+.pathrow{display:flex;flex-direction:column;justify-content:space-between;gap:10px;padding:14px 0;border-top:2px solid var(--accent,#2f6b5e)}
+.pathrow h3{font:500 1.25rem var(--serif);margin:2px 0 4px}.pathrow p{margin:0 0 4px;font-size:.95rem}
+.pathact{display:flex;align-items:center;gap:16px}
+.sec .freebar{display:flex;gap:12px;flex-wrap:wrap;margin:8px 0}
+#tt{display:flex;gap:6px;margin:6px 0 14px;border-bottom:1px solid #e7dcc3}
+#tt button{background:none;border:0;border-bottom:3px solid transparent;padding:10px 18px;font:500 1.05rem var(--serif);color:var(--muted);cursor:pointer}
+#tt button.on{color:var(--ink);border-bottom-color:var(--accent,#2f6b5e)}
+.sec2 .bgroup{margin-bottom:6px}
+.rosstart{align-items:start}.rosstart .visual{position:sticky;top:100px}
+.whyh{font:500 1.3rem var(--serif);margin:18px 0 8px}
+.whylist{list-style:none;padding:0;margin:0 0 20px;display:grid;gap:14px}
+.whylist li{border-left:3px solid #e8b4c8;padding:2px 0 2px 14px}
+.whylist li b{display:block;font:500 1.05rem var(--serif);margin-bottom:2px}
+@media(max-width:1000px){.pathlist{grid-template-columns:1fr}}
