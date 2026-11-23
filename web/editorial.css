@@ -569,3 +569,10 @@ g.bd rect{fill:#b9cde0}g.bd.past rect{fill:#e0a83a}g.bd.cur rect{fill:#b45a7a}
 .patronhelp{max-width:720px;font-size:.92rem;color:var(--muted);background:#f6f1e4;padding:10px 14px;border-left:3px solid #c9b88a;margin:14px 0}
 .patronhelp b{color:var(--ink)}
 @media(max-width:700px){.gtabs .itab span{display:none}}
+
+/* scènes v2 */
+.stagebox{position:relative}
+.stagebox .scene{width:100%;height:auto;aspect-ratio:16/9;display:block}
+.stagecap{position:absolute;left:14px;top:14px;display:flex;flex-direction:column;gap:2px;background:rgba(255,253,248,.88);padding:8px 14px;border-left:3px solid var(--accent);max-width:70%;backdrop-filter:blur(3px)}
+.stagecap span{font:600 .68rem var(--sans,inherit);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.stagecap b{font:500 1.02rem var(--serif)}
