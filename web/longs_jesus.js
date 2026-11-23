@@ -291,7 +291,7 @@ const LONGS_JESUS = {
       "Toucher et approcher ceux que les autres évitent"
      ],
      "humanite": "Les chrétiens croient que Dieu ne reste pas à distance de la souffrance. Jésus guérit, mais surtout il se rapproche. Cela inspire depuis toujours l’engagement des chrétiens auprès des malades et des plus fragiles.",
-     "contexte": "Capharnaüm était un village de pêche prospère, près d’une route importante. Les fouilles ont retrouvé une grande synagogue du quatrième siècle bâtie sur des fondations plus anciennes, et des maisons proches. Le mot « lèpre » désignait plusieurs maladies de la peau. Les lépreux vivaient à l’écart du village, selon la Loi (Lv 13), car on craignait la contagion.",
+     "contexte": "Capharnaüm était un village de pêche prospère, près d’une route importante. Les fouilles ont retrouvé une grande synagogue du quatrième ou du cinquième siècle bâtie sur des fondations plus anciennes, et des maisons proches. Le mot « lèpre » désignait plusieurs maladies de la peau. Les lépreux vivaient à l’écart du village, selon la Loi (Lv 13), car on craignait la contagion.",
      "question": "Quelle place ai-je dans ma journée pour me retirer et prier, même cinq minutes ?"
     },
     {
@@ -345,7 +345,7 @@ const LONGS_JESUS = {
       "Dans le même sermon, Jésus bouscule des habitudes. Il rappelle la vieille règle « Œil pour œil et dent pour dent », qui limitait la vengeance. Puis il va plus loin en disant « Moi, je vous dis de ne pas tenir tête au méchant. Si quelqu’un te frappe sur la joue droite, présente-lui encore l’autre » (Mt 5,38-42). Il enseigne aussi « Ce que vous voulez que les hommes fassent pour vous, faites-le pareillement pour eux » (Lc 6,31).",
       "Puis vient la phrase la plus exigeante « Aimez vos ennemis, bénissez ceux qui vous maudissent, faites du bien à ceux qui vous haïssent et priez pour ceux qui vous maltraitent ». La raison est celle-ci. Le Père céleste fait lever son soleil sur les méchants et sur les bons. Il demande à ses disciples de ressembler à ce Père, « Soyez parfaits comme votre Père céleste est parfait » (Mt 5,43-48 ; Lc 6,27-36).",
       "Jésus parle aussi de la prière. Il dit de ne pas prier pour être vu, mais d’entrer dans sa chambre, de fermer la porte et de prier le Père qui est présent dans le secret. Il ajoute qu’il ne faut pas multiplier les paroles, car le Père sait de quoi nous avons besoin avant même que nous le lui demandions (Mt 6,5-8).",
-      "Alors il donne la prière du Notre Père « Notre Père qui es aux cieux, que ton nom soit sanctifié, que ton règne vienne, que ta volonté soit faite sur la terre comme au ciel. Donne-nous aujourd’hui notre pain de ce jour. Pardonne-nous nos offenses comme nous pardonnons aussi à ceux qui nous ont offensés. Ne nous laisse pas entrer en tentation, mais délivre-nous du mal » (Mt 6,9-13). Chez Luc, un disciple demande « Seigneur, apprends-nous à prier », et Jésus donne une version plus courte (Lc 11,1-4). Il insiste sur le pardon, car celui qui ne pardonne pas ne peut pas recevoir le pardon (Mt 6,14-15)."
+      "Alors il donne la prière du Notre Père, ici dans la forme que les catholiques disent aujourd’hui, un peu différente du texte de Matthieu, « Notre Père qui es aux cieux, que ton nom soit sanctifié, que ton règne vienne, que ta volonté soit faite sur la terre comme au ciel. Donne-nous aujourd’hui notre pain de ce jour. Pardonne-nous nos offenses comme nous pardonnons aussi à ceux qui nous ont offensés. Ne nous laisse pas entrer en tentation, mais délivre-nous du mal » (Mt 6,9-13). Chez Luc, un disciple demande « Seigneur, apprends-nous à prier », et Jésus donne une version plus courte (Lc 11,1-4). Il insiste sur le pardon, car celui qui ne pardonne pas ne peut pas recevoir le pardon (Mt 6,14-15)."
      ],
      "explication": "Aimer ses ennemis ne veut pas dire approuver le mal ni se laisser détruire. Cela veut dire refuser de répondre à la haine par la haine, et vouloir le bien de l’autre. Le Notre Père résume tout l’Évangile. On y appelle Dieu « Père », on désire son règne, on demande le pain, le pardon et la protection. Le mot « Notre » nous rappelle que nous prions ensemble.",
      "valeurs": [
@@ -505,7 +505,7 @@ const LONGS_JESUS = {
       "Revenir à la maison, même après avoir tout gâché",
       "Se réjouir pour les autres sans jalousie"
      ],
-     "humanite": "Pour les chrétiens, c’est l’image la plus claire de Dieu comme Père. Il ne retient pas ses enfants, il les attend et il leur rend leur dignité. Cette parabole est à l’origine de la confession, où le pardon de Dieu est offert à celui qui revient.",
+     "humanite": "Pour les chrétiens, c’est l’image la plus claire de Dieu comme Père. Il ne retient pas ses enfants, il les attend et il leur rend leur dignité. Le Catéchisme de l’Église catholique y voit une belle image du chemin de conversion, que la confession met en œuvre, où le pardon de Dieu est offert à celui qui revient.",
      "contexte": "Demander l’héritage avant la mort du père était une grave offense, comme si on lui souhaitait de mourir. Pour un Juif, garder des porcs, animaux impurs, était la pire déchéance. L’anneau, la robe et les sandales sont des signes de la dignité d’un fils, car les serviteurs n’en avaient pas. Ce détail rend la réaction du père encore plus forte.",
      "question": "Dans cette histoire, de quel personnage suis-je le plus proche aujourd’hui, le cadet, l’aîné, ou le père ?"
     },
@@ -757,7 +757,7 @@ const LONGS_JESUS = {
       "Ne pas désespérer après une chute"
      ],
      "humanite": "Les chrétiens y voient que Dieu se sert de personnes fragiles. Pierre, qui a renié, deviendra le pasteur de l’Église. Cela rassure ceux qui ont déjà échoué.",
-     "contexte": "Les historiens discutent de la procédure juridique. Les règles qu’on connaît par la tradition juive écrite plus tard n’autorisaient pas un procès de nuit, mais on ne sait pas si elles s’appliquaient déjà. Le Sanhédrin était le conseil suprême des Juifs, composé de prêtres, d’anciens et de scribes. Selon Jean, les autorités juives n’avaient pas le droit de condamner à mort sous l’occupation romaine (Jn 18,31). Cela est discuté. Caïphe a été grand prêtre jusqu’en 36.",
+     "contexte": "Les historiens discutent de la procédure juridique. Les règles qu’on connaît par la tradition juive écrite plus tard n’autorisaient pas un procès de nuit, mais on ne sait pas si elles s’appliquaient déjà. Le Sanhédrin était le conseil suprême des Juifs, composé de prêtres, d’anciens et de scribes. Selon Jean, les autorités juives n’avaient pas le droit de condamner à mort sous l’occupation romaine (Jn 18,31). Cela est discuté. Caïphe a été grand prêtre de l’an 18 jusqu’en 36 ou au début de 37.",
      "question": "Y a-t-il un moment où j’ai « renié » mes convictions par peur, et comment ai-je recommencé ?"
     },
     {
@@ -786,7 +786,7 @@ const LONGS_JESUS = {
      "ref": "Lc 23,26-56 ; Mc 15,16-47 ; Jn 19,17-42 ; Mt 27,45-66",
      "recit": [
       "Des soldats emmènent Jésus. Il porte sa croix, puis on réquisitionne un passant, Simon de Cyrène, pour la porter. Des femmes de Jérusalem pleurent sur lui, et il leur dit de pleurer plutôt sur elles-mêmes et sur leurs enfants. Au lieu appelé Golgotha, ce qui veut dire « lieu du crâne », on le crucifie, avec deux malfaiteurs, l’un à droite et l’autre à gauche. Au-dessus de sa tête, un écriteau dit « Le roi des Juifs », en hébreu, en latin et en grec. Quand les chefs demandent à Pilate de le modifier, il répond « Ce que j’ai écrit, je l’ai écrit » (Lc 23,26-33 ; Jn 19,17-22).",
-      "Les soldats se partagent ses vêtements et tirent au sort sa tunique. On se moque de lui, on lui dit de se sauver lui-même. Jésus dit « Père, pardonne-leur, car ils ne savent pas ce qu’ils font » (Lc 23,34). L’un des malfaiteurs l’insulte, l’autre lui dit « Jésus, souviens-toi de moi quand tu viendras dans ton Règne ». Jésus lui répond « Aujourd’hui tu seras avec moi dans le Paradis » (Lc 23,39-43).",
+      "Les soldats se partagent ses vêtements et tirent au sort sa tunique. On se moque de lui, on lui dit de se sauver lui-même. Jésus dit « Père, pardonne-leur, car ils ne savent pas ce qu’ils font » (Lc 23,34). Cette phrase manque dans quelques manuscrits anciens, mais la plupart des Bibles la gardent. L’un des malfaiteurs l’insulte, l’autre lui dit « Jésus, souviens-toi de moi quand tu viendras dans ton Règne ». Jésus lui répond « Aujourd’hui tu seras avec moi dans le Paradis » (Lc 23,39-43).",
       "Près de la croix se tiennent sa mère, d’autres femmes et le disciple que Jésus aimait. Jésus dit à sa mère « Femme, voici ton fils », puis au disciple « Voici ta mère ». Dès lors, ce disciple la prend chez lui (Jn 19,25-27). Vers midi, l’obscurité se fait sur tout le pays jusque vers trois heures. Jésus crie d’une voix forte « Mon Dieu, mon Dieu, pourquoi m’as-tu abandonné ? », les premiers mots du Psaume 22 (Mc 15,33-34). Selon Jean, il dit « J’ai soif », puis « Tout est accompli ». Selon Luc, il dit « Père, entre tes mains je remets mon esprit ». Puis il expire (Jn 19,28-30 ; Lc 23,46).",
       "Le rideau du sanctuaire du Temple se déchire en deux. Le centurion qui est en face de lui, voyant comment il est mort, dit « Vraiment, cet homme était Fils de Dieu ». Des femmes regardent de loin, parmi lesquelles Marie de Magdala. Un soldat perce le côté de Jésus avec une lance et il en sort du sang et de l’eau (Mc 15,38-41 ; Jn 19,31-37). Ces sept paroles sont rassemblées par la tradition, aucun Évangile ne les donne toutes.",
       "Le soir venu, Joseph d’Arimathie, membre du conseil et disciple en secret, demande à Pilate le corps de Jésus. Pilate l’accorde. Avec Nicodème, qui apporte un mélange de myrrhe et d’aloès, il enveloppe le corps de bandelettes avec des aromates. Ils le déposent dans un tombeau neuf taillé dans le roc, situé dans un jardin proche du lieu de la crucifixion, et roulent une grande pierre devant l’entrée. Le sabbat commence, les femmes regardent où on le met (Jn 19,38-42 ; Lc 23,50-56). Seul Matthieu parle de gardes postés au tombeau (Mt 27,62-66)."
@@ -886,7 +886,7 @@ const LONGS_JESUS = {
       "Être témoin plus que donneur de leçons"
      ],
      "humanite": "Les chrétiens croient que l’Évangile est destiné à tous les peuples. Le baptême est le premier signe de cet envoi. La promesse « Je suis avec vous tous les jours » est une source de confiance pour toutes les périodes de l’histoire.",
-     "contexte": "Le mot grec utilisé pour « mission » vient d’un verbe qui veut dire « envoyer ». C’est de là que vient le mot « apôtre ». La formule « au nom du Père, et du Fils et du Saint-Esprit » est la plus ancienne formule connue du baptême chrétien. Les historiens notent que cette formule est déjà trinitaire dans l’Évangile de Matthieu, écrit probablement vers les années 80.",
+     "contexte": "Le mot grec utilisé pour « mission » vient d’un verbe qui veut dire « envoyer ». C’est de là que vient le mot « apôtre ». La formule « au nom du Père, et du Fils et du Saint-Esprit » est la plus ancienne formule trinitaire connue du baptême chrétien, alors que les Actes parlent aussi d’un baptême au nom de Jésus. Les historiens notent que cette formule est déjà trinitaire dans l’Évangile de Matthieu, écrit probablement vers les années 80.",
      "question": "À qui pourrais-je annoncer, par ma façon de vivre plus que par mes paroles, que Jésus est vivant ?"
     },
     {
@@ -963,7 +963,7 @@ const LONGS_JESUS = {
    "ch": "Les Béatitudes"
   },
   {
-   "an": "Peu avant la dernière Pâque (Jn 6,4)",
+   "an": "Une Pâque proche, environ un an avant la dernière (Jn 6,4 ; 11,55)",
    "t": "Le pain partagé",
    "x": "Jésus nourrit la foule, puis parle du pain de vie à Capharnaüm.",
    "ch": "Du pain pour tous, Jésus sur l’eau et le pain de vie"
@@ -983,7 +983,7 @@ const LONGS_JESUS = {
   {
    "an": "Dimanche, vers 30 (ou 33)",
    "t": "L’entrée à Jérusalem",
-   "x": "Jésus entre à Jérusalem acclamé par la foule, à la veille de la Pâque.",
+   "x": "Jésus entre à Jérusalem acclamé par la foule, quelques jours avant la Pâque.",
    "ch": "L’entrée à Jérusalem, les Rameaux"
   },
   {
