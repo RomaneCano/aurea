@@ -557,3 +557,15 @@ g.bd rect{fill:#b9cde0}g.bd.past rect{fill:#e0a83a}g.bd.cur rect{fill:#b45a7a}
 .crep{background:#f6f1e4;padding:10px 14px;border-left:3px solid #c9b88a}
 .crefs{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.9rem;color:var(--muted)}
 @media(max-width:1000px){.cmd{grid-template-columns:1fr}.cq{position:static}.cpts{grid-template-columns:1fr}}
+
+/* icônes des figures */
+.tabs .itab,.gtabs .itab{display:inline-flex;align-items:center;gap:8px}
+.tabs .itab.iconly{padding:8px 10px}
+.tabs .itab svg,.gtabs .itab svg{flex:none}
+.tabs .itab:not(.iconly){flex-direction:column;gap:4px;padding:8px 14px;font-size:.88rem}
+.gtabs .itab{padding:10px 14px;font-size:.95rem}
+.gtools svg{vertical-align:-4px;margin-right:2px}
+.gtools .ghost,.gtools .primary{display:inline-flex;align-items:center;gap:8px}
+.patronhelp{max-width:720px;font-size:.92rem;color:var(--muted);background:#f6f1e4;padding:10px 14px;border-left:3px solid #c9b88a;margin:14px 0}
+.patronhelp b{color:var(--ink)}
+@media(max-width:700px){.gtabs .itab span{display:none}}
