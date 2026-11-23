@@ -464,3 +464,13 @@ g.bd rect{fill:#b9cde0}g.bd.past rect{fill:#e0a83a}g.bd.cur rect{fill:#b45a7a}
 .bandin h1{font-size:clamp(1.9rem,3.2vw,2.6rem)}
 .bandin h1:after{margin-top:12px;width:48px}
 .page,.page.wide{padding-top:30px}
+
+/* miracles */
+.mlist{list-style:none;padding:0;margin:0 0 16px;display:grid;gap:16px}
+.mlist li{padding:2px 0 2px 16px;border-left:3px solid #9cc7b3}.mlist li.tra{border-color:#e6c27a}.mlist li.tem{border-color:#e8b4c8}
+.mlist b{font:500 1.1rem var(--serif)}.mlist p{margin:4px 0}
+.miracles h4{font:600 .78rem inherit;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px}
+.cols2m{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.mq{border-bottom:1px solid #e7dcc3;padding:10px 0}.mq summary{font:500 1.05rem var(--serif);cursor:pointer}
+.mfigs{display:flex;flex-wrap:wrap;gap:10px 22px;margin:10px 0 30px}
+@media(max-width:1000px){.cols2m{grid-template-columns:1fr}}

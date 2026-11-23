@@ -49,7 +49,7 @@ const MIRACLES = {
         x: "Selon le récit de Bernadette et de témoins, la dame lui aurait demandé de boire à la source et de s'y laver, et Bernadette a gratté la terre le 25 février 1858. De l'eau est alors apparue, et des millions de pèlerins en boivent ou s'y baignent depuis. L'Église ne dit pas que l'eau a un pouvoir magique, elle y voit un signe de prière et de confiance." }
     ],
     temoignage: { t: "Sœur Bernadette Moriau",
-      x: "Sœur Bernadette Moriau souffrait d'une atteinte grave des nerfs du bas du dos, le syndrome de la queue de cheval. Elle raconte avoir ressenti une guérison soudaine pendant un pèlerinage à Lourdes en juillet 2008. Elle a pu quitter les appareils qui la soutenaient. Elle a accepté dix ans d'examens avant que l'évêque ne se prononce.",
+      x: "Sœur Bernadette Moriau souffrait d'une atteinte grave des nerfs du bas du dos, le syndrome de la queue de cheval. Elle raconte avoir ressenti une guérison soudaine pendant un pèlerinage à Lourdes en juillet 2008. Son cas a ensuite été examiné pendant dix ans avant que l'évêque ne se prononce.",
       s: "Allodocteurs, Une religieuse « miraculeusement » guérie à Lourdes ; Vatican News, février 2018" },
     prudence: "Les apparitions de 1858 sont jugées dignes de foi, et chaque guérison citée ici a été reconnue après un long examen. Ce que Bernadette a vu intérieurement ne peut pas être vérifié de l'extérieur, et personne n'est obligé d'y croire."
   },
