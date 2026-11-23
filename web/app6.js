@@ -87,3 +87,15 @@ function figCredit(f) {
   const a = artOf(f); if (!a) return "Portraits dessinés pour Auréa. Les visages sont volontairement sans traits, pour laisser place à ce que chacun imagine.";
   return `Image, ${esc(a.title)}, ${esc(a.artist || "artiste inconnu")}, ${esc(a.date || "")}. ${esc(a.museum)}, ${esc(a.license)}. <a href="${a.url}" target="_blank" rel="noopener">Voir l'œuvre</a>`;
 }
+
+// ---------- histoire détaillée, répercussions, sources et liens pour étudier ----------
+function detailHtml(f) {
+  const D = (typeof DETAILS !== "undefined") && DETAILS[f.id]; if (!D) return "";
+  const li = (arr, fn) => `<ul>${arr.map(fn).join("")}</ul>`;
+  return `<section class="dfull"><h3>Son histoire en détail</h3><div class="dcols">${D.histoire.map(p => `<p class="text">${g(p)}</p>`).join("")}</div></section>
+    ${D.contexte ? `<section><h3>Le contexte</h3><p>${g(D.contexte)}</p></section>` : ""}
+    ${D.repercussion ? `<section class="repercu"><h3>Ce que cela a changé</h3><p>${g(D.repercussion)}</p></section>` : ""}
+    ${D.prudence ? `<section class="prud"><h3>Ce qui est établi, ce qui est tradition</h3><p>${g(D.prudence)}</p></section>` : ""}
+    ${D.sources && D.sources.length ? `<section><h3>Les sources</h3>${li(D.sources, s => `<li><b>${esc(s.t)}</b><span>${esc(s.n)}</span></li>`)}</section>` : ""}
+    ${D.etudier && D.etudier.length ? `<section><h3>Pour étudier davantage</h3>${li(D.etudier, l => `<li><a href="${esc(l.u)}" target="_blank" rel="noopener">${esc(l.t)}</a></li>`)}<p class="muted fine">Ces textes ont été rédigés pour Auréa et restent à faire relire. Vérifie les dates importantes dans les sources.</p></section>` : ""}`;
+}
