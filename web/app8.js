@@ -53,3 +53,26 @@ function tabifyBody() {
   body.innerHTML = ""; body.appendChild(nav); panes.forEach(p => body.appendChild(p));
 }
 new MutationObserver(() => tabifyBody()).observe(document.body, { childList: true, subtree: true });
+
+// yrfr de l'année liturgique, lisible et à la bonne échelle
+function anneeFrise(L, now, year) {
+  const F = id => (L.find(x => x.id === id) || {}).d;
+  const y0 = new Date(year, 0, 1), y1 = new Date(year + 1, 0, 1), span = y1 - y0, pct = d => Math.max(0, Math.min(100, (d - y0) / span * 100));
+  const day = 864e5, dec24 = new Date(year, 11, 25), bornes = [
+    ["Noël", y0, F("bapteme") && new Date(+F("bapteme") + day), "#e0b34a", "Noël"],
+    ["Temps ordinaire", F("bapteme") && new Date(+F("bapteme") + day), F("cendres"), "#8fc3a2", "Le quotidien"],
+    ["Carême", F("cendres"), F("rameaux"), "#9c88c4", "40 jours pour se préparer"],
+    ["Semaine sainte", F("rameaux"), F("paques"), "#c8584c", "Passion"],
+    ["Pâques", F("paques"), F("pentecote") && new Date(+F("pentecote") + day), "#e8c25a", "50 jours de joie"],
+    ["Temps ordinaire", F("pentecote") && new Date(+F("pentecote") + day), F("avent"), "#8fc3a2", "Le quotidien"],
+    ["Avent", F("avent"), dec24, "#9c88c4", "Attendre Noël"],
+    ["Noël", dec24, y1, "#e0b34a", ""]];
+  const seg = bornes.filter(b => b[1] && b[2]).map(([n, a, b, c, sub]) => { const l = pct(a), w = pct(b) - l; return `<div class="yrseg" style="left:${l}%;width:${w}%;background:${c}" title="${n}"><span>${w > 7 ? n : ""}</span></div>`; }).join("");
+  const mois = ["janv.", "févr.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
+  const ticks = mois.map((m, i) => `<i style="left:${pct(new Date(year, i, 1))}%"><b>${m}</b></i>`).join("");
+  const key = ["epiphanie", "cendres", "rameaux", "paques", "ascension", "pentecote", "assomption", "toussaint", "avent", "noel"];
+  const marks = key.map((id, i) => { const x = L.find(f => f.id === id); if (!x) return ""; return `<a class="yrmark ${i % 2 ? "dn" : "up"}" href="#/calendrier/${id}" style="left:${pct(x.d)}%"><i></i><span>${esc(x.n.replace("Premier dimanche de l'Avent", "Avent").replace("Mercredi des Cendres", "Cendres").replace("Dimanche des Rameaux", "Rameaux").replace("Christ, Roi de l'univers", "Christ Roi").replace("Assomption de Marie", "Assomption"))}<small>${x.d.getDate()} ${mois[x.d.getMonth()]}</small></span></a>`; }).join("");
+  const sameY = now.getFullYear() === year, today = sameY ? `<div class="yrtoday" style="left:${pct(now)}%"><span>Aujourd'hui</span></div>` : "";
+  return `<div class="yrwrap"><div class="yrfr"><div class="yrrow up">${marks.split("</a>").filter(m => m.includes('class="yrmark up')).join("</a>") + "</a>"}</div><div class="yrbar">${seg}${today}</div><div class="yrticks">${ticks}</div><div class="yrrow dn">${marks.split("</a>").filter(m => m.includes('class="yrmark dn')).join("</a>") + "</a>"}</div></div></div>
+    <p class="muted fine">Les fêtes mobiles, comme Pâques, changent de date chaque année. Touche une fête pour la découvrir.</p>`;
+}

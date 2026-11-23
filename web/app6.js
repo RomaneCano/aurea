@@ -58,7 +58,7 @@ VIEWS.calendrier = function (a) {
       <p class="lead2 short">Les grandes fêtes de l'Église, ce qu'elles veulent dire, et comment les vivre même en débutant.</p>
       <div class="nextstrip"><b>À venir</b>${next.slice(0, 4).map(n => `<a href="#/calendrier/${n.id}" style="--c:${COULEURS[n.c][1]}"><span class="dd2">${n.d.getDate()}<small>${MOIS_COURT[n.d.getMonth()]}</small></span><span><b>${esc(n.n)}</b><small>${daysTo(n.d)}</small></span></a>`).join("")}</div>
       <div class="tabsm" id="ct"><button class="${calTab === "f" ? "on" : ""}" data-t="f">Les fêtes</button><button class="${calTab === "a" ? "on" : ""}" data-t="a">L'année en un coup d'œil</button><button class="${calTab === "c" ? "on" : ""}" data-t="c">Fêter quand on débute</button></div>
-      <div ${calTab === "a" ? "" : "hidden"}><div class="calintro"><div class="visual">${A.annee()}</div><div><div class="legcol">${Object.values(COULEURS).map(c => `<span><i style="background:${c[1]}"></i><b>${c[0]}</b> ${c[2]}</span>`).join("")}</div></div></div></div>
+      <div ${calTab === "a" ? "" : "hidden"}>${anneeFrise(L, now, year)}<div class="legcol row">${Object.values(COULEURS).map(c => `<span><i style="background:${c[1]}"></i><b>${c[0]}</b> ${c[2]}</span>`).join("")}</div></div>
       <div ${calTab === "c" ? "" : "hidden"}><ol class="tipslist">${CONSEILS_DEBUTANT.map(([t, x]) => `<li><b>${t}</b><span>${x}</span></li>`).join("")}</ol></div>
       <div ${calTab === "f" ? "" : "hidden"}>
       <div class="yeartabs"><button class="tab ${year === now.getFullYear() ? "sel" : ""}" data-y="${now.getFullYear()}">${now.getFullYear()}</button><button class="tab ${year === now.getFullYear() + 1 ? "sel" : ""}" data-y="${now.getFullYear() + 1}">${now.getFullYear() + 1}</button></div>

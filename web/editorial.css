@@ -483,3 +483,29 @@ g.bd rect{fill:#b9cde0}g.bd.past rect{fill:#e0a83a}g.bd.cur rect{fill:#b45a7a}
 .gbody[data-tabs]{display:block}
 .gpane{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:40px 64px}
 .gpane[hidden]{display:none}.gpane .dfull{grid-column:1/-1}
+
+/* yrfr de l'année */
+.yrwrap{overflow-x:auto;padding:6px 0 4px}
+.yrfr{min-width:1000px;position:relative}
+.yrrow{position:relative;height:74px}
+.yrbar{position:relative;height:46px;border-radius:6px;overflow:visible}
+.yrseg{position:absolute;top:0;bottom:0;display:flex;align-items:center;justify-content:center;border-right:2px solid #fbf8f1;box-sizing:border-box}
+.yrseg:first-child{border-radius:6px 0 0 6px}.yrseg:last-child{border-radius:0 6px 6px 0;border-right:0}
+.yrseg span{font:600 .8rem var(--sans,inherit);color:#2b2540;letter-spacing:.03em;white-space:nowrap}
+.yrticks{position:relative;height:26px}
+.yrticks i{position:absolute;top:0;width:1px;height:8px;background:#b9ad92}.yrticks i b{position:absolute;top:10px;left:4px;font:500 .72rem var(--sans,inherit);color:var(--muted);font-style:normal}
+.yrmark{position:absolute;display:block;width:0;text-decoration:none;color:var(--ink)}
+.yrmark i{position:absolute;left:-1px;width:2px;background:#6b5f48}
+.yrmark span{position:absolute;white-space:nowrap;font:500 .95rem var(--serif);transform:translateX(-50%);text-align:center;background:#fbf8f1;padding:1px 4px}
+.yrmark small{display:block;font:400 .72rem var(--sans,inherit);color:var(--muted)}
+.yrmark.up i{bottom:0;height:20px}.yrmark.up span{bottom:22px}
+.yrmark.dn i{top:0;height:20px}.yrmark.dn span{top:22px}
+.yrmark:hover span{color:var(--accent-d)}
+.yrtoday{position:absolute;top:-8px;bottom:-8px;width:3px;background:#d4693a;border-radius:2px}
+.yrtoday span{position:absolute;top:-24px;left:50%;transform:translateX(-50%);background:#d4693a;color:#fff;font:600 .72rem var(--sans,inherit);padding:2px 8px;border-radius:10px;white-space:nowrap}
+.legcol.row{display:flex;flex-wrap:wrap;gap:8px 28px;margin:14px 0}
+.legcol.row span{display:flex;gap:8px;align-items:center}.legcol.row i{width:14px;height:14px;border-radius:50%;display:inline-block}
+.yrmark.up{bottom:0}.yrmark.dn{top:0}
+.yrrow.up{margin-bottom:2px}
+.yrwrap{padding:0 56px}
+@media(max-width:700px){.yrwrap{padding:0 20px}}
