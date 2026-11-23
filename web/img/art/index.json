@@ -354,5 +354,137 @@
    "license": "Domaine public",
    "scene": "Apparition de la Vierge à Bernadette dans la grotte de Lourdes."
   }
+ ],
+ "avila": [
+  {
+   "file": "avila.jpg",
+   "title": "Teresa de Jesús (cropped)",
+   "artist": "Juan de la Miseria",
+   "date": "1576",
+   "museum": "Wikimedia Commons",
+   "url": "https://commons.wikimedia.org/wiki/File%3ATeresa_de_Jes%C3%BAs_%28cropped%29.jpg",
+   "license": "Public domain",
+   "scene": "Portrait de sainte Thérèse d'Avila, peinture."
+  }
+ ],
+ "jeanne": [
+  {
+   "file": "jeanne.jpg",
+   "title": "Jeanne d'Arc, Portrait des échevins",
+   "artist": "Auteur inconnu",
+   "date": "XVIe siècle",
+   "museum": "Wikimedia Commons",
+   "url": "https://commons.wikimedia.org/wiki/File%3AJeanne_d%27Arc%2C_Portrait_des_%C3%A9chevins.jpg",
+   "license": "Public domain",
+   "scene": "Portrait de Jeanne d'Arc, peinture ancienne."
+  }
+ ],
+ "aquin": [
+  {
+   "file": "aquin.jpg",
+   "title": "St-thomas-aquinas",
+   "artist": "Carlo Crivelli",
+   "date": "1476",
+   "museum": "Wikimedia Commons",
+   "url": "https://commons.wikimedia.org/wiki/File%3ASt-thomas-aquinas.jpg",
+   "license": "Public domain",
+   "scene": "Thomas d'Aquin tenant un livre et une église, peinture."
+  }
+ ],
+ "foucauld": [
+  {
+   "file": "foucauld.jpg",
+   "title": "Charles de Foucauld in hat",
+   "artist": "Auteur anonyme",
+   "date": "vers 1910",
+   "museum": "Wikimedia Commons",
+   "url": "https://commons.wikimedia.org/wiki/File%3ACharles_de_Foucauld_in_hat.jpg",
+   "license": "Public domain",
+   "scene": "Charles de Foucauld en habit blanc, photographie."
+  }
+ ],
+ "teresa": [
+  {
+   "file": "teresa.jpg",
+   "title": "Mother Teresa 1",
+   "artist": "Kingkongphoto et www.celebrity-photos.com",
+   "date": "n.d.",
+   "museum": "Wikimedia Commons",
+   "url": "https://commons.wikimedia.org/wiki/File%3AMother_Teresa_1.jpg",
+   "license": "CC BY-SA 2.0 (attribution requise)",
+   "scene": "Mère Teresa, photographie."
+  }
+ ],
+ "patrick": [
+  {
+   "file": "patrick.jpg",
+   "title": "Briton Riviere (1840-1920) - A Legend of Saint Patrick - WAG 293 - Sudley House",
+   "artist": "Voir la fiche Commons",
+   "date": "1877",
+   "museum": "Wikimedia Commons",
+   "url": "https://commons.wikimedia.org/wiki/File%3ABriton_Riviere_%281840-1920%29_-_A_Legend_of_Saint_Patrick_-_WAG_293_-_Sudley_House.jpg",
+   "license": "Public domain",
+   "scene": "Saint Patrick avec une biche, peinture."
+  }
+ ],
+ "dominique": [
+  {
+   "file": "dominique.jpg",
+   "title": "Titian - Saint Dominic - 188 - Galleria Borghese",
+   "artist": "Voir la fiche Commons",
+   "date": "vers 1565",
+   "museum": "Wikimedia Commons",
+   "url": "https://commons.wikimedia.org/wiki/File%3ATitian_-_Saint_Dominic_-_188_-_Galleria_Borghese.jpg",
+   "license": "Public domain",
+   "scene": "Saint Dominique, peinture."
+  }
+ ],
+ "bosco": [
+  {
+   "file": "bosco.jpg",
+   "title": "Don Bosco @ Torino, 1880 (original)",
+   "artist": "Photographe non précisé",
+   "date": "1880",
+   "museum": "Wikimedia Commons",
+   "url": "https://commons.wikimedia.org/wiki/File%3ADon_Bosco_%40_Torino%2C_1880_%28original%29.jpg",
+   "license": "Public domain",
+   "scene": "Don Bosco, photographie ancienne."
+  }
+ ],
+ "kolbe": [
+  {
+   "file": "kolbe.jpg",
+   "title": "Fr.Maximilian Kolbe 1939",
+   "artist": "Auteur inconnu",
+   "date": "1940",
+   "museum": "Wikimedia Commons",
+   "url": "https://commons.wikimedia.org/wiki/File%3AFr.Maximilian_Kolbe_1939.jpg",
+   "license": "Public domain",
+   "scene": "Maximilien Kolbe, photographie."
+  }
+ ],
+ "stein": [
+  {
+   "file": "stein.jpg",
+   "title": "Edith Stein (ca. 1938-1939)",
+   "artist": "Auteur inconnu",
+   "date": "vers 1938",
+   "museum": "Wikimedia Commons",
+   "url": "https://commons.wikimedia.org/wiki/File%3AEdith_Stein_%28ca._1938-1939%29.jpg",
+   "license": "Public domain",
+   "scene": "Édith Stein en habit religieux, photographie."
+  }
+ ],
+ "louis": [
+  {
+   "file": "louis.jpg",
+   "title": "Saintlouis",
+   "artist": "Auteur anonyme",
+   "date": "XIIIe siècle",
+   "museum": "Wikimedia Commons",
+   "url": "https://commons.wikimedia.org/wiki/File%3ASaintlouis.jpg",
+   "license": "Public domain",
+   "scene": "Saint Louis sur son trône, émail médiéval."
+  }
  ]
 }

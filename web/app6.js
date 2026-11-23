@@ -79,7 +79,7 @@ VIEWS.calendrier = function (a) {
 
 // ---------- images des figures : œuvre d'art libre si disponible, sinon portrait dessiné ----------
 let ART_INDEX = {};
-fetch("img/art/index.json").then(r => r.ok ? r.json() : {}).then(d => { ART_INDEX = d || {}; }).catch(() => {});
+fetch("img/art/index.json").then(r => r.ok ? r.json() : {}).then(d => { ART_INDEX = d || {}; if (typeof render === "function" && /^#\/figures/.test(location.hash)) render(); }).catch(() => {});
 function artOf(f) { const l = ART_INDEX[f.id]; return l && l.length ? l[0] : null; }
 function figImg(f, small) {
   const a = artOf(f);
