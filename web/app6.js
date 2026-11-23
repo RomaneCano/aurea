@@ -99,3 +99,9 @@ function detailHtml(f) {
     ${D.sources && D.sources.length ? `<section><h3>Les sources</h3>${li(D.sources, s => `<li><b>${esc(s.t)}</b><span>${esc(s.n)}</span></li>`)}</section>` : ""}
     ${D.etudier && D.etudier.length ? `<section><h3>Pour étudier davantage</h3>${li(D.etudier, l => `<li><a href="${esc(l.u)}" target="_blank" rel="noopener">${esc(l.t)}</a></li>`)}<p class="muted fine">Ces textes ont été rédigés pour Auréa et restent à faire relire. Vérifie les dates importantes dans les sources.</p></section>` : ""}`;
 }
+
+function artAside(fig, i) {
+  const l = (ART_INDEX[fig.id] || []); if (!l.length) return "";
+  const a = l[i % l.length];
+  return `<div class="artaside"><img src="img/art/${a.file}" alt="${esc(a.title)}" loading="lazy"><div><small class="eyebrow">Dans l'art</small><b>${esc(a.title)}</b><small>${esc(a.artist || "")}, ${esc(a.date || "")}</small><small>${esc(a.scene || "")}</small><small><a href="${a.url}" target="_blank" rel="noopener">${esc(a.museum)}</a>, ${esc(a.license)}</small></div></div>`;
+}

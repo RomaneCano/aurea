@@ -383,3 +383,31 @@ g.bd rect{fill:#b9cde0}g.bd.past rect{fill:#e0a83a}g.bd.cur rect{fill:#b45a7a}
 .gbody .repercu{background:#f2f7ee;padding:26px 30px;border-left:4px solid #5f9a70}.gbody .repercu h3{border:0;padding:0}
 .gbody .prud{background:#fff6e0;padding:26px 30px;border-left:4px solid #e0a83a}.gbody .prud h3{border:0;padding:0}
 .gbody section ul{list-style:none;padding:0}.gbody section ul li{padding:10px 0;border-bottom:1px solid #efe6d1;display:grid;gap:2px}.gbody section ul li span{color:var(--muted);font-size:.92rem}
+
+/* carte : pointillés, voyageur, boussole */
+.mapbox{position:relative}
+.compass{position:absolute;top:14px;right:14px;width:54px;height:54px;opacity:.9;pointer-events:none}
+.map .trail{fill:none;stroke:#d9784a;stroke-linecap:round;stroke-linejoin:round;animation:none}
+.map .trail.past{stroke:#e0a83a;opacity:.9}
+.map .trail.now{animation:march 1.2s linear infinite}
+@keyframes march{to{stroke-dashoffset:calc(var(--p) * -1)}}
+.map .reveal{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.2s .3s cubic-bezier(.45,0,.25,1) forwards}
+.map .pin circle{transform-box:fill-box;transform-origin:center;animation:popin .6s cubic-bezier(.2,1.6,.4,1) both}
+.map .pin.now circle{animation-delay:2.2s}
+@keyframes popin{from{transform:scale(0)}to{transform:scale(1)}}
+.lg.trl{height:0;width:26px;border-radius:0;background:none;border-top:4px dotted #d9784a}
+.lg.past{background:#e0a83a}
+.walk{animation:walkin 2.4s cubic-bezier(.25,.8,.35,1) both}
+@keyframes walkin{from{translate:var(--from,-440px) 0}to{translate:0 0}}
+.cam{animation-duration:16s;animation-timing-function:ease-in-out;animation-fill-mode:both;animation-iteration-count:1;transform-box:view-box;transform-origin:320px 180px}
+.c-zi{animation-name:camzi}.c-zo{animation-name:camzo}.c-pl{animation-name:campl}.c-pr{animation-name:campr}
+@keyframes camzi{from{scale:1}to{scale:1.08}}@keyframes camzo{from{scale:1.08}to{scale:1}}@keyframes campl{from{translate:-18px 0}to{translate:18px 0}}@keyframes campr{from{translate:18px 0}to{translate:-18px 0}}
+.stroll{animation:stroll 7s ease-in-out infinite alternate}@keyframes stroll{from{translate:-24px 0}to{translate:24px 0}}
+.flutter{animation:flutter 6s ease-in-out infinite}@keyframes flutter{0%,100%{translate:0 0}50%{translate:60px -18px}}
+.smoke{animation:smoke 4s ease-out infinite}@keyframes smoke{from{translate:0 0;opacity:.7;scale:.6}to{translate:14px -40px;opacity:0;scale:1.6}}
+.gull{animation:fly 18s linear infinite}
+.shimmer{animation:shim 3s linear infinite}@keyframes shim{to{stroke-dashoffset:-70}}
+.mote{animation:mote 8s ease-in-out infinite;opacity:.8}@keyframes mote{50%{translate:var(--x,20px) -26px;opacity:.2}}
+.rain{animation:rainfall 1.1s linear infinite}@keyframes rainfall{from{translate:var(--x) -20px}to{translate:calc(var(--x) - 40px) 380px}}
+.artaside{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:start}.artaside img{width:120px;height:140px;object-fit:cover;object-position:top;box-shadow:0 0 0 4px #fffdf8,0 0 0 5px #d9cdb0}.artaside small{display:block;color:var(--muted);line-height:1.4}.artaside b{font:500 1rem var(--serif)}
+.gbig img{max-height:560px;object-fit:contain;background:#efe6d0;width:100%}.gi .artimg.sm{object-position:top}

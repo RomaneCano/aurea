@@ -97,11 +97,11 @@ function storyView(fig) {
     const s = scenes[i], last = i === scenes.length - 1, fav = !!favS()[fig.id];
     const idx = FIGURES.filter(f => STORIES[f.id]).findIndex(f => f.id === fig.id), all = FIGURES.filter(f => STORIES[f.id]), nxt = all[(idx + 1) % all.length];
     shell(`${fig.nom}, son aventure`, `<div class="storywrap">
-      <div class="stage">${sceneSvg(s, fig)}</div>
+      <div class="stage">${sceneSvg(s, fig, i)}</div>
       <div class="storyside"><small class="eyebrow">Scène ${i + 1} sur ${scenes.length}, ${esc(s.lieu)}</small><p class="text fadein">${g(s.x)}</p>
         <div class="scontrols"><button class="textbtn" id="sp" ${i === 0 ? "disabled" : ""}>‹ Avant</button><button class="ghost" id="spp">${auto ? "Pause" : "Lecture"}</button><button class="${last ? "ghost" : "primary small"}" id="sn">${last ? "Rejouer" : "Suite ›"}</button></div>
         <div class="sprog">${scenes.map((_, k) => `<i class="${k < i ? "on" : ""} ${k === i ? "cur" : ""} ${k === i && auto ? "run" : ""}" style="--d:${dur(s)}ms"></i>`).join("")}</div>
-        <div class="toolrow"><button class="ghost" id="fv">${fav ? "♥ Dans mes favoris" : "♡ Ajouter aux favoris"}</button><a class="ghost" href="#/figures/${fig.id}">Sa fiche</a><button class="ghost" id="gj">Écrire dans mon journal</button></div>
+        ${artAside(fig, i)}<div class="toolrow"><button class="ghost" id="fv">${fav ? "♥ Dans mes favoris" : "♡ Ajouter aux favoris"}</button><a class="ghost" href="#/figures/${fig.id}">Sa fiche</a><button class="ghost" id="gj">Écrire dans mon journal</button></div>
         <p class="muted">Saint suivant, <a href="#/figures/${nxt.id}/histoire">${esc(nxt.nom)}</a></p></div></div>`, `#/figures/${fig.id}`, "wide");
     if (last && !S.storiesSeen[fig.id]) { S.storiesSeen[fig.id] = Date.now(); save(); gain(3, "histoire"); }
     $("#sp").onclick = () => { i--; auto = false; draw(); };

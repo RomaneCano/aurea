@@ -1,0 +1,358 @@
+{
+ "jesus": [
+  {
+   "file": "jesus.jpg",
+   "title": "Christ Blessing",
+   "artist": "Martin Schongauer",
+   "date": "n.d.",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/3852",
+   "license": "CC0 / domaine public",
+   "scene": "Le Christ bénissant, debout, tenant un rouleau (gravure)."
+  }
+ ],
+ "francois": [
+  {
+   "file": "francois.jpg",
+   "title": "Saint Francis",
+   "artist": "Peter Paul Rubens (Flemish, 1577-1640)",
+   "date": "c. 1615",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/100342",
+   "license": "CC0 / domaine public",
+   "scene": "Saint François en prière, mains croisées montrant les stigmates, un crucifix sur l'épaule."
+  },
+  {
+   "file": "francois-2.jpg",
+   "title": "Saint Francis Kneeling in Meditation",
+   "artist": "El Greco (Doménikos Theotokópoulos; Greek, active in Spain, 1541–1614)",
+   "date": "c. 1595–c. 1600",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/21907",
+   "license": "CC0 / domaine public",
+   "scene": "Saint François agenouillé en méditation devant un crucifix et un crâne."
+  }
+ ],
+ "martin": [
+  {
+   "file": "martin.jpg",
+   "title": "Saint Martin and the Beggar",
+   "artist": "El Greco (Doménikos Theotokópoulos; Greek, active in Spain, 1541–1614)",
+   "date": "c. 1597–c. 1600",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/67362",
+   "license": "CC0 / domaine public",
+   "scene": "Saint Martin à cheval partageant son manteau avec un mendiant presque nu."
+  }
+ ],
+ "paul": [
+  {
+   "file": "paul-2.jpg",
+   "title": "Saint Paul Preaching at Athens",
+   "artist": "Marcantonio Raimondi (Italian, c. 1480-1534)",
+   "date": "1517/20",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/106578",
+   "license": "CC0 / domaine public",
+   "scene": "Saint Paul prêchant devant les Athéniens (gravure d'après Raphaël)."
+  }
+ ],
+ "augustin": [
+  {
+   "file": "augustin.jpg",
+   "title": "Saints Augustine and Peter",
+   "artist": "Paolo Veneziano (Italian, active 1333–1358)",
+   "date": "c. 1350",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/8034",
+   "license": "CC0 / domaine public",
+   "scene": "Saint Augustin en évêque (mitre, crosse), à côté de saint Pierre, sur fond d'or."
+  },
+  {
+   "file": "augustin-2.jpg",
+   "title": "Saint Augustine's Vision of Saints Jerome and John the Baptist",
+   "artist": "Matteo di Giovanni (Italian, c. 1430–1495)",
+   "date": "1476",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/16183",
+   "license": "CC0 / domaine public",
+   "scene": "Saint Augustin dans son étude, recevant une vision de saint Jérôme et de saint Jean-Baptiste."
+  }
+ ],
+ "moise": [
+  {
+   "file": "moise.jpg",
+   "title": "Moses",
+   "artist": "Franco-Flemish",
+   "date": "1460-1470",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/96746",
+   "license": "CC0 / domaine public",
+   "scene": "Moïse législateur, les mains levées vers le ciel (tapisserie ancienne)."
+  },
+  {
+   "file": "moise-2.jpg",
+   "title": "The Prophet Moses",
+   "artist": "Attributed to Baccio Baldini",
+   "date": "c. 1470",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/4214",
+   "license": "CC0 / domaine public",
+   "scene": "Moïse prophète tenant les deux tables de la Loi, avec le texte des commandements (gravure)."
+  }
+ ],
+ "david": [
+  {
+   "file": "david.jpg",
+   "title": "King David Receiving the Cistern Water of Bethlehem",
+   "artist": "Master of the Antwerp Adoration Group (Netherlandish, active c. 1520)",
+   "date": "1515–20",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/111671",
+   "license": "CC0 / domaine public",
+   "scene": "Le roi David recevant l'eau de la citerne de Bethléem apportée par un soldat."
+  }
+ ],
+ "pierre": [
+  {
+   "file": "pierre.jpg",
+   "title": "Penitent Saint Peter",
+   "artist": "Jusepe de Ribera (Spanish, 1588–1652)",
+   "date": "c. 1630",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/120172",
+   "license": "CC0 / domaine public",
+   "scene": "Saint Pierre repentant, levant la main vers le ciel."
+  },
+  {
+   "file": "pierre-2.jpg",
+   "title": "The Denial of Saint Peter",
+   "artist": "Hendrick ter Brugghen (Dutch, 1588-1629)",
+   "date": "c. 1626",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/30901",
+   "license": "CC0 / domaine public",
+   "scene": "Le reniement de saint Pierre : une servante le désigne près d'un feu."
+  }
+ ],
+ "jeanbaptiste": [
+  {
+   "file": "jeanbaptiste.jpg",
+   "title": "Saint John the Baptist in the Wilderness",
+   "artist": "Diego Velázquez (Spanish, 1599–1660)",
+   "date": "c. 1622",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/6831",
+   "license": "CC0 / domaine public",
+   "scene": "Saint Jean-Baptiste dans le désert, avec son bâton et l'agneau."
+  },
+  {
+   "file": "jeanbaptiste-2.jpg",
+   "title": "Saint John the Baptist Entering the Wilderness",
+   "artist": "Giovanni di Paolo (Italian, 1398–1482)",
+   "date": "1455–60",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/16156",
+   "license": "CC0 / domaine public",
+   "scene": "Saint Jean-Baptiste quittant la ville pour entrer dans le désert."
+  }
+ ],
+ "madeleine": [
+  {
+   "file": "madeleine.jpg",
+   "title": "Mary Magdalene",
+   "artist": "Moretto da Brescia (Alessandro Bonvicino; Italian, c. 1492/95–1554)",
+   "date": "1540–50",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/21445",
+   "license": "CC0 / domaine public",
+   "scene": "Marie-Madeleine debout, tenant le vase de parfum."
+  },
+  {
+   "file": "madeleine-2.jpg",
+   "title": "Christ Appearing to Mary Magdalene (“Noli me tangere”)",
+   "artist": "Southern Netherlands, possibly Brussels",
+   "date": "1485/1500",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/25960",
+   "license": "CC0 / domaine public",
+   "scene": "Le Christ apparaît à Marie-Madeleine au jardin (Noli me tangere), tapisserie."
+  }
+ ],
+ "marie": [
+  {
+   "file": "marie.jpg",
+   "title": "Virgin and Child",
+   "artist": "Hans Memling (Netherlandish, c. 1430–1494)",
+   "date": "c. 1485",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/16295",
+   "license": "CC0 / domaine public",
+   "scene": "La Vierge à l'Enfant tenant une pomme, voile rouge."
+  },
+  {
+   "file": "marie-2.jpg",
+   "title": "Virgin and Child with an Angel",
+   "artist": "Sandro Botticelli (Italian, 1444/45–1510)",
+   "date": "1475–85",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/80530",
+   "license": "CC0 / domaine public",
+   "scene": "La Vierge à l'Enfant avec un ange (Botticelli)."
+  },
+  {
+   "file": "marie-3.jpg",
+   "title": "The Annunciation",
+   "artist": "Jean Hey (Master of Moulins; Netherlandish, c. 1480-c.1504)",
+   "date": "1490–95",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/16327",
+   "license": "CC0 / domaine public",
+   "scene": "L'Annonciation : l'ange Gabriel salue Marie, la colombe de l'Esprit au-dessus."
+  }
+ ],
+ "joseph": [
+  {
+   "file": "joseph.jpg",
+   "title": "Saint Joseph and the Sleeping Christ Child",
+   "artist": "Bartolomé Esteban Murillo",
+   "date": "1670/75",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/148802",
+   "license": "CC0 / domaine public",
+   "scene": "Saint Joseph portant l'Enfant Jésus endormi sur ses genoux (dessin à la plume)."
+  }
+ ],
+ "thomas": [
+  {
+   "file": "thomas.jpg",
+   "title": "Doubting Thomas (Spandrel Design)",
+   "artist": "Attributed to Domenico Pozzi",
+   "date": "n.d.",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/93762",
+   "license": "CC0 / domaine public",
+   "scene": "Thomas l'incrédule devant le Christ ressuscité qui montre son côté (dessin)."
+  }
+ ],
+ "abraham": [
+  {
+   "file": "abraham.jpg",
+   "title": "Abraham's Sacrifice of Isaac",
+   "artist": "David Teniers the Younger (Flemish, 1610–1690)",
+   "date": "1654–56",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/111649",
+   "license": "CC0 / domaine public",
+   "scene": "Le sacrifice d'Isaac : Abraham lève le glaive, retenu par un ange, le bélier à proximité."
+  }
+ ],
+ "benoit": [
+  {
+   "file": "benoit.jpg",
+   "title": "Saint Benedict Presenting his Rule to Benedictine and Cistercian Monks in a Historiated Initial \"O\" from a Choirbook",
+   "artist": "Italian (Siena)",
+   "date": "1394/95",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/10927",
+   "license": "CC0 / domaine public",
+   "scene": "Saint Benoît présentant sa Règle à des moines bénédictins et cisterciens (enluminure)."
+  }
+ ],
+ "nicolas": [
+  {
+   "file": "nicolas.jpg",
+   "title": "Saint Nicholas Preaching",
+   "artist": "Jacques Callot",
+   "date": "n.d.",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/110089",
+   "license": "CC0 / domaine public",
+   "scene": "Saint Nicolas, évêque, prêchant à la foule sous les arbres (gravure de Callot)."
+  }
+ ],
+ "genevieve": [
+  {
+   "file": "genevieve.jpg",
+   "title": "Sainte Genevieve (Saint Genevieve)",
+   "artist": "Philibert Louis Debucourt",
+   "date": "1828",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/157568",
+   "license": "CC0 / domaine public",
+   "scene": "Sainte Geneviève bergère en prière, un rayon de lumière tombant sur elle, ses moutons à ses pieds."
+  }
+ ],
+ "antoine": [
+  {
+   "file": "antoine.jpg",
+   "title": "Saint Anthony of Padua",
+   "artist": "Possibly after Bartolomé Estéban Murillo",
+   "date": "n.d.",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/82311",
+   "license": "CC0 / domaine public",
+   "scene": "Saint Antoine de Padoue portant l'Enfant Jésus et un livre (dessin)."
+  }
+ ],
+ "claire": [
+  {
+   "file": "claire.jpg",
+   "title": "The Virgin and Child with Saint Clare and Saint Francis",
+   "artist": "Circle of the Carracci ",
+   "date": "1580/90",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/207952",
+   "license": "CC0 / domaine public",
+   "scene": "La Vierge et l'Enfant avec sainte Claire et saint François (dessin)."
+  }
+ ],
+ "catherine": [
+  {
+   "file": "catherine.jpg",
+   "title": "Saint Catherine of Siena",
+   "artist": "Lo Spagna (Giovanni di Pietro; Italian, active 1504–28)",
+   "date": "1510–15",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/25778",
+   "license": "CC0 / domaine public",
+   "scene": "Sainte Catherine de Sienne en habit dominicain, avec crucifix, lys et livre."
+  }
+ ],
+ "jean": [
+  {
+   "file": "jean.jpg",
+   "title": "Saint John the Evangelist and Donor",
+   "artist": "Master of the Morrison Triptych (Netherlandish, active c. 1500-1524)",
+   "date": "c. 1490",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/16290",
+   "license": "CC0 / domaine public",
+   "scene": "Saint Jean l'Évangéliste au calice, posant la main sur un donateur agenouillé."
+  }
+ ],
+ "ignace": [
+  {
+   "file": "ignace.jpg",
+   "title": "Ignatius of Loyola kneeling before Christ, the Virgin and St Peter",
+   "artist": "Jan Wierix",
+   "date": "n.d.",
+   "museum": "Art Institute of Chicago",
+   "url": "https://www.artic.edu/artworks/152452",
+   "license": "CC0 / domaine public",
+   "scene": "Ignace de Loyola agenouillé devant le Christ bon pasteur, la Vierge et saint Pierre (gravure)."
+  }
+ ],
+ "bernadette": [
+  {
+   "file": "bernadette.jpg",
+   "title": "Our Lady of Lourdes",
+   "artist": "Virgilio Tojetti",
+   "date": "1877",
+   "museum": "Wikimedia Commons",
+   "url": "https://commons.wikimedia.org/wiki/File:Virgilio_Tojetti_1877_Our_Lady_of_Lourdes.jpg",
+   "license": "Domaine public",
+   "scene": "Apparition de la Vierge à Bernadette dans la grotte de Lourdes."
+  }
+ ]
+}

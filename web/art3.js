@@ -82,3 +82,57 @@ function actorSvg(v) {
     <rect x="-5" y="-66" width="10" height="12" rx="4" fill="${v.skin}"/><ellipse cx="0" cy="-78" rx="14" ry="16" fill="${v.skin}"/>${front}${v.beard ? `<path d="M-12 -74 Q-11 -58 0 -56 Q11 -58 12 -74 Q6 -66 0 -66 Q-6 -66 -12 -74Z" fill="${v.beard}"/>` : ""}
     <ellipse cx="-24" cy="-26" rx="6" ry="9" fill="${v.skin}"/><ellipse cx="24" cy="-26" rx="6" ry="9" fill="${v.skin}"/></g></g></g>`;
 }
+
+// ---------- scènes plus variées : composition, caméra, météo et ambiance propres à chaque scène ----------
+function hashStr(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+function rng(seed) { let a = seed >>> 0; return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const walker = (x, y, c, s = .6, dir = 1, d = 0) => `<g transform="translate(${x} ${y}) scale(${s * dir} ${s})"><g class="stroll" style="animation-delay:${d}s"><ellipse cy="2" rx="12" ry="3" fill="#00000020"/><circle cy="-44" r="9" fill="#e3b48a"/><path d="M-13 0 Q-13 -34 0 -34 Q13 -34 13 0Z" fill="${c}"/><rect x="16" y="-52" width="3" height="52" fill="#8a6a40"/></g></g>`;
+const DECO = {
+  colline: R => Array.from({ length: 16 }, () => `<circle cx="${R() * 640}" cy="${290 + R() * 60}" r="${2 + R() * 2}" fill="${["#f2c34e", "#e8847c", "#fff", "#b9a4e0"][Math.floor(R() * 4)]}"/>`).join("") + (R() > .4 ? `<g transform="translate(${60 + R() * 120} 296) scale(.9)"><rect x="-6" y="-70" width="12" height="72" fill="#8a6a40"/><circle cy="-92" r="38" fill="#6f9a6a"/></g>` : "") + `<g class="flutter" style="animation-delay:${R() * 4}s"><path d="M0 0 q-8 -9 -14 0 q8 4 14 0 q8 4 14 0 q-6 -9 -14 0" fill="#f0a8a0" transform="translate(${100 + R() * 300} ${200 + R() * 40})"/></g>`,
+  ville: R => [0, 1, 2].map(k => `<g class="smoke" style="animation-delay:${k * .9 + R()}s"><circle cx="${60 + k * 200 + R() * 60}" cy="${130 + R() * 20}" r="${8 + R() * 6}" fill="#fff" opacity=".6"/></g>`).join("") + walker(60 + R() * 200, 318, ["#6f9cc4", "#c8643c", "#6a9d86"][Math.floor(R() * 3)], .55, 1, R() * 3) + walker(420 + R() * 180, 334, ["#a85a6a", "#e8b04a"][Math.floor(R() * 2)], .5, -1, R() * 3),
+  mer: R => [0, 1, 2].map(k => `<g class="gull" style="animation-delay:${-k * 4 - R() * 3}s"><path d="M0 0 q7 -8 14 0 q7 -8 14 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" transform="translate(0 ${50 + k * 30 + R() * 20})"/></g>`).join("") + `<g transform="translate(${60 + R() * 440} 250)"><path d="M0 0 H22 L16 8 H4Z" fill="#a9814f" opacity=".8"/><path d="M11 -18 L11 0 L22 0Z" fill="#fff" opacity=".9"/></g>`,
+  desert: R => `<g transform="translate(${40 + R() * 150} 270)"><rect x="-3" y="-70" width="6" height="72" fill="#8a6a40" transform="rotate(${R() * 10 - 5})"/><path d="M0 -70 q-30 -10 -44 8 M0 -70 q30 -10 44 8 M0 -70 q-10 -26 -34 -26 M0 -70 q10 -26 34 -26" stroke="#5f9a70" stroke-width="6" fill="none" stroke-linecap="round"/></g>` + [0, 1, 2].map(k => `<line class="shimmer" style="animation-delay:${k * .5}s" x1="0" x2="640" y1="${255 + k * 6}" y2="${255 + k * 6}" stroke="#fff" stroke-opacity=".35" stroke-width="2" stroke-dasharray="40 30"/>`).join(""),
+  eglise: R => Array.from({ length: 22 }, () => `<circle class="mote" style="animation-delay:${-R() * 8}s;--x:${R() * 120 - 60}px" cx="${250 + R() * 140}" cy="${150 + R() * 140}" r="${1.5 + R() * 2}" fill="#fff6c8"/>`).join("") + `<g transform="translate(${R() > .5 ? 80 : 520} 300)"><rect x="-4" y="-80" width="8" height="82" fill="#cdb98f"/><path class="flame" d="M0 -106 Q9 -92 0 -82 Q-9 -92 0 -106Z" fill="#f5c25a"/></g>`,
+  cellule: R => `<g transform="translate(${470 + R() * 90} 258)"><rect x="-6" y="-22" width="12" height="22" fill="#f7efdc"/><path class="flame" d="M0 -48 Q8 -36 0 -24 Q-8 -36 0 -48Z" fill="#f5c25a"/></g>` + Array.from({ length: 10 }, () => `<circle class="mote" style="animation-delay:${-R() * 8}s;--x:${R() * 80 - 40}px" cx="${80 + R() * 130}" cy="${100 + R() * 140}" r="1.8" fill="#fff"/>`).join(""),
+  chateau: R => [0, 1].map(k => `<g class="bird" style="animation-delay:${-k * 6 - R() * 4}s"><path d="M0 0 q7 -8 14 0 q7 -8 14 0" fill="none" stroke="#5a6a7a" stroke-width="3" stroke-linecap="round" transform="translate(0 ${70 + k * 40})"/></g>`).join(""),
+  foret: R => Array.from({ length: 9 }, () => `<ellipse class="petal" style="animation-delay:${-R() * 7}s;--x:${R() * 640}px" cx="0" cy="-10" rx="5" ry="3" fill="${["#e8b04a", "#d9784a", "#9bc27a"][Math.floor(R() * 3)]}"/>`).join("") + `<path d="M${200 + R() * 200} 0 L${180 + R() * 240} 300" stroke="#fff7cf" stroke-width="30" opacity=".18"/>`,
+  montagne: R => R() > .45 ? Array.from({ length: 24 }, () => `<circle class="petal" style="animation-delay:${-R() * 8}s;--x:${R() * 640}px;animation-duration:${5 + R() * 4}s" cx="0" cy="-10" r="${1.5 + R() * 2}" fill="#fff"/>`).join("") : `<g class="gull" style="animation-delay:${-R() * 6}s"><path d="M0 0 q10 -10 20 0 q10 -10 20 0" fill="none" stroke="#4a5666" stroke-width="3" transform="translate(0 90)"/></g>`,
+  grotte: R => [0, 1, 2].map(k => `<circle class="drop" style="animation-delay:${k * .8 + R()}s" cx="${210 + k * 90 + R() * 30}" cy="${130 + R() * 20}" r="3" fill="#bcd9ee"/>`).join("") + `<g class="twinkle"><circle cx="${240 + R() * 160}" cy="${150 + R() * 40}" r="30" fill="#fff6c8" opacity=".25"/></g>`,
+  route: R => walker(80 + R() * 120, 330, "#6a9d86", .5, 1, R() * 2) + walker(470 + R() * 100, 320, "#a85a6a", .45, -1, R() * 2) + Array.from({ length: 6 }, () => `<circle class="mote" style="animation-delay:${-R() * 6}s;--x:${R() * 80}px" cx="${240 + R() * 160}" cy="${290 + R() * 50}" r="3" fill="#e9dfc4" opacity=".7"/>`).join(""),
+  hopital: R => `<g class="twinkle"><rect x="0" y="0" width="640" height="360" fill="#fff" opacity=".12"/></g><path d="M${60 + R() * 20} 120 q40 40 0 110" stroke="#cfe3f1" stroke-width="10" fill="none" opacity=".7"/>`,
+  camp: R => [0, 1, 2].map(k => `<g class="cloud" style="animation-duration:${50 + k * 20}s;animation-delay:${-k * 15}s"><ellipse cx="${100 + k * 180}" cy="${240 + k * 14}" rx="180" ry="22" fill="#fff" opacity=".35"/></g>`).join("")
+};
+function weatherFx(sc, R, inside) {
+  if (inside || sc.f === "montagne" || sc.f === "camp") return "";
+  if (sc.t === "nuit" && R() < .35 || sc.t === "soir" && R() < .15) return `<g class="fx">${Array.from({ length: 34 }, () => `<line class="rain" style="animation-delay:${-R() * 1.2}s;--x:${R() * 660 - 10}px" x1="0" y1="0" x2="-6" y2="16" stroke="#cfe0ee" stroke-width="1.6" stroke-opacity=".7"/>`).join("")}</g>`;
+  return "";
+}
+function sceneSvg(sc, fig, idx = 0) {
+  const R = rng(hashStr(fig.id + "|" + idx + "|" + sc.f + "|" + sc.x.length)), id = "sc" + (++_id), t = SKY[sc.t] || SKY.jour, v = fig.v, inside = ["eglise", "cellule", "hopital", "grotte"].includes(sc.f);
+  const sunX = 380 + R() * 200, sunY = 64 + R() * 40;
+  const sun = sc.t === "nuit" ? `<g class="moon"><circle cx="${sunX}" cy="${sunY}" r="30" fill="#fff6d8"/><circle cx="${sunX + 12}" cy="${sunY - 8}" r="26" fill="${t[0]}"/></g>` + FX.etoiles()
+    : sc.t === "soir" ? `<circle cx="${sunX}" cy="${200 + R() * 30}" r="46" fill="#f5c25a" opacity=".9"/>` : sc.t === "aube" ? `<circle cx="${100 + R() * 160}" cy="214" r="46" fill="#f9d98a" opacity=".95"/>` :
+      `<g class="sunrays" style="transform-origin:${sunX}px ${sunY}px">${rays(sunX, sunY, 44, 64, 14, "#f6d489")}</g><circle cx="${sunX}" cy="${sunY}" r="34" fill="#f5c25a"/>`;
+  const nc = 1 + Math.floor(R() * 3);
+  const clouds = Array.from({ length: nc }, (_, k) => `<g class="cloud" style="animation-duration:${55 + R() * 50}s;animation-delay:${-R() * 60}s"><ellipse cx="${60 + R() * 400}" cy="${50 + k * 34 + R() * 20}" rx="${40 + R() * 24}" ry="13" fill="#fff" opacity=".8"/><ellipse cx="${90 + R() * 400}" cy="${44 + k * 34 + R() * 20}" rx="28" ry="13" fill="#fff" opacity=".8"/></g>`).join("");
+  const slots = [[470, 292], [540, 306], [130, 300], [230, 312]];
+  const ps = (sc.p || "").split(" ").filter(Boolean); let si = R() < .5 ? 0 : 2;
+  const fx = ps.filter(p => FX[p]).map(p => FX[p]()).join("");
+  const props = ps.filter(p => PROPS[p]).map(p => { const s = slots[si++ % slots.length]; return PROPS[p](s[0], s[1]); }).join("");
+  const back = (BACKS[sc.f] || BACKS.colline)(sc.t), deco = (DECO[sc.f] || (() => ""))(R);
+  const camp = sc.f === "camp" ? `<rect width="640" height="360" fill="#d8dbe0" opacity=".55"/>` : "";
+  const cams = ["zi", "zo", "pl", "pr"], cam = cams[Math.floor(R() * 4)];
+  const ax = 190 + R() * 260, dir = ax > 320 ? -1 : 1, sc2 = 1.45 + R() * .3, from = -dir * (ax > 320 ? 440 : -440);
+  return `<svg class="scene" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(sc.lieu)}"><defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${t[0]}"/><stop offset="1" stop-color="${t[1]}"/></linearGradient><clipPath id="c${id}"><rect width="640" height="360"/></clipPath></defs>
+    <g clip-path="url(#c${id})"><rect width="640" height="360" fill="url(#${id})"/><g transform="translate(320 180) scale(1.12) translate(-320 -180)"><g class="cam c-${cam}">${inside ? "" : sun + clouds}${back}${camp}${deco}${props}<g class="fxl">${fx}</g>${actorSvg(v, ax, dir, sc2, from)}${weatherFx(sc, R, inside)}</g></g></g></svg>`;
+}
+function actorSvg(v, ax = 320, dir = 1, scale = 1.75, from = -440) {
+  const hair = { short: `<path d="M-15 -80 Q-15 -98 0 -98 Q15 -98 15 -80 Q8 -88 0 -88 Q-8 -88 -15 -80Z" fill="${v.hair}"/>`, long: `<path d="M-17 -78 Q-19 -100 0 -100 Q19 -100 17 -78 L20 -46 L10 -66 L-10 -66 L-20 -46Z" fill="${v.hair}"/>`, curly: `<g fill="${v.hair}"><circle cx="-10" cy="-92" r="8"/><circle cx="0" cy="-97" r="8"/><circle cx="10" cy="-92" r="8"/></g>`, tonsure: `<path d="M-16 -76 Q-17 -88 -9 -90 L-8 -78Z M16 -76 Q17 -88 9 -90 L8 -78Z" fill="${v.hair}"/>`, bald: "", veil: `<path d="M-20 -72 Q-22 -104 0 -104 Q22 -104 20 -72 L26 -38 Q0 -52 -26 -38Z" fill="${v.veil || v.mantle}"/>`, hood: `<path d="M-22 -72 Q-24 -106 0 -106 Q24 -106 22 -72 L28 -38 Q0 -52 -28 -38Z" fill="${v.robe}"/>` }[v.style] || "";
+  const behind = v.style === "veil" || v.style === "hood" ? hair : "";
+  const front = v.style === "veil" || v.style === "hood" ? `<path d="M-13 -80 Q-12 -92 0 -92 Q12 -92 13 -80 Q6 -86 0 -86 Q-6 -86 -13 -80Z" fill="${v.hair}"/>` : hair;
+  return `<g transform="translate(${ax.toFixed(0)} 338) scale(${(scale * dir).toFixed(2)} ${scale.toFixed(2)})"><ellipse cx="0" cy="2" rx="34" ry="6" fill="#00000022"/><g class="walk" style="--from:${from * dir}px"><g class="idle">
+    <circle cx="0" cy="-80" r="25" fill="#fff3c6" stroke="#e8b04a" stroke-width="3"/>${behind}
+    <path d="M-30 0 Q-28 -52 0 -58 Q28 -52 30 0Z" fill="${v.robe}"/><path d="M-30 0 Q-30 -50 -8 -57 L0 -26 L8 -57 Q30 -50 30 0Z" fill="${v.mantle}"/>
+    <rect x="-5" y="-66" width="10" height="12" rx="4" fill="${v.skin}"/><ellipse cx="0" cy="-78" rx="14" ry="16" fill="${v.skin}"/>${front}${v.beard ? `<path d="M-12 -74 Q-11 -58 0 -56 Q11 -58 12 -74 Q6 -66 0 -66 Q-6 -66 -12 -74Z" fill="${v.beard}"/>` : ""}
+    <ellipse cx="-24" cy="-26" rx="6" ry="9" fill="${v.skin}"/><ellipse cx="24" cy="-26" rx="6" ry="9" fill="${v.skin}"/></g></g></g>`;
+}

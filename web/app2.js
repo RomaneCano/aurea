@@ -193,7 +193,7 @@ function mapBase() {
 function journeyView(cfg) {
   const stops = cfg.stops, N = stops.length; let i = Math.min((S.prog || {})[cfg.key] || 0, N - 1), vb = null, raf = 0;
   const px = (lon, lat) => [(lon - 8) * 20, (46 - lat) * 20];
-  shell(cfg.title, `<div class="reperes"><div class="mapbox"><svg id="map" class="map" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(cfg.title)}"><g id="base">${mapBase()}</g><g id="dyn"></g></svg><div class="legend"><span><i class="lg now"></i>Étape en cours</span><span><i class="lg past"></i>Déjà vu</span><span><i class="lg trl"></i>Trajet</span></div></div><div class="rp-text" id="rp"></div></div><ol class="frise ${cfg.chain ? "places" : ""}" id="frise"></ol>`, "#/", "wide");
+  shell(cfg.title, `<div class="reperes"><div class="mapbox"><svg id="map" class="map" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(cfg.title)}"><g id="base">${mapBase()}</g><g id="dyn"></g></svg><div class="legend"><span><i class="lg now"></i>Étape en cours</span><span><i class="lg past"></i>Étapes précédentes</span><span><i class="lg trl"></i>Chemin parcouru</span></div><svg class="compass" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="27" fill="#fffdf8" stroke="#d9cdb0" stroke-width="1.5"/><path d="M30 8 L35 30 L30 52 L25 30Z" fill="#e8dcc0"/><path d="M30 8 L35 30 L25 30Z" fill="#c0483c"/><text x="30" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#fff" font-family="Figtree,sans-serif">N</text></svg></div><div class="rp-text" id="rp"></div></div><ol class="frise ${cfg.chain ? "places" : ""}" id="frise"></ol>`, "#/", "wide");
   function target(s) {
     const [a, b, c, d] = s.vue; let x = (a - 8) * 20, y = (46 - d) * 20, w = (c - a) * 20, h = (d - b) * 20; const ar = 880 / 520;
     if (w / h < ar) { const nw = h * ar; x -= (nw - w) / 2; w = nw; } else { const nh = w / ar; y -= (nh - h) / 2; h = nh; }
@@ -204,7 +204,9 @@ function journeyView(cfg) {
     const u = vb[2] / (svg.clientWidth || 600);
     svg.setAttribute("viewBox", vb.join(" "));
     svg.querySelectorAll(".mk").forEach(m => { m.setAttribute("transform", `translate(${m.dataset.x} ${m.dataset.y}) scale(${u})`); if (m.classList.contains("detail")) m.style.display = vb[2] > 120 ? "none" : ""; });
-    svg.querySelectorAll(".trail").forEach(t => t.style.strokeWidth = 4.5 * u);
+    svg.querySelectorAll(".trail").forEach(t => { t.style.strokeWidth = 5 * u; t.style.strokeDasharray = `0.1 ${9 * u}`; t.style.setProperty("--p", (9.1 * u) + "px"); });
+    svg.querySelectorAll(".reveal").forEach(t => t.style.strokeWidth = 44 * u);
+    svg.querySelectorAll(".trav-in").forEach(t => t.setAttribute("transform", `scale(${u * 1.15})`));
     svg.querySelectorAll(".nil").forEach(t => t.style.strokeWidth = 2.6 * u);
   }
   function declutter() {
@@ -233,7 +235,10 @@ function journeyView(cfg) {
       const r = stops[j]; let pts = [];
       if (cfg.chain) { if (j > 0) pts = [stops[j - 1].lieux[0], r.lieux[0]].map(l => px(l[1], l[2]).join(",")); }
       else pts = (r.trajet || []).map(k => px(r.lieux[k][1], r.lieux[k][2]).join(","));
-      if (pts.length > 1) dyn += `<polyline class="trail ${j === i ? "now" : "past"}" pathLength="1" points="${pts.join(" ")}"/>`;
+      if (pts.length > 1) {
+        if (j === i) { const d = "M" + pts.join(" L"); dyn += `<defs><mask id="rv${i}" maskUnits="userSpaceOnUse" x="-400" y="-400" width="2000" height="1400"><polyline class="reveal" pathLength="1" points="${pts.join(" ")}" fill="none" stroke="#fff" stroke-linecap="round"/></mask></defs><polyline class="trail now" mask="url(#rv${i})" points="${pts.join(" ")}"/><g><animateMotion dur="2.2s" begin="0.3s" fill="freeze" path="${d}" calcMode="spline" keyTimes="0;1" keySplines=".45 0 .25 1"/><g class="trav-in"><ellipse cy="9" rx="10" ry="4" fill="#00000026"/><circle cy="-15" r="6" fill="#f0c9a8" stroke="#fff" stroke-width="1.5"/><path d="M-8 6 Q-8 -8 0 -8 Q8 -8 8 6Z" fill="#d9784a" stroke="#fff" stroke-width="1.5"/></g></g>`; }
+        else dyn += `<polyline class="trail past" points="${pts.join(" ")}"/>`;
+      }
       r.lieux.forEach(l => seen.set(l[0], { l, now: j === i }));
     }
     seen.forEach(({ l, now }) => { const [x, y] = px(l[1], l[2]); dyn += `<g class="mk pin ${now ? "now" : "past"}" data-x="${x}" data-y="${y}"><circle r="${now ? 9 : 6}"/>${now || cfg.chain ? `<text x="${l[3]}" y="${l[4]}">${esc(l[0])}</text>` : ""}</g>`; });
