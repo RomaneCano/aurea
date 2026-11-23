@@ -37,3 +37,19 @@ VIEWS.miracles = function () {
     <section><h3>Les questions que l'on se pose</h3>${G.questions.map(q => `<details class="mq"><summary>${esc(q.q)}</summary><p>${g(q.a)}</p></details>`).join("")}<p class="prud mp">${g(G.prudence)}</p></section></div>
     <h3>Des figures avec des miracles et des témoignages</h3><div class="mfigs">${ids.map(f => `<a href="#/figures/${f.id}">${esc(f.nom || f.n || f.id)}</a>`).join("")}</div>`, "#/figures", "wide");
 };
+
+// fiche d'une figure en onglets, pour limiter le défilement
+function tabifyBody() {
+  const body = document.querySelector(".gbody"); if (!body || body.dataset.tabs) return; body.dataset.tabs = "1";
+  const secs = [...body.children], cls = s => s.className || "", h = s => (s.querySelector("h3") || {}).textContent || "";
+  const groups = [["L'essentiel", s => /Son histoire$|important/.test(h(s))], ["Histoire détaillée", s => cls(s).includes("dfull")],
+    ["Contexte et portée", s => /contexte|changé|établi/i.test(h(s))], ["Miracles", s => cls(s).includes("miracles")], ["Sources et études", s => /sources|étudier|À lire/.test(h(s))]];
+  const used = groups.map(([n, f]) => [n, secs.filter(f)]).filter(([, a]) => a.length);
+  if (used.length < 2) return;
+  const rest = secs.filter(s => !used.some(([, a]) => a.includes(s))); if (rest.length) used[0][1].push(...rest);
+  const nav = document.createElement("div"); nav.className = "gtabs";
+  const panes = used.map(([n, a], i) => { const d = document.createElement("div"); d.className = "gpane"; d.hidden = i > 0; a.forEach(s => d.appendChild(s)); return d; });
+  used.forEach(([n], i) => { const b = document.createElement("button"); b.textContent = n; b.className = i ? "" : "on"; b.onclick = () => { nav.querySelectorAll("button").forEach((x, j) => x.classList.toggle("on", j === i)); panes.forEach((p, j) => p.hidden = j !== i); }; nav.appendChild(b); });
+  body.innerHTML = ""; body.appendChild(nav); panes.forEach(p => body.appendChild(p));
+}
+new MutationObserver(() => tabifyBody()).observe(document.body, { childList: true, subtree: true });

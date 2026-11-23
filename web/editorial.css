@@ -474,3 +474,12 @@ g.bd rect{fill:#b9cde0}g.bd.past rect{fill:#e0a83a}g.bd.cur rect{fill:#b45a7a}
 .mq{border-bottom:1px solid #e7dcc3;padding:10px 0}.mq summary{font:500 1.05rem var(--serif);cursor:pointer}
 .mfigs{display:flex;flex-wrap:wrap;gap:10px 22px;margin:10px 0 30px}
 @media(max-width:1000px){.cols2m{grid-template-columns:1fr}}
+.gtabs{display:flex;flex-wrap:wrap;gap:4px 8px;border-bottom:1px solid #e7dcc3;margin:0 0 20px}
+.gtabs button{background:none;border:0;border-bottom:3px solid transparent;padding:10px 16px;font:500 1.02rem var(--serif);color:var(--muted);cursor:pointer}
+.gtabs button.on{color:var(--ink);border-bottom-color:var(--accent,#2f6b5e)}
+.gtools{display:flex;flex-wrap:wrap;gap:10px}.gtools>*{margin:0}
+.gbig{max-width:340px}.gbig svg,.gbig img{max-height:340px;width:auto;max-width:100%}
+.ghero{margin-bottom:12px}
+.gbody[data-tabs]{display:block}
+.gpane{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:40px 64px}
+.gpane[hidden]{display:none}.gpane .dfull{grid-column:1/-1}
