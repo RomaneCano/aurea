@@ -47,7 +47,7 @@ const CONSEILS_DEBUTANT = [
   ["Note-le dans ton journal", "Écris en deux lignes ce que tu as vécu. Dans un an, tu seras content de t'en souvenir."]
 ];
 VIEWS.calendrier = function (a) {
-  const now = new Date(); let year = now.getFullYear(), cur = a && a[0];
+  const now = new Date(); let year = now.getFullYear(), cur = a && a[0], calTab = "f";
   const draw = () => {
     const L = feastsOf(year), next = nextFeasts(5);
     if (!cur || !L.find(f => f.id === cur)) cur = (next[0] && L.find(f => f.id === next[0].id) ? next[0].id : L[0].id);
@@ -55,10 +55,12 @@ VIEWS.calendrier = function (a) {
     const daysTo = d => { const n = Math.round((d - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 864e5); return n === 0 ? "aujourd'hui" : n === 1 ? "demain" : n > 0 ? "dans " + n + " jours" : "il y a " + (-n) + " jours"; };
     const seasons = [["Avent", "Avent"], ["Noël", "Noël"], ["Carême", "Carême"], ["Semaine sainte", "Semaine sainte"], ["Pâques", "Pâques"], ["Ordinaire", "Temps ordinaire"]];
     shell("Le calendrier chrétien", `
-      <p class="lead2">L'Église vit une année différente de l'année civile. Elle commence à l'Avent et suit la vie de Jésus. Voici les grandes fêtes, ce qu'elles veulent dire, et des façons simples de les vivre, même quand on débute.</p>
-      <div class="calintro"><div class="visual">${A.annee()}<div class="legcol">${Object.values(COULEURS).map(c => `<span><i style="background:${c[1]}"></i><b>${c[0]}</b> ${c[2]}</span>`).join("")}</div></div>
-        <div><h3 class="h3first">Prochaines fêtes</h3><ul class="nextf">${next.map(n => `<li><a href="#/calendrier/${n.id}" style="--c:${COULEURS[n.c][1]}"><span class="dd2">${n.d.getDate()}<small>${MOIS_COURT[n.d.getMonth()]}</small></span><span><b>${esc(n.n)}</b><small>${esc(n.rang)}, ${daysTo(n.d)}</small></span></a></li>`).join("")}</ul>
-          <h3>Comment fêter quand on débute</h3><ol class="tipslist">${CONSEILS_DEBUTANT.map(([t, x]) => `<li><b>${t}</b><span>${x}</span></li>`).join("")}</ol></div></div>
+      <p class="lead2 short">Les grandes fêtes de l'Église, ce qu'elles veulent dire, et comment les vivre même en débutant.</p>
+      <div class="nextstrip"><b>À venir</b>${next.slice(0, 4).map(n => `<a href="#/calendrier/${n.id}" style="--c:${COULEURS[n.c][1]}"><span class="dd2">${n.d.getDate()}<small>${MOIS_COURT[n.d.getMonth()]}</small></span><span><b>${esc(n.n)}</b><small>${daysTo(n.d)}</small></span></a>`).join("")}</div>
+      <div class="tabsm" id="ct"><button class="${calTab === "f" ? "on" : ""}" data-t="f">Les fêtes</button><button class="${calTab === "a" ? "on" : ""}" data-t="a">L'année en un coup d'œil</button><button class="${calTab === "c" ? "on" : ""}" data-t="c">Fêter quand on débute</button></div>
+      <div ${calTab === "a" ? "" : "hidden"}><div class="calintro"><div class="visual">${A.annee()}</div><div><div class="legcol">${Object.values(COULEURS).map(c => `<span><i style="background:${c[1]}"></i><b>${c[0]}</b> ${c[2]}</span>`).join("")}</div></div></div></div>
+      <div ${calTab === "c" ? "" : "hidden"}><ol class="tipslist">${CONSEILS_DEBUTANT.map(([t, x]) => `<li><b>${t}</b><span>${x}</span></li>`).join("")}</ol></div>
+      <div ${calTab === "f" ? "" : "hidden"}>
       <div class="yeartabs"><button class="tab ${year === now.getFullYear() ? "sel" : ""}" data-y="${now.getFullYear()}">${now.getFullYear()}</button><button class="tab ${year === now.getFullYear() + 1 ? "sel" : ""}" data-y="${now.getFullYear() + 1}">${now.getFullYear() + 1}</button></div>
       <div class="calmd"><div class="calist">${seasons.map(([k, label]) => { const items = L.filter(x => (x.s === k)); if (!items.length) return ""; return `<section><h4>${label}</h4>${items.map(x => `<a href="#/calendrier/${x.id}" class="${x.id === cur ? "sel" : ""}" style="--c:${COULEURS[x.c][1]}"><span class="dj">${x.d.getDate()}<small>${MOIS_COURT[x.d.getMonth()]}</small></span><span class="fn">${esc(x.n)}</span></a>`).join("")}</section>`; }).join("")}</div>
       <article class="caldetail" style="--c:${col[1]}"><small class="eyebrow">${esc(f.rang)}</small><h2>${esc(f.n)}</h2><p class="cdate">${esc(feteDate(f))}</p>
@@ -66,7 +68,8 @@ VIEWS.calendrier = function (a) {
         <h4>Ce que l'on fête</h4><p class="text">${g(f.sens)}</p>
         <h4>Pour la vivre quand on débute</h4><ol class="vivre">${f.vivre.map(v => `<li>${g(v)}</li>`).join("")}</ol>
         ${f.trad ? `<h4>Les traditions</h4><p>${esc(f.trad)}</p>` : ""}
-        <div class="toolrow"><a class="primary small" href="#/lire/${f.bible[0]}/${f.bible[1]}">Lire dans la Bible</a><a class="ghost" href="#/prier/${f.priere}">Dire une prière</a><button class="ghost" id="ics">Ajouter à mon agenda</button><button class="ghost" id="cj">Écrire dans mon journal</button></div></article></div>`, "#/", "wide");
+        <div class="toolrow"><a class="primary small" href="#/lire/${f.bible[0]}/${f.bible[1]}">Lire dans la Bible</a><a class="ghost" href="#/prier/${f.priere}">Dire une prière</a><button class="ghost" id="ics">Ajouter à mon agenda</button><button class="ghost" id="cj">Écrire dans mon journal</button></div></article></div></div>`, "#/", "wide");
+    document.querySelectorAll("#ct button").forEach(b => b.onclick = () => { calTab = b.dataset.t; draw(); });
     document.querySelectorAll("[data-y]").forEach(b => b.onclick = () => { year = +b.dataset.y; draw(); });
     $("#ics").onclick = () => { const blob = new Blob([icsFor(f)], { type: "text/calendar" }), u = URL.createObjectURL(blob), el = document.createElement("a"); el.href = u; el.download = f.id + ".ics"; el.click(); setTimeout(() => URL.revokeObjectURL(u), 1000); toast("Fichier d'agenda téléchargé"); };
     $("#cj").onclick = () => { S.draft = { text: "", tags: ["Pensée"], title: f.n }; save(); go("#/journal"); };
