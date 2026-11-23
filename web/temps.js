@@ -102,7 +102,7 @@ noel: {
       { ref: "Is 60,1-6", a: "Ouvre les volets en grand ou sors un moment dans la lumière.", p: "Qu'est-ce qui me fait me lever et briller, même un peu ?" },
       { ref: "Ps 72,1-8", a: "Informe-toi sur une association qui aide des personnes pauvres ou isolées.", p: "Comment la justice et la paix peuvent-elles grandir autour de moi ?" },
       { ref: "Ep 3,2-6", a: "Pense à quelqu'un d'une autre culture ou d'un autre pays et prie pour lui.", p: "Qui me semble loin de Dieu, et pourtant aimé de lui ?" },
-      { ref: "Mt 3,13-17", a: "Fais le signe de croix lentement, en pensant que tu es aimé.", p: "Que se passe-t-il en moi quand j'entends « tu es mon enfant bien-aimé » ?" }
+      { ref: "Mt 3,13-17", a: "Fais le signe de croix lentement, en pensant que tu es aimé.", p: "Que se passe-t-il en moi quand j'entends « celui-ci est mon Fils bien-aimé » ?" }
     ] }
   ]
 },

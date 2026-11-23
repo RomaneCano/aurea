@@ -67,7 +67,7 @@ const FIGURES = [
     pourquoi: "Jésus est présenté dans l'Évangile comme un descendant de David, né dans sa ville.", ref: "Premier livre de Samuel, chapitre 16",
     v: { skin: "#dcab82", hair: "#8a4a2a", style: "curly", robe: "#b94a4a", mantle: "#e8c15a", attr: "harpe", bg: ["#f7dcdc", "#fdf0d2"] } },
   { id: "augustin", g: "histoire", an: 354, nom: "Augustin", role: "Un chercheur de vérité devenu évêque", dates: "354 à 430, en Afrique du Nord", fete: "Le 28 août", patron: null,
-    bio: "Augustin cherche le bonheur dans les plaisirs et les idées pendant des années. À 32 ans, il se convertit. Il devient évêque d'Hippone et écrit les Confessions.",
+    bio: "Augustin cherche le bonheur dans les plaisirs et les idées pendant des années. À 31 ans, il se convertit, et il est baptisé à 32 ans. Il devient évêque d'Hippone et écrit les Confessions.",
     pourquoi: "Il a écrit « Notre cœur est sans repos tant qu'il ne repose pas en toi ». Son histoire parle à ceux qui reviennent à la foi.", ref: "Ses Confessions",
     v: { skin: "#c58f6a", hair: "#3e2f28", style: "short", beard: "#3e2f28", robe: "#3f3a52", mantle: "#d8c8e8", attr: "coeurlivre", bg: ["#dcd4ee", "#fdeccd"] } },
   { id: "benoit", g: "histoire", an: 480, nom: "Benoît de Nursie", role: "Père des moines d'Occident", dates: "Vers 480 à 547, en Italie", fete: "Le 11 juillet", patron: "Patron de l'Europe",
