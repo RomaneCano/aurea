@@ -665,3 +665,9 @@ html.a11y-contrast .pageband{background:#fff!important;background-image:none!imp
 .weekstrip .wd.sel b,.weekstrip .wd.sel span{color:#fff}
 .weekstrip .c-joyeux{--wc:#a86b00;--wb:#fff3d2}.weekstrip .c-lumineux{--wc:#1f6b5e;--wb:#dff3ee}.weekstrip .c-douloureux{--wc:#a03030;--wb:#fde4e2}.weekstrip .c-glorieux{--wc:#4b3f9e;--wb:#e8e4fa}
 @media(max-width:700px){.weekstrip{grid-template-columns:repeat(4,1fr)}}
+
+/* pas de défilement dans les onglets, ils passent à la ligne */
+.tabs{flex-wrap:wrap!important;overflow:visible!important;margin-bottom:24px}
+.tabs::-webkit-scrollbar{display:none}
+.tabs .tsep{display:none}
+@media(min-width:1000px){.tabs .tsep{display:block;width:1px;background:var(--line);margin:0 6px}}
