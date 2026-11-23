@@ -67,58 +67,58 @@ VIEWS.chapelet = function (a) {
     shell("Le chapelet", `
       <div class="split rosstart"><div class="visual">${A.chapelet({})}</div><div>
         <p class="lead2">${g("Le chapelet est une prière que l'on dit avec un collier de perles. On répète des « Je vous salue Marie » en pensant à la vie de Jésus. Auréa te guide perle par perle, tu peux le prier quand tu veux.")}</p>
-        ${S.rosary ? `<div class="resumebox"><b>Un chapelet est en cours</b><span>${esc(MYSTERES[S.rosary.key].t)}, étape ${S.rosary.i + 1} sur ${buildRosary(S.rosary.key).length}</span><a class="primary" href="#/chapelet/prier/${S.rosary.key}/reprendre">Reprendre</a></div>` : ""}
+        ${S.rosary ? `<div class="resumebox"><b>Un chapelet est en cours</b><span>${esc(MYSTERES[S.rosary.key].t)}, étape ${S.rosary.i + 1} sur ${buildRosary(S.rosary.key, S.rosary.group).length}</span><a class="primary" href="#/chapelet/prier/${S.rosary.key}/reprendre">Reprendre</a></div>` : ""}
         <h4>Choisis les mystères</h4><div class="tabs">${Object.entries(MYSTERES).map(([k, mm]) => `<button class="tab ${key === k ? "sel" : ""}" data-k="${k}">${mm.t.replace("Mystères ", "")}${k === today ? " · aujourd'hui" : ""}</button>`).join("")}</div>
         <p class="muted">${esc(m.t)}, qu'on prie le ${m.jours}. Cinq scènes de la vie de Jésus et de Marie.</p>
         <ol class="mlistrow">${m.l.map((x, i) => `<li><b>${esc(x)}</b><span>${esc(info[i][2])}</span></li>`).join("")}</ol>
         <h4>Pour qui, pour quoi ?</h4><div class="chips" id="intents">${ROSARY_INTENTIONS.map(i => `<button class="chipb ${intent === i ? "sel" : ""}" data-i="${esc(i)}">${esc(i)}</button>`).join("")}</div>
         <label class="field slim"><input id="ci" placeholder="Ou écris ton intention" value="${esc(intent)}"></label>
-        <div class="optrow"><label class="check"><input type="checkbox" id="ov" ${S.vib !== false ? "checked" : ""}> Vibration à chaque perle</label><label class="check"><input type="checkbox" id="ow" ${S.wake !== false ? "checked" : ""}> Garder l'écran allumé</label><label class="check"><input type="checkbox" id="of" ${S.rosFull ? "checked" : ""}> Toujours afficher le texte complet</label></div>
+        <div class="optrow"><label class="check"><input type="checkbox" id="ov" ${S.vib !== false ? "checked" : ""}> Vibration à chaque perle</label><label class="check"><input type="checkbox" id="ow" ${S.wake !== false ? "checked" : ""}> Garder l'écran allumé</label><label class="check"><input type="checkbox" id="og" ${S.rosGroup ? "checked" : ""}> Dire les dix « Je vous salue Marie » d'un coup (une seule étape par dizaine)</label></div>
         <a class="primary" id="go" href="#/chapelet/prier/${key}">Commencer le chapelet</a>
         <p class="muted fine">${S.rosaries ? `Tu as prié ${S.rosaries} chapelet${S.rosaries > 1 ? "s" : ""} avec Auréa. ` : ""}Pas de chapelet sous la main ? Tu peux utiliser tes dix doigts, ou voir les <a href="#/ressources/chapelet">idées pour en choisir un</a>.</p></div></div>`, "#/prier", "wide");
     document.querySelectorAll("[data-k]").forEach(b => b.onclick = () => { key = b.dataset.k; draw(); });
     document.querySelectorAll("[data-i]").forEach(b => b.onclick = () => { intent = b.dataset.i; draw(); });
     $("#ci").oninput = e => { intent = e.target.value; };
-    $("#ov").onchange = e => { S.vib = e.target.checked; save(); }; $("#ow").onchange = e => { S.wake = e.target.checked; save(); }; $("#of").onchange = e => { S.rosFull = e.target.checked; save(); };
-    $("#go").onclick = () => { S.rosary = { key, i: 0, intent: intent.trim(), t: Date.now() }; save(); };
+    $("#ov").onchange = e => { S.vib = e.target.checked; save(); }; $("#ow").onchange = e => { S.wake = e.target.checked; save(); }; $("#og").onchange = e => { S.rosGroup = e.target.checked; save(); };
+    $("#go").onclick = () => { S.rosary = { key, i: 0, intent: intent.trim(), t: Date.now(), group: !!S.rosGroup }; save(); };
   };
   draw();
 };
 
 function rosaryPlayer(key, resume) {
   if (!MYSTERES[key]) key = MYSTERE_PAR_JOUR[new Date().getDay()];
-  if (!resume || !S.rosary || S.rosary.key !== key) S.rosary = { key, i: 0, intent: S.rosary?.intent || "", t: Date.now() };
-  const steps = buildRosary(key), geo = rosaryGeometry(); let i = Math.min(S.rosary.i, steps.length - 1), full = !!S.rosFull;
+  if (!resume || !S.rosary || S.rosary.key !== key) S.rosary = { key, i: 0, intent: S.rosary?.intent || "", t: Date.now(), group: !!S.rosGroup };
+  const steps = buildRosary(key, S.rosary.group), geo = rosaryGeometry(); let i = Math.min(S.rosary.i, steps.length - 1);
   keepAwake();
   const beadsSvg = () => {
-    const cur = steps[i].b, past = new Set(steps.slice(0, i).map(s => s.b));
+    const cs = steps[i], curSet = new Set(cs.bset || [cs.b]), cur = cs.b, past = new Set(steps.slice(0, i).flatMap(s => s.bset || [s.b]));
     const loop = `<circle cx="200" cy="118" r="96" fill="none" stroke="#d9cdb0" stroke-width="2"/><line x1="200" y1="214" x2="200" y2="378" stroke="#d9cdb0" stroke-width="2"/>`;
     const beads = geo.map((b, n) => {
-      const R = b.k === "big" ? 10 : b.k === "medal" ? 12 : b.k === "cross" ? 0 : 6.5, state = n === cur ? "cur" : past.has(n) ? "past" : "";
+      const R = b.k === "big" ? 10 : b.k === "medal" ? 12 : b.k === "cross" ? 0 : 6.5, state = curSet.has(n) ? "cur" : past.has(n) ? "past" : "";
       if (b.k === "cross") return `<g class="bd ${state}"><rect x="${b.x - 5}" y="${b.y - 24}" width="10" height="46" rx="2"/><rect x="${b.x - 16}" y="${b.y - 12}" width="32" height="10" rx="2"/></g>`;
-      return `<circle class="bd ${state}" data-n="${n}" cx="${b.x.toFixed(1)}" cy="${b.y.toFixed(1)}" r="${n === cur ? R + 3 : R}"/>`;
+      return `<circle class="bd ${state}" data-n="${n}" cx="${b.x.toFixed(1)}" cy="${b.y.toFixed(1)}" r="${n === cur || (curSet.has(n) && !cs.bset) ? R + 3 : R}"/>`;
     }).join("");
     return `<svg class="rosplay" viewBox="0 0 400 410" role="img" aria-label="Chapelet, perle ${i + 1} sur ${steps.length}">${loop}${beads}</svg>`;
   };
   const draw = () => {
-    const s = steps[i], last = i === steps.length - 1, myst = s.myst, abbreviated = s.id === "jvs" && !full && !(s.count === 1);
-    const text = abbreviated ? "Je vous salue, Marie, pleine de grâce…" : s.x;
+    const s = steps[i], last = i === steps.length - 1, myst = s.myst, abbreviated = false;
+    const text = s.x;
     S.rosary.i = i; save();
     app.innerHTML = `<div class="prayer-screen"><header class="pbar"><button class="textbtn" id="quit">‹ Quitter, je reprendrai plus tard</button><span>${esc(MYSTERES[key].t)}</span><span class="pcount">${i + 1} / ${steps.length}</span></header>
       <div class="pprog"><span style="width:${((i + 1) / steps.length) * 100}%"></span></div>
       <div class="pgrid"><div class="pbeads" id="pbeads">${beadsSvg()}</div>
       <div class="ptext"><small class="eyebrow">${esc(s.sub || "")}</small>
-        ${myst ? `<div class="mystery"><small>${myst.n}e mystère</small><b>${esc(myst.t)}</b><span>${esc(myst.med)}</span>${myst.link ? `<a href="#/lire/${myst.link.split(" ")[0]}/${myst.link.split(" ")[1]}" target="_blank" rel="noopener">Lire dans la Bible, ${esc(myst.ref)}</a>` : `<em>${esc(myst.ref)}</em>`}</div>` : ""}
+        ${s.kind === "myst" ? `<p class="mhelp">${g("Un mystère est une scène de la vie de Jésus ou de Marie. Tu y penses doucement pendant que tu dis les dix « Je vous salue Marie ». Ce n'est pas un devoir, c'est un thème qui guide ta prière.")}</p>` : ""}${myst ? `<div class="mystery"><small>${myst.n}e mystère de cette série</small><b>${esc(myst.t)}</b><p class="mline"><i>La scène</i>${esc(myst.med)}</p><p class="mline"><i>Pour quoi prier</i>${esc(myst.ask)}</p>${myst.link ? `<a href="#/lire/${myst.link.split(" ")[0]}/${myst.link.split(" ")[1]}" target="_blank" rel="noopener">Lire dans la Bible, ${esc(myst.ref)}</a>` : `<em>${esc(myst.ref)}</em>`}</div>` : ""}
         ${S.rosary.intent && i < 3 ? `<p class="intent">Intention, ${esc(S.rosary.intent)}</p>` : ""}
-        <h2>${esc(s.t)}</h2>${s.count ? `<div class="bigcount"><b>${s.count}</b><span>sur 10</span></div>` : ""}
-        <div class="prayertext ${abbreviated ? "short" : ""}">${esc(text).replace(/\n/g, "<br>")}</div>
-        ${s.id === "jvs" ? `<button class="textbtn" id="tg">${full ? "Texte abrégé" : "Voir le texte complet"}</button>` : ""}
+        <h2>${esc(s.t)}</h2>${s.count ? `<div class="bigcount"><b>${s.count}</b><span>sur 10</span></div>` : ""}${s.grp ? `<div class="bigcount"><b>${s.n}</b><span>fois, à la suite</span></div>` : ""}
+        <div class="prayertext">${esc(text).replace(/\n/g, "<br>")}</div>
+        ${s.id === "jvs" && !s.grp ? `<button class="ghost" id="all10">${s.tail ? "Valider les trois d'un coup" : "Valider les 10 d'un coup"}</button>` : ""}
         <div class="pctl"><button class="ghost" id="pv" ${i === 0 ? "disabled" : ""}>Précédent</button><button class="primary big" id="nx">${last ? "Terminer le chapelet" : "Perle suivante"}</button></div>
         <div class="toolrow"><button class="textbtn" id="sp">Écouter cette prière</button></div></div></div></div>`;
     $("#quit").onclick = () => go("#/chapelet");
     $("#nx").onclick = next; $("#pv").onclick = () => { if (i > 0) { i--; draw(); } };
     $("#pbeads").onclick = next;
-    const tg = $("#tg"); if (tg) tg.onclick = () => { full = !full; S.rosFull = full; save(); draw(); };
+    const a10 = $("#all10"); if (a10) a10.onclick = () => { let k = i; while (k < steps.length - 1 && steps[k].id === "jvs") k++; i = k; if (navigator.vibrate && S.vib !== false) navigator.vibrate([20, 40, 20]); draw(); };
     $("#sp").onclick = () => speak(s.t + ". " + s.x);
   };
   const next = () => {

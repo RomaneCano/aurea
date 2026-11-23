@@ -411,3 +411,6 @@ g.bd rect{fill:#b9cde0}g.bd.past rect{fill:#e0a83a}g.bd.cur rect{fill:#b45a7a}
 .rain{animation:rainfall 1.1s linear infinite}@keyframes rainfall{from{translate:var(--x) -20px}to{translate:calc(var(--x) - 40px) 380px}}
 .artaside{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:start}.artaside img{width:120px;height:140px;object-fit:cover;object-position:top;box-shadow:0 0 0 4px #fffdf8,0 0 0 5px #d9cdb0}.artaside small{display:block;color:var(--muted);line-height:1.4}.artaside b{font:500 1rem var(--serif)}
 .gbig img{max-height:560px;object-fit:contain;background:#efe6d0;width:100%}.gi .artimg.sm{object-position:top}
+
+.mline{margin:6px 0 0;display:grid;gap:2px}.mline i{font:700 .7rem Figtree;font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:#8a6212}
+.mystery a{margin-top:8px}.mhelp{background:#f5eef2;padding:12px 18px;margin:0 0 12px;font-size:.95rem;color:#5a3a48;border-left:3px solid #b45a7a}

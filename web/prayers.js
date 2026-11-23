@@ -29,10 +29,34 @@ const PSALMES_PRIER = [["psa", 23, "Le Seigneur est mon berger"], ["psa", 91, "S
 
 // ---------- le chapelet ----------
 const MYST_INFO = {
-  joyeux: [["luk 1", "Luc 1, 26-38", "Marie dit « oui » à l'ange. On demande d'accueillir la volonté de Dieu avec confiance."], ["luk 1", "Luc 1, 39-56", "Marie rend visite à sa cousine Élisabeth. On demande de savoir aider et se réjouir avec les autres."], ["luk 2", "Luc 2, 1-20", "Jésus naît à Bethléem, dans la pauvreté. On demande de la simplicité."], ["luk 2", "Luc 2, 22-38", "Marie et Joseph présentent Jésus au Temple. On offre à Dieu ce qui nous est précieux."], ["luk 2", "Luc 2, 41-52", "Jésus est retrouvé au Temple à douze ans. On demande de chercher Dieu et de le retrouver."]],
-  lumineux: [["mat 3", "Matthieu 3, 13-17", "Jésus est baptisé dans le Jourdain. On pense à son propre baptême."], ["joh 2", "Jean 2, 1-12", "À Cana, Jésus change l'eau en vin sur demande de Marie. On confie à Marie ce qui manque."], ["mar 1", "Marc 1, 14-15", "Jésus annonce que le Royaume de Dieu est proche. On demande de se tourner vers lui."], ["luk 9", "Luc 9, 28-36", "Jésus se montre dans la lumière sur la montagne. On demande de voir plus clair."], ["mat 26", "Matthieu 26, 26-29", "Jésus offre le pain et le vin à ses amis. On rend grâce pour l'eucharistie."]],
-  douloureux: [["luk 22", "Luc 22, 39-46", "Jésus prie dans la nuit, au jardin de Gethsémani. On prie pour ceux qui traversent une épreuve."], ["mar 15", "Marc 15, 6-15", "Jésus est flagellé. On pense à ceux qui subissent la violence."], ["mat 27", "Matthieu 27, 27-31", "On se moque de Jésus et on lui met une couronne d'épines. On demande le courage de rester doux."], ["joh 19", "Jean 19, 16-17", "Jésus porte sa croix. On pense à nos propres fardeaux."], ["luk 23", "Luc 23, 33-46", "Jésus meurt sur la croix en pardonnant. On demande la force de pardonner."]],
-  glorieux: [["mat 28", "Matthieu 28, 1-10", "Jésus est ressuscité. On demande une foi vivante."], ["luk 24", "Luc 24, 50-53", "Jésus retourne auprès du Père. On demande de garder l'espérance du ciel."], ["act 2", "Actes 2, 1-4", "L'Esprit Saint descend sur les apôtres. On demande de recevoir l'Esprit Saint."], ["", "Tradition de l'Église", "Marie est accueillie par Dieu en son corps et son âme. On demande de grandir dans l'espérance."], ["", "Tradition de l'Église", "Marie est honorée comme reine du ciel. On lui confie ceux qu'on aime."]]
+  joyeux: [
+    ["luk 1", "Luc 1, 26-38", "L'ange Gabriel annonce à Marie qu'elle va devenir la mère de Jésus. Marie est surprise, puis elle répond « oui ».", "Demande la confiance, pour dire « oui » à ce que Dieu te propose, même quand tu ne comprends pas tout."],
+    ["luk 1", "Luc 1, 39-56", "Marie, qui attend Jésus, part vite aider sa cousine Élisabeth, qui attend aussi un enfant. Les deux femmes se réjouissent ensemble.", "Demande de penser aux autres et de savoir les aider."],
+    ["luk 2", "Luc 2, 1-20", "Jésus naît à Bethléem, dans une étable, parce qu'il n'y a plus de place à l'auberge. Dieu naît pauvre et petit, et les bergers viennent le voir.", "Demande la simplicité. Cela veut dire se contenter de peu et rester humble."],
+    ["luk 2", "Luc 2, 22-38", "Quarante jours après sa naissance, Marie et Joseph portent Jésus au Temple pour le présenter à Dieu. Le vieux Siméon le reconnaît.", "Demande de savoir offrir à Dieu ce qui t'est précieux, et de lui confier tes proches."],
+    ["luk 2", "Luc 2, 41-52", "À douze ans, Jésus reste au Temple sans prévenir. Ses parents le cherchent pendant trois jours avant de le retrouver.", "Demande de ne jamais cesser de chercher Dieu, et de le retrouver si tu l'as perdu de vue."]
+  ],
+  lumineux: [
+    ["mat 3", "Matthieu 3, 13-17", "Jésus se fait baptiser dans le Jourdain. Le ciel s'ouvre et une voix dit « Tu es mon Fils bien-aimé ».", "Remercie pour ton baptême, ou demande le désir d'être baptisé."],
+    ["joh 2", "Jean 2, 1-12", "Lors d'un mariage à Cana, le vin vient à manquer. Marie le dit à Jésus, qui change l'eau en vin.", "Confie à Marie ce qui manque dans ta vie ou chez tes proches. Elle le transmet à Jésus."],
+    ["mar 1", "Marc 1, 14-15", "Jésus parcourt la Galilée et dit « Le Royaume de Dieu est tout proche, changez de vie et croyez à l'Évangile ».", "Demande de changer ce qui doit l'être en toi, avec confiance."],
+    ["luk 9", "Luc 9, 28-36", "Sur une montagne, Jésus apparaît brillant de lumière devant trois amis. Ils comprennent qu'il est plus qu'un maître.", "Demande de voir plus clair dans ta vie et de rester proche de Jésus."],
+    ["mat 26", "Matthieu 26, 26-29", "Le dernier soir, Jésus partage le pain et le vin avec ses amis et dit « Ceci est mon corps ». C'est l'origine de la messe.", "Remercie pour l'eucharistie et demande d'aimer la messe."]
+  ],
+  douloureux: [
+    ["luk 22", "Luc 22, 39-46", "La veille de sa mort, Jésus prie seul au jardin de Gethsémani. Il a peur, mais il dit « Que ta volonté soit faite ».", "Prie pour ceux qui traversent une épreuve ou qui ont peur, et pour toi si c'est ton cas."],
+    ["mar 15", "Marc 15, 6-15", "Jésus est fouetté par des soldats romains, alors qu'il n'a rien fait de mal.", "Pense à ceux qui subissent la violence, et demande de ne jamais en faire subir."],
+    ["mat 27", "Matthieu 27, 27-31", "Les soldats se moquent de Jésus et lui posent une couronne d'épines sur la tête.", "Demande le courage de rester doux quand on se moque de toi."],
+    ["joh 19", "Jean 19, 16-17", "Jésus porte lui-même sa lourde croix jusqu'au lieu de son exécution. Un homme, Simon de Cyrène, l'aide.", "Offre tes fardeaux à Dieu et demande de la patience."],
+    ["luk 23", "Luc 23, 33-46", "Jésus est cloué sur la croix. Il pardonne à ceux qui l'ont condamné, puis il meurt.", "Demande la force de pardonner à quelqu'un, et prie pour les personnes qui vont mourir."]
+  ],
+  glorieux: [
+    ["mat 28", "Matthieu 28, 1-10", "Le troisième jour, des femmes trouvent le tombeau vide. Jésus est vivant.", "Demande une foi vivante et la joie de Pâques."],
+    ["luk 24", "Luc 24, 50-53", "Quarante jours après Pâques, Jésus retourne auprès de son Père sous les yeux de ses disciples. Il promet de rester avec eux.", "Demande l'espérance, c'est-à-dire la confiance que le ciel nous attend."],
+    ["act 2", "Actes 2, 1-4", "Cinquante jours après Pâques, l'Esprit Saint descend sur les apôtres comme des flammes. Ils se mettent à annoncer l'Évangile.", "Demande l'Esprit Saint, pour avoir du courage et de la lumière."],
+    ["", "Tradition de l'Église", "Selon la tradition de l'Église, Marie est accueillie auprès de Dieu, avec son corps et son âme, à la fin de sa vie.", "Demande l'espérance, et prie pour ceux qui sont proches de la fin de leur vie."],
+    ["", "Tradition de l'Église", "Marie est honorée comme reine du ciel parce qu'elle est la mère de Jésus. Les chrétiens la prient comme une mère.", "Confie à Marie tous ceux que tu aimes."]
+  ]
 };
 const ROSARY_INTENTIONS = ["Pour la paix", "Pour ma famille", "Pour ceux qui souffrent", "Pour les malades", "Pour ceux qui cherchent Dieu", "En action de grâce", "Pour les défunts", "Pour ma paroisse"];
 
@@ -43,17 +67,19 @@ function rosaryGeometry() {
   for (let i = 0; i < 55; i++) { const a = (90 + (i + 1) * 360 / 56) * Math.PI / 180; beads.push({ x: cx + r * Math.cos(a), y: cy + r * Math.sin(a), k: i % 11 === 0 ? "big" : "s" }); }
   return beads;
 }
-function buildRosary(key) {
+function buildRosary(key, group) {
   const P = id => PRAYERS.find(p => p.id === id), m = MYSTERES[key], info = MYST_INFO[key], steps = [];
   steps.push({ b: 0, kind: "debut", t: "Signe de croix et Credo", x: P("signe").x + "\n\n" + P("credo").x, sub: "Sur la croix" });
   steps.push({ b: 1, t: "Notre Père", x: P("notre").x, sub: "Première grosse perle" });
-  ["la foi", "l'espérance", "la charité"].forEach((v, i) => steps.push({ b: 2 + i, t: "Je vous salue Marie", id: "jvs", x: P("jvs").x, sub: `Petite perle ${i + 1} sur 3, pour ${v}` }));
+  if (group) steps.push({ b: 4, bset: [2, 3, 4], id: "jvs", grp: true, t: "Je vous salue Marie", x: P("jvs").x, sub: "Trois fois, pour la foi, l'espérance et la charité", n: 3 });
+  else ["la foi", "l'espérance", "la charité"].forEach((v, i) => steps.push({ b: 2 + i, id: "jvs", t: "Je vous salue Marie", x: P("jvs").x, sub: `Petite perle ${i + 1} sur 3, pour ${v}`, tail: true }));
   steps.push({ b: 5, t: "Gloire au Père", x: P("gloire").x, sub: "Grosse perle" });
   for (let d = 0; d < 5; d++) {
-    const L = 7 + 11 * d, mi = info[d];
-    steps.push({ b: L, dec: d, kind: "myst", t: "Notre Père", x: P("notre").x, sub: `Dizaine ${d + 1} sur 5, ${m.l[d]}`, myst: { n: d + 1, t: m.l[d], ref: mi[1], link: mi[0], med: mi[2] } });
-    for (let j = 1; j <= 10; j++) steps.push({ b: L + j, dec: d, t: "Je vous salue Marie", id: "jvs", x: P("jvs").x, sub: `Perle ${j} sur 10`, count: j, myst: { n: d + 1, t: m.l[d], ref: mi[1], link: mi[0], med: mi[2] } });
-    steps.push({ b: d < 4 ? L + 11 : 6, dec: d, t: "Gloire au Père", x: P("gloire").x + "\n\nÔ mon Jésus, pardonne-nous nos péchés, préserve-nous du feu de l'enfer, conduis au ciel toutes les âmes, surtout celles qui ont le plus besoin de ta miséricorde.", sub: "Fin de la dizaine", myst: { n: d + 1, t: m.l[d], ref: mi[1], link: mi[0], med: mi[2] } });
+    const L = 7 + 11 * d, mi = info[d], my = { n: d + 1, t: m.l[d], ref: mi[1], link: mi[0], med: mi[2], ask: mi[3] };
+    steps.push({ b: L, dec: d, kind: "myst", t: "Notre Père", x: P("notre").x, sub: `Dizaine ${d + 1} sur 5, ${m.l[d]}`, myst: my });
+    if (group) steps.push({ b: L + 10, bset: Array.from({ length: 10 }, (_, k) => L + 1 + k), dec: d, id: "jvs", grp: true, t: "Je vous salue Marie", x: P("jvs").x, sub: "Dix fois, en pensant à ce mystère", n: 10, myst: my });
+    else for (let j = 1; j <= 10; j++) steps.push({ b: L + j, dec: d, id: "jvs", t: "Je vous salue Marie", x: P("jvs").x, sub: `Perle ${j} sur 10`, count: j, myst: my });
+    steps.push({ b: d < 4 ? L + 11 : 6, dec: d, t: "Gloire au Père", x: P("gloire").x + "\n\nÔ mon Jésus, pardonne-nous nos péchés, préserve-nous du feu de l'enfer, conduis au ciel toutes les âmes, surtout celles qui ont le plus besoin de ta miséricorde.", sub: "Fin de la dizaine", myst: my });
   }
   steps.push({ b: 6, kind: "fin", t: "Salut, ô Reine", x: P("salve").x, sub: "Pour conclure" });
   return steps;
