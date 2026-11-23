@@ -663,7 +663,7 @@ const DECONSTRUIRE = {
         repond: "Les chrétiens répondent que quelques dizaines d'années, c'est peu pour l'histoire ancienne, que des témoins directs vivaient encore, et que l'Église a reconnu quatre Évangiles parce qu'ils venaient de la tradition des apôtres. Ils ajoutent que l'écriture tardive n'enlève rien à l'inspiration (Dei Verbum 11 et 19).",
         refs: [
           { t: "1 Co 15,3-8", n: "profession de foi très ancienne" },
-          { t: "Dei Verbum 19", n: "l'origine apostolique des Évangiles" }
+          { t: "Dei Verbum 18-19", n: "origine apostolique et caractère historique des Évangiles" }
         ],
         sources: ["Britannica, article sur les évangiles synoptiques", "Constitution Dei Verbum (Vatican II, 1965)", "Article de recherche sur la date de l'Évangile de Marc, New Testament Studies"]
       },
