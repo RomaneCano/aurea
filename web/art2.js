@@ -101,7 +101,7 @@ function medal(icon, locked) {
     sun: `<circle cx="50" cy="50" r="10" fill="${ic}"/>${Array.from({ length: 8 }, (_, i) => { const a = i / 8 * 6.283; return `<line x1="${50 + Math.cos(a) * 16}" y1="${50 + Math.sin(a) * 16}" x2="${50 + Math.cos(a) * 23}" y2="${50 + Math.sin(a) * 23}" stroke="${ic}" stroke-width="4" stroke-linecap="round"/>`; }).join("")}`,
     book: `<path d="M30 62 L50 56 L70 62 V40 L50 34 L30 40Z" fill="${ic}"/><line x1="50" y1="34" x2="50" y2="56" stroke="${f}" stroke-width="2.5"/>`,
     candle: `<rect x="44" y="50" width="12" height="26" rx="3" fill="${ic}"/><path d="M50 30 Q58 42 50 50 Q42 42 50 30Z" fill="${ic}"/>`,
-    question: `<text x="50" y="66" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="44" fill="${ic}">?</text>`,
+    question: `<text x="50" y="66" text-anchor="middle" font-family="Source Serif 4,serif" font-weight="600" font-size="44" fill="${ic}">?</text>`,
     steps: `<ellipse cx="42" cy="58" rx="7" ry="11" fill="${ic}" transform="rotate(-10 42 58)"/><ellipse cx="60" cy="44" rx="7" ry="11" fill="${ic}" transform="rotate(10 60 44)"/>`,
     star: star(50, 52, 24, 10, ic),
     pen: `<path d="M34 68 L38 56 L64 30 L72 38 L46 64Z" fill="${ic}"/>`,

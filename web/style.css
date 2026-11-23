@@ -5,7 +5,7 @@
   --ink:#1f2a37; --muted:#566373; --line:#e2d8c4;
   --blue:#2c5b88; --blue-d:#1f4468; --blue-l:#dbe8f3;
   --gold:#c4902c; --gold-d:#86600f; --gold-l:#f7e3b0; --terra:#c8643c; --sage:#2f6a52; --sage-l:#dcebe3;
-  --serif:"Fraunces",Georgia,serif; --sans:"Figtree",system-ui,sans-serif;
+  --serif:"Source Serif 4",Georgia,serif; --sans:"Figtree",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
@@ -316,7 +316,7 @@ svg.sm{width:30px;height:30px}
 .map{display:block;width:100%;aspect-ratio:880/520;border-radius:30px 8px 30px 8px;background:#cfe3f1;box-shadow:0 14px 30px -18px #6b5a3a88}
 .map .sea{fill:#cfe3f1}.map .land{fill:#f6ecd2;stroke:#dccda6;stroke-width:1.6px;vector-effect:non-scaling-stroke}
 .map .nil{fill:none;stroke:#a9cbe2;stroke-linecap:round}
-.map text{font:600 15px Fraunces,Georgia,serif;fill:#1f2a37;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.map text{font:600 15px "Source Serif 4",Georgia,serif;fill:#1f2a37;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
 .map .sealab text{fill:#6f9cc4;font-style:italic;font-weight:400;text-anchor:middle;stroke:none}
 .map .landlab text{fill:#c2ae7c;font:700 12px Figtree,sans-serif;letter-spacing:.22em;text-anchor:middle;stroke:none}
 .map .pin circle{fill:#d9784a;stroke:#fff;stroke-width:3}.map .pin.past circle{fill:#e8b04a}

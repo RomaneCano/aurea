@@ -15,7 +15,7 @@ const crossShape = (x, y, h = 70, c = "#8a6a3a") => `<rect x="${x - 4}" y="${y}"
 const heart = (x, y, s = 1, c = "#d9784a") => `<path transform="translate(${x} ${y}) scale(${s})" d="M0 24 C-34 -2 -26 -28 -10 -28 C-3 -28 0 -22 0 -18 C0 -22 3 -28 10 -28 C26 -28 34 -2 0 24Z" fill="${c}"/>`;
 const star = (x, y, R, r, c = "#f5c25a") => { const p = []; for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + i * Math.PI / 5, d = i % 2 ? r : R; p.push((x + Math.cos(a) * d).toFixed(1) + "," + (y + Math.sin(a) * d).toFixed(1)); } return `<polygon points="${p.join(" ")}" fill="${c}"/>`; };
 const cliffs = `<path d="M0 150 H135 L122 300 H0Z" fill="${C.rock}"/><path d="M0 150 H135 L130 168 H0Z" fill="${C.sage}"/><path d="M265 150 H400 V300 H278Z" fill="${C.rock}"/><path d="M265 150 H400 V168 H270Z" fill="${C.sage}"/><path d="M122 262 Q200 236 278 262 V300 H122Z" fill="${C.water}"/>`;
-const txt = (x, y, s, size = 16, fill = "#1f2a37", anchor = "middle", style = "") => `<text x="${x}" y="${y}" text-anchor="${anchor}" font-family="Fraunces,Georgia,serif" font-size="${size}" font-weight="600" fill="${fill}" ${style}>${s}</text>`;
+const txt = (x, y, s, size = 16, fill = "#1f2a37", anchor = "middle", style = "") => `<text x="${x}" y="${y}" text-anchor="${anchor}" font-family="Source Serif 4,Georgia,serif" font-size="${size}" font-weight="600" fill="${fill}" ${style}>${s}</text>`;
 
 const A = {
   dieu: () => frame(rays(200, 130, 64, 94) + sunDisc(200, 130, 52) + heart(200, 132, 1.1) + hills()),
