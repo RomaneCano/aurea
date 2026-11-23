@@ -32,14 +32,14 @@ shell = function (title, html, back = "#/", cls = "") {
 
 // ---------- accueil éditorial ----------
 VIEWS.home = function () {
-  const next = MODULES.find(m => !S.done[m.id] && unlocked(m) && !m.soon), info = lvlInfo(), fig = dayPick(FIGURES), st = streak(S), prompt = dayPick(PROMPTS);
+  const next = MODULES.find(m => !S.done[m.id] && unlocked(m) && !m.soon), info = lvlInfo(), sd = saintDuJour(), fig = sd.f, st = streak(S), prompt = dayPick(PROMPTS);
   const stations = MODULES.filter(m => !m.soon), doneN = stations.filter(m => S.done[m.id]).length;
   const dateStr = new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
   const lastRead = lastReadRef();
   app.innerHTML = `<div class="site home">${siteHead()}
     <section class="hero-ed">${A.hero(sunLevel())}<div class="hero-in"><p class="eyebrow">${esc(dateStr)}</p>
       <h1>${S.name ? "Bonjour " + esc(S.name) + "," : "Bonjour,"}<br><em>un pas à la fois.</em></h1>
-      <p class="status">Niveau ${info.n}, ${info.name}<i>·</i>${info.xp} lumières<i>·</i>${st} jour${st > 1 ? "s" : ""} de suite<a href="#/profil">Mon compagnon</a></p></div></section>
+      <p class="status">Niveau ${info.n}, ${info.name}<i>·</i>${info.xp} lumières<i>·</i>${st} jour${st > 1 ? "s" : ""} de suite${S.patron ? `<i>·</i>Saint patron, ${esc(FIGURES.find(f => f.id === S.patron).nom)}` : ""}<a href="#/profil">Mon compagnon</a></p></div></section>
     <div class="cols3e">
       <section class="ecol"><h2 class="sech"><span>I</span>Aujourd'hui</h2>
         ${next ? `<a class="feature" href="#/${next.id}"><span class="fimg">${ill(next.ill)}</span><small class="eyebrow">Ta prochaine étape</small><h3>${esc(next.t)}</h3><p>${esc(next.d)}</p><b class="more">Continuer</b></a>` : `<div class="feature"><h3>Le chemin de départ est terminé</h3><p>Continue avec la Bible, les figures et le journal.</p></div>`}
@@ -49,7 +49,7 @@ VIEWS.home = function () {
         <ol class="toc">${stations.slice(0, 9).map((m, i) => { const u = unlocked(m), d = S.done[m.id]; return `<li class="${d ? "done" : u ? "open" : "lock"}"><a ${u ? `href="#/${m.id}"` : ""}><span class="n">${String(i + 1).padStart(2, "0")}</span><span class="t">${esc(m.t)}</span><span class="dots"></span><span class="s">${d ? "Lu" : u ? "À faire" : "Verrouillé"}</span></a></li>`; }).join("")}</ol>
         <a class="more" href="#/chemin">Tout le parcours</a></section>
       <section class="ecol"><h2 class="sech"><span>III</span>À découvrir</h2>
-        <a class="plate" href="#/figures/${fig.id}"><span class="fimg portraitimg">${portrait(fig)}</span><span><small class="eyebrow">Figure du jour</small><h3>${esc(fig.nom)}</h3><p>${esc(fig.role)}</p></span></a>
+        <a class="plate" href="#/figures/${fig.id}"><span class="fimg portraitimg">${portrait(fig)}</span><span><small class="eyebrow">${esc(sd.label)}</small><h3>${esc(fig.nom)}</h3><p>${esc(fig.role)}</p></span></a>
         <a class="plate" href="#/lire"><span class="fimg">${A.livre()}</span><span><small class="eyebrow">La Bible</small><h3>Lire avec des explications</h3><p>73 livres, un texte catholique complet.</p></span></a>
         <a class="plate" href="#/jesuscarte"><span class="fimg">${A.chemin()}</span><span><small class="eyebrow">Carte</small><h3>Sur les pas de Jésus</h3><p>Onze étapes, de Bethléem à Emmaüs.</p></span></a></section>
     </div>${siteFoot()}</div>`;

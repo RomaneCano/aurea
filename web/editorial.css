@@ -176,3 +176,56 @@ h4{font:700 .72rem "Figtree";letter-spacing:.14em;text-transform:uppercase;color
 .crumbs .back{font:600 .85rem "Figtree";padding:0;color:var(--ink)}
 .stage h3 span{background:none;color:var(--gold-d);width:auto;height:auto;font:italic 400 1.05rem var(--serif);border-radius:0;display:inline}
 .st .thumb{padding:5px}
+
+/* aventures animées des saints */
+.scene{display:block;width:100%;height:auto;border:1px solid #d9cdb0;border-radius:2px;box-shadow:0 0 0 8px #fffdf8,0 0 0 9px #d9cdb0;background:#fff}
+.stage{padding:10px}
+.storywrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
+.storyside .text{min-height:7.5em}
+.fadein{animation:fadein .9s ease both}
+@keyframes fadein{from{opacity:0;translate:0 8px}to{opacity:1;translate:0 0}}
+.scontrols{display:flex;align-items:center;gap:14px;margin:14px 0 10px}
+.sprog{display:flex;gap:6px;margin-bottom:16px}
+.sprog i{flex:1;height:3px;background:var(--line);position:relative;overflow:hidden}
+.sprog i.on{background:var(--gold)}
+.sprog i.cur:after{content:"";position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left}
+.sprog i.cur.run:after{animation:fillbar var(--d) linear forwards}
+.sprog i.cur:not(.run):after{transform:scaleX(1)}
+@keyframes fillbar{to{transform:scaleX(1)}}
+.walk{animation:walkin 2.4s cubic-bezier(.25,.8,.35,1) both}
+.walk .idle{animation:step .45s ease-in-out 5, bob 3.2s ease-in-out 2.25s infinite}
+@keyframes walkin{from{translate:-440px 0}to{translate:0 0}}
+@keyframes step{50%{translate:0 -6px}}
+@keyframes bob{50%{translate:0 -4px}}
+.bob{animation:bob 3.4s ease-in-out infinite}
+.bobboat{animation:bob 4s ease-in-out infinite}
+.cloud{animation:drift 70s linear infinite}
+@keyframes drift{from{translate:-200px 0}to{translate:800px 0}}
+.sunrays{animation:spin 80s linear infinite}
+@keyframes spin{to{rotate:360deg}}
+.flame{animation:flicker .9s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+.flame.f2{animation-duration:.7s}
+@keyframes flicker{0%,100%{scale:1 1}50%{scale:.88 1.14}}
+.bird{animation:fly 16s linear infinite}
+@keyframes fly{from{translate:-80px 0}to{translate:740px -30px}}
+.petal{animation:fall 7s linear infinite}
+@keyframes fall{from{translate:var(--x) -10px;opacity:0}10%{opacity:1}to{translate:calc(var(--x) + 50px) 390px;opacity:0}}
+.twinkle{animation:twinkle 2.6s ease-in-out infinite}
+@keyframes twinkle{50%{opacity:.25}}
+.wave{animation:wave 7s linear infinite}.wave.w2{animation-direction:reverse;animation-duration:9s}
+@keyframes wave{to{translate:-80px 0}}
+.beam{animation:beam 4s ease-in-out infinite}
+@keyframes beam{50%{opacity:.25}}
+.drop{animation:drop 1.6s ease-in infinite}
+@keyframes drop{from{translate:0 0;opacity:1}to{translate:0 16px;opacity:0}}
+.moon{animation:fadein 2s ease both}
+/* favoris, calendrier */
+.gt .heart,.gt .play{position:absolute;font-style:normal;font-size:.8rem;line-height:1;background:#fffdf8;border:1px solid var(--line);padding:3px 5px;top:8px}
+.gt .heart{left:8px;color:#c0443c}.gt .play{right:8px;color:var(--blue-d)}
+.gt.new:after{display:none}
+.favgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:26px;margin:20px 0}
+.favcard{display:block;text-decoration:none;color:var(--ink)}.favcard .fimg{display:block;padding:6px}.favcard b{display:block;font:500 1.05rem var(--serif);margin-top:6px}.favcard small{color:var(--muted)}
+.calfetes{columns:3;column-gap:48px}.calfetes section{break-inside:avoid;margin-bottom:22px}.calfetes h3{font:500 1.1rem var(--serif);text-transform:capitalize;border-bottom:1px solid var(--ink);padding-bottom:6px;margin:0 0 6px}
+.calfetes ul{list-style:none;margin:0;padding:0}.calfetes a{display:flex;gap:14px;align-items:baseline;padding:6px 0;text-decoration:none;color:var(--ink);border-bottom:1px solid #efe6d1}.calfetes .dj{font:italic 400 1.1rem var(--serif);color:var(--gold-d);min-width:26px}.calfetes a:hover span:nth-child(2){color:var(--blue)}.calfetes i{margin-left:auto;color:#c0443c;font-style:normal}
+.rich p{font:400 1.02rem/1.65 var(--serif)}
+@media (max-width:1000px){.storywrap{grid-template-columns:1fr}.calfetes{columns:1}.storyside .text{min-height:0}}
