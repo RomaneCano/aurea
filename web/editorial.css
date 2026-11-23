@@ -526,3 +526,20 @@ g.bd rect{fill:#b9cde0}g.bd.past rect{fill:#e0a83a}g.bd.cur rect{fill:#b45a7a}
 .gbig img{width:100%;max-height:none;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 18%;background:none}
 .gbig svg{max-height:none;width:100%;height:auto}
 .gi .artimg.sm{object-position:50% 25%}
+
+/* parcours par temps liturgique */
+.tlist{list-style:none;padding:0;margin:0;max-width:1000px}
+.tlist a{display:grid;grid-template-columns:200px 1fr 230px 20px;gap:18px;align-items:baseline;padding:18px 0;border-bottom:1px solid #efe6d1;text-decoration:none;color:var(--ink)}
+.tlist .tn{font:500 1.35rem var(--serif)}.tlist .td{color:var(--accent-d);font-size:.9rem}.tlist a:hover .tn{color:var(--accent-d)}
+#tt2{display:flex;flex-wrap:wrap;gap:4px 8px;border-bottom:1px solid #e7dcc3;margin:6px 0 22px}
+#tt2 button{background:none;border:0;border-bottom:3px solid transparent;padding:10px 16px;font:500 1.02rem var(--serif);color:var(--muted);cursor:pointer}
+#tt2 button.on{color:var(--ink);border-bottom-color:var(--accent,#2f6b5e)}
+.tcols{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin:18px 0}
+.tcols h4,.tstart h4,.tweeks h4{font:600 .75rem var(--sans,inherit);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:16px 0 6px}
+.tsign textarea,.tq textarea{width:100%;padding:10px;border:1px solid #d9ccae;background:#fffdf8;font:inherit;border-radius:4px}
+.tq{display:block;margin:14px 0;max-width:760px}.tstart{max-width:820px}
+.tnav{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #efe6d1;padding-top:12px}
+.tdots{display:flex;flex-wrap:wrap;gap:8px}.tdots a{display:flex;flex-direction:column;align-items:center;width:84px;padding:8px 4px;border:1px solid #e3d8bc;border-radius:6px;text-decoration:none;color:var(--ink);font-size:.8rem}
+.tdots a b{font:500 1.2rem var(--serif)}.tdots a.has{background:#eef6ea;border-color:#9cc7b3}.tdots a.now{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.tweeks section{margin-bottom:22px}.tsigns{list-style:none;padding:0}.tsigns li{border-left:3px solid #e8b4c8;padding:2px 0 2px 14px;margin:12px 0}.tsigns p{margin:2px 0}
+@media(max-width:1000px){.tcols{grid-template-columns:1fr}.tlist a{grid-template-columns:1fr}}
