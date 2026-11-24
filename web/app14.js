@@ -13,7 +13,7 @@ function castInfo(id) {
   return { id, nom: f.nom, role: f.role, court: f.role + ". " + f.bio.split(". ")[0] + ".", plus: f.bio + " " + (f.pourquoi || ""), f };
 }
 function castDepth() { if (S.depth) return S.depth; const n = Object.keys(S.done || {}).length; return n >= 4 ? 2 : 1; }
-function castHtml(stopId) {
+function castHtml(stopId, open) {
   const ids = CAST[stopId]; if (!ids) return "";
   S.castSeen = S.castSeen || {}; const d = castDepth();
   const hasLong = id => typeof longsAll === "function" && longsAll()[id];
@@ -23,12 +23,12 @@ function castHtml(stopId) {
     return `<article class="ccard">${img}<div><b>${esc(c.nom)}</b><small>${esc(c.role)}</small><p>${g(d === 1 ? c.court : c.plus)}</p>${lien}</div></article>`;
   }).join("");
   ids.forEach(id => { S.castSeen[id] = 1; });
-  return `<section class="cast"><div class="casthead"><h3>Avant l'histoire, qui est-ce ?</h3><div class="depth" role="group" aria-label="Niveau de détail"><button data-d="1" class="${d === 1 ? "on" : ""}">En deux mots</button><button data-d="2" class="${d === 2 ? "on" : ""}">Un peu plus</button></div></div>${cards}</section>`;
+  return `<details class="cast" ${open ? "open" : ""}><summary><span>Qui est-ce ?</span> <b>${ids.map(castInfo).filter(Boolean).map(c => esc(c.nom)).join(", ")}</b></summary><div class="casthead"><h3 class="sr-only">Niveau de détail</h3><div class="depth" role="group" aria-label="Niveau de détail"><button data-d="1" class="${d === 1 ? "on" : ""}">En deux mots</button><button data-d="2" class="${d === 2 ? "on" : ""}">Un peu plus</button></div></div>${cards}</details>`;
 }
 new MutationObserver(() => {
   const rp = document.getElementById("rp"); if (!rp || rp.querySelector(".cast") || typeof REPERES === "undefined") return;
   const h2 = rp.querySelector("h2"); const s = h2 && REPERES.find(r => r.t === h2.textContent); if (!s) return; const h = castHtml(s.id); if (!h) return;
   const p = rp.querySelector("p.text"); if (!p) return;
   p.insertAdjacentHTML("beforebegin", h);
-  rp.querySelectorAll(".depth button").forEach(b => b.onclick = () => { S.depth = +b.dataset.d; save(); rp.querySelector(".cast").outerHTML = castHtml(s.id); rp.querySelectorAll(".depth button").forEach(x => x.onclick = b.onclick); });
+  rp.querySelectorAll(".depth button").forEach(b => b.onclick = () => { S.depth = +b.dataset.d; save(); rp.querySelector(".cast").outerHTML = castHtml(s.id, true); rp.querySelectorAll(".depth button").forEach(x => x.onclick = b.onclick); });
 }).observe(document.body, { childList: true, subtree: true });

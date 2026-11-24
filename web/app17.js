@@ -96,10 +96,3 @@ function livreOuvert(a) {
   if (window.gsap && !(S.a11y && S.a11y.motion)) { requestAnimationFrame(() => { bk.classList.add("opening"); gsap.fromTo(bk.querySelector(".bkcover"), { rotationY: 0 }, { rotationY: -172, duration: 1.4, ease: "power2.inOut", transformOrigin: "0% 50%", delay: .3, onComplete: () => { bk.classList.remove("closed"); bk.querySelector(".bkcover").style.display = "none"; } }); gsap.fromTo(bk.querySelectorAll(".bkpage"), { opacity: 0 }, { opacity: 1, duration: .6, delay: 1.1 }); }); }
   else { bk.classList.remove("closed"); const c = bk.querySelector(".bkcover"); c && (c.style.display = "none"); }
 }
-/* entrée depuis La Bible */
-new MutationObserver(() => {
-  const gt = document.getElementById("goto"); if (!gt || document.getElementById("bpintro")) return;
-  const s = document.createElement("section"); s.id = "bpintro"; s.className = "bpintro";
-  s.innerHTML = `<small class="eyebrow">Avant de lire</small><h2>Découvre la Bible avant de l'ouvrir</h2><div class="bpsteps"><a href="#/biblepre/histoire"><i>1</i><b>Son histoire</b><span>Comment elle a été écrite, les plus vieux manuscrits, les traductions.</span></a><a href="#/biblepre/livre"><i>2</i><b>Le livre ouvert</b><span>Les 73 livres, qui les a écrits, et quand.</span></a><a href="#/biblepre/lire"><i>3</i><b>Lire une référence</b><span>Comprendre « Jn 3,16 » et retrouver un verset.</span></a><a href="#/biblepre/questions"><i>4</i><b>Questions courantes</b><span>La Bible est-elle fiable, Jésus a-t-il existé.</span></a></div>`;
-  gt.parentNode.insertBefore(s, gt);
-}).observe(document.body, { childList: true, subtree: true });

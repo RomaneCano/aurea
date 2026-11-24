@@ -44,7 +44,7 @@ function decorerFigures() {
     if (fv) { const on = /Dans mes favoris/.test(fv.textContent); fv.innerHTML = `${ico("fav", 18)} ${on ? "Dans mes favoris" : "Favori"}`; fv.title = "Ajouter ou retirer des favoris"; }
     if (pt) { const on = /✓/.test(pt.textContent); pt.innerHTML = `${ico("patron", 18)} ${on ? "Mon saint patron" : "Choisir comme patron"}`; pt.title = "Un saint patron est un saint choisi comme ami et protecteur"; }
     if (gj) { gj.innerHTML = `${ico("journal", 18)} Journal`; gj.title = "Écrire dans mon journal"; }
-    if (pt) { const p = document.createElement("p"); p.className = "patronhelp"; p.innerHTML = `<b>Un saint patron, c'est quoi ?</b> Un saint que tu choisis comme ami et comme exemple. Les chrétiens croient qu'il prie pour toi, comme un ami qui pense à toi. Beaucoup choisissent le saint de leur prénom ou de leur date de naissance, ou celui dont l'histoire les touche. Tu peux en changer quand tu veux.`; gt.after(p); }
+    if (pt) { const p = document.createElement("details"); p.className = "patronhelp"; p.innerHTML = `<summary>Un saint patron, c'est quoi ?</summary> Un saint que tu choisis comme ami et comme exemple. Les chrétiens croient qu'il prie pour toi, comme un ami qui pense à toi. Beaucoup choisissent le saint de leur prénom ou de leur date de naissance, ou celui dont l'histoire les touche. Tu peux en changer quand tu veux.`; gt.after(p); }
   }
 }
 new MutationObserver(decorerFigures).observe(document.body, { childList: true, subtree: true });
