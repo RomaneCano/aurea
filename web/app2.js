@@ -328,7 +328,7 @@ function faqView(setTab) {
   };
   draw();
 }
-function fmtAnswer(t) { return t.split(/\n{2,}/).map(p => `<p>${g(p.replace(/\*\*(.+?)\*\*/g, "$1").replace(/^#+\s*/gm, "").replace(/^[-*]\s+/gm, "• "))}</p>`).join(""); }
+function fmtAnswer(t) { return t.split(/\n{2,}/).map(p => `<p>${g(p.replace(/\*\*(.+?)\*\*/g, "$1").replace(/\*\*/g, "").replace(/^#+\s*/gm, "").replace(/^[-*]\s+/gm, "• "))}</p>`).join(""); }
 function expertView(redraw, setTab) {
   const hasKey = !!S.apiKey; let busy = false;
   const msgs = () => S.ask.map((m, i) => m.r === "u" ? `<div class="msg me"><p>${esc(m.x)}</p></div>` : `<div class="msg ai"><span class="av-e">${logoMark()}</span><div class="mb">${fmtAnswer(m.x)}<button class="textbtn" data-keep="${i}">Garder dans mon journal</button></div></div>`).join("");

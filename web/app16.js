@@ -63,3 +63,13 @@ document.addEventListener("selectionchange", () => { clearTimeout(xpT); xpT = se
 document.addEventListener("scroll", () => { const o = document.getElementById("xp-pop"); o && o.remove(); }, { passive: true });
 window.addEventListener("hashchange", () => closePanel());
 window.addEventListener("keydown", e => { if (e.altKey && e.key.toLowerCase() === "e") { const s = window.getSelection(); if (s && !s.isCollapsed) { e.preventDefault(); xpOpen(s.toString().replace(/\s+/g, " ").trim(), xpContext(s.getRangeAt(0))); } } });
+
+// "Expliquer ce verset ou ce chapitre" dans la lecture de la Bible ouvre le même panneau, bien visible
+document.addEventListener("click", e => {
+  const b = e.target.closest && e.target.closest("#ex"); if (!b) return;
+  e.stopImmediatePropagation(); e.preventDefault();
+  const sel = document.querySelector(".v.sel"), h1 = (document.querySelector("h1") || {}).textContent || "", scr = document.getElementById("scr");
+  const chap = scr ? scr.innerText.replace(/\s+/g, " ").trim() : "";
+  if (sel) { const n = (sel.querySelector("sup, .vn") || {}).textContent || ""; const t = sel.textContent.replace(/^\s*\d+\s*/, "").trim(); xpOpen(t, { page: h1.trim() + (n ? ", verset " + n : ""), section: h1.trim(), para: chap.slice(0, 1400), hash: location.hash }); }
+  else xpOpen(h1.trim() + ". " + chap.slice(0, 600), { page: h1.trim(), section: "chapitre entier", para: chap.slice(0, 1400), hash: location.hash });
+}, true);
